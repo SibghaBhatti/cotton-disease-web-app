@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      /* General Styles */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e0f7fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #00796b;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      a {
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Chat Container */
+      .chat-container {
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .chat-box {
+        width: 100%;
+        height: 400px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow-y: auto;
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .chat-input {
+        width: calc(100% - 60px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      .chat-input:focus {
+        outline: none;
+        border-color: #00796b;
+      }
+
+      .chat-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #00796b;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .chat-button:hover {
+        background-color: #004d40;
+      }
+
+      .chat-message {
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        max-width: 80%;
+        word-wrap: break-word;
+      }
+
+      .user-message {
+        background-color: #d1e7dd;
+        align-self: flex-end;
+        text-align: right;
+      }
+
+      .bot-message {
+        background-color: #e2e3e5;
+        align-self: flex-start;
+        text-align: left;
+      }
+      /* Navigation Styles */
+      nav {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      nav .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .logo img {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+      }
+
+      nav .links {
+        display: flex;
+        gap: 10px;
+      }
+
+      nav .links a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      nav .links a:hover {
+        background-color: #004d40;
+      }
+
+      /* Language Selection */
+      .language-selection {
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .language-selection a {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .language-selection a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      footer a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
+      </div>
+      <div class="links">
+        <a href="{{ url_for('disease_detection') }}"
+          >{{ _('Disease Detection') }}</a
+        >
+        <a href="{{ url_for('weather_forecasting') }}"
+          >{{ _('Weather Forecasting') }}</a
+        >
+        <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
+        <a href="{{ url_for('n_fertilizer') }}"
+          >{{ _('Fertilizer Calculator Simple') }}</a
+        >
+        <a href="{{ url_for('fertilizer_calculator') }}"
+          >{{ _('Fertilizer Calculator') }}</a
+        >
+        <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
+        <a href="{{ url_for('cotton_seeds') }}"
+          >{{ _('Best Cotton Seeds in Pakistan') }}</a
+        >
+        <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
+        <!-- <a href="{{ url_for('news') }}">{{ _('News') }}</a> -->
+        <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
+      </div>
+    </nav>
+
+    <div class="chat-container">
+      <h1>Chatbot</h1>
+      <div class="chat-box" id="chat-box"></div>
+      <div style="display: flex; align-items: center">
+        <input
+          type="text"
+          id="chat-input"
+          class="chat-input"
+          placeholder="Type your message here..."
+        />
+        <button class="chat-button" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+
+    <script>
+      function sendMessage() {
+        var userInput = $("#chat-input").val();
+        if (userInput.trim() !== "") {
+          $("#chat-box").append(
+            '<div class="chat-message user-message">' + userInput + "</div>"
+          );
+          $("#chat-input").val("");
+
+          $.ajax({
+            url: "{{ url_for('get_response') }}",
+            method: "POST",
+            data: { user_input: userInput },
+            success: function (response) {
+              $("#chat-box").append(
+                '<div class="chat-message bot-message">' +
+                  response.response +
+                  "</div>"
+              );
+              $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+            },
+          });
+        }
+      }
+
+      $("#chat-input").keypress(function (e) {
+        if (e.which == 13) {
+          sendMessage();
+          return false;
+        }
+      });
+    </script>
+    <footer>
+      <a href="#">Privacy Policy</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">DMCA Policy</a>
+      <a href="#">Sitemap</a>
+      <p>&copy; 2024 Exper Cotton Prediction. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

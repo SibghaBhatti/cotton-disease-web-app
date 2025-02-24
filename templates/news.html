@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotton Industry News</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      /* General Styles */
+
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #ffffff);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #00796b;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      a {
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Container */
+      .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 90%;
+        max-width: 700px;
+        margin: 20px;
+      }
+
+      /* List Styles */
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      ul li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 15px;
+        transition: box-shadow 0.3s;
+      }
+
+      ul li:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      ul li h2 {
+        margin: 0 0 10px;
+        font-size: 1.5em;
+        color: #00796b;
+      }
+
+      ul li p {
+        margin: 5px 0;
+        color: #333;
+      }
+
+      ul li small {
+        color: #666;
+      }
+
+      /* Flash Message Styles */
+      .flash-message {
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+      }
+
+      .flash-message.success {
+        background-color: #4caf50;
+      }
+
+      .flash-message.error {
+        background-color: #f44336;
+      }
+      /* Navigation Styles */
+      nav {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      nav .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .logo img {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+      }
+
+      nav .links {
+        display: flex;
+        gap: 10px;
+      }
+
+      nav .links a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      nav .links a:hover {
+        background-color: #004d40;
+      }
+
+      /* Language Selection */
+      .language-selection {
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .language-selection a {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .language-selection a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      footer a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
+      </div>
+      <div class="links">
+        <a href="{{ url_for('disease_detection') }}"
+          >{{ _('Disease Detection') }}</a
+        >
+        <a href="{{ url_for('weather_forecasting') }}"
+          >{{ _('Weather Forecasting') }}</a
+        >
+        <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
+        <a href="{{ url_for('n_fertilizer') }}"
+          >{{ _('Fertilizer Calculator Simple') }}</a
+        >
+        <a href="{{ url_for('fertilizer_calculator') }}"
+          >{{ _('Fertilizer Calculator') }}</a
+        >
+        <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
+        <a href="{{ url_for('cotton_seeds') }}"
+          >{{ _('Best Cotton Seeds in Pakistan') }}</a
+        >
+        <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
+        <a href="{{ url_for('news') }}">{{ _('News') }}</a>
+        <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Cotton Industry News</h1>
+      {% if articles %}
+      <ul>
+        {% for article in articles %}
+        <li>
+          <h2>
+            <a href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+          </h2>
+          <p>{{ article.description }}</p>
+          <p>
+            <small>
+              Source: {{ article.source.name }} | Published: {{
+              article.publishedAt }}
+            </small>
+          </p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No news articles found.</p>
+      {% endif %}
+      <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+    </div>
+    <footer>
+      <a href="#">Privacy Policy</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">DMCA Policy</a>
+      <a href="#">Sitemap</a>
+      <p>&copy; 2024 Exper Cotton Prediction. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

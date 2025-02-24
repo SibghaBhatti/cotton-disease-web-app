@@ -1,0 +1,14 @@
+tensorflow
+numpy
+matplotlib
+Flask
+Flask-Login
+Flask-WTF
+werkzeug
+WTForms
+Pillow
+Flask-Babel
+Flask-SQLAlchemy
+itsdangerous
+Flask-Mail
+pymysql

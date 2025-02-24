@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      /* General Styles */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #ffffff);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #00796b;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+
+      /* Container */
+      .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 90%;
+        max-width: 500px;
+        margin: 20px;
+        text-align: center;
+      }
+
+      /* Form Styles */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form p {
+        margin-bottom: 15px;
+        width: 100%;
+      }
+
+      form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #00796b;
+        text-align: left;
+      }
+
+      form input[type="text"],
+      form input[type="password"],
+      form input[type="email"],
+      form input[type="number"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      form input[type="text"]:focus,
+      form input[type="password"]:focus,
+      form input[type="email"]:focus,
+      form input[type="number"]:focus {
+        outline: none;
+        border-color: #00796b;
+      }
+
+      form input[type="submit"],
+      form button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+      }
+
+      form input[type="submit"]:hover,
+      form button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Helper Text */
+      .helper-text {
+        margin-top: 20px;
+      }
+      .flashes {
+  margin: 20px 0;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flashes">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      <h1>Login</h1>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+          <label for="username">{{ form.username.label }}</label>
+          {{ form.username(id='username', placeholder='Enter your username') }}
+        </p>
+        <p>
+          <label for="password">{{ form.password.label }}</label>
+          {{ form.password(id='password', placeholder='Enter your password') }}
+        </p>
+        <p>{{ form.submit(class_='btn') }}</p>
+      </form>
+      <p class="helper-text">
+        <a href="{{ url_for('signup') }}">Don't have an account? Sign Up here</a><br>
+        <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+      </p>
+    </div>
+  </body>
+</html>

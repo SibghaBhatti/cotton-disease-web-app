@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ _('Disease Detection') }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      /* General Styles */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #00796b;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      a {
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Container */
+      .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 100%;
+        max-width: 700px;
+        margin: 20px;
+        text-align: center;
+      }
+
+      /* Form Styles */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form input[type="file"] {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      form button {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      form button:hover {
+        background-color: #004d40;
+      }
+
+      /* Image Styles */
+      .image {
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Result Styles */
+      .result-container {
+        margin-top: 30px;
+        background-color: #e0f2f1;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: left;
+      }
+
+      .result-container h2 {
+        color: #00796b;
+        margin-bottom: 15px;
+      }
+
+      .result-container p {
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .result-container ul {
+        padding-left: 20px;
+      }
+
+      .result-container ul li {
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .result-info h3 {
+        margin-top: 20px;
+        color: #00796b;
+      }
+
+      /* Navigation Styles */
+      nav {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      nav .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .logo img {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+      }
+
+      nav .links {
+        display: flex;
+        gap: 10px;
+      }
+
+      nav .links a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      nav .links a:hover {
+        background-color: #004d40;
+      }
+
+      /* Language Selection */
+      .language-selection {
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .language-selection a {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .language-selection a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      footer a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
+      </div>
+      <div class="links">
+        <a href="{{ url_for('disease_detection') }}"
+          >{{ _('Disease Detection') }}</a
+        >
+        <a href="{{ url_for('weather_forecasting') }}"
+          >{{ _('Weather Forecasting') }}</a
+        >
+        <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
+        <a href="{{ url_for('n_fertilizer') }}"
+          >{{ _('Fertilizer Calculator Simple') }}</a
+        >
+        <a href="{{ url_for('fertilizer_calculator') }}"
+          >{{ _('Fertilizer Calculator') }}</a
+        >
+        <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
+        <a href="{{ url_for('cotton_seeds') }}"
+          >{{ _('Best Cotton Seeds in Pakistan') }}</a
+        >
+        <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
+        <!-- <a href="{{ url_for('news') }}">{{ _('News') }}</a> -->
+        <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
+      </div>
+    </nav>
+    <div class="language-selection">
+      <a href="{{ url_for('set_language', language='en') }}">English</a>
+      <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
+    </div>
+    <div class="container">
+      <h1>{{ _('Cotton Plant Disease Classifier') }}</h1>
+      <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required />
+        <button type="submit">{{ _('Upload and Detect') }}</button>
+      </form>
+
+      {% if result %}
+      <div class="result-container">
+        <h2>{{ _('Result:') }} {{ result }}</h2>
+        <img
+          class="image"
+          src="{{ img_url }}"
+          alt="{{ _('Detected Image') }}"
+        />
+        <div class="result-info">
+          {% if result == 'American Bollworm on Cotton' %}
+          <p>
+            {{ _('American Bollworm on Cotton is a common pest causing
+            significant damage to cotton crops.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>
+              {{ _('Monitor crops regularly for signs of infestation.') }}
+            </li>
+            <li>{{ _('Use pheromone traps to capture adult moths.') }}</li>
+            <li>{{ _('Apply appropriate insecticides as recommended.') }}</li>
+            <li>{{ _('Encourage natural predators and parasitoids.') }}</li>
+          </ul>
+          {% elif result == 'Anthracnose on Cotton' %}
+          <p>
+            {{ _('Anthracnose is a fungal disease affecting cotton, leading to
+            dark lesions on leaves, stems, and bolls.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Plant resistant varieties if available.') }}</li>
+            <li>
+              {{ _('Ensure good field sanitation by removing infected debris.')
+              }}
+            </li>
+            <li>{{ _('Apply fungicides as necessary.') }}</li>
+          </ul>
+          {% elif result == 'Aphids' %}
+          <p>
+            {{ _('Aphids are small sap-sucking insects that can cause yellowing
+            and curling of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use natural predators like ladybugs.') }}</li>
+            <li>{{ _('Apply insecticidal soaps or oils.') }}</li>
+          </ul>
+          {% elif result == 'Army worm' %}
+          <p>
+            {{ _('Army worms are destructive pests that can cause significant
+            damage to crops.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>
+              {{ _('Inspect crops regularly for signs of infestation.') }}
+            </li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% elif result == 'Carpetweeds' %}
+          <p>
+            {{ _('Carpetweeds are common weeds that compete with crops for
+            nutrients.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Crabgrass' %}
+          <p>
+            {{ _('Crabgrass is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Eclipta' %}
+          <p>
+            {{ _('Eclipta is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Flag Smut' %}
+          <p>
+            {{ _('Flag smut is a fungal disease causing long, black lesions on
+            leaves and stems.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use disease-free seeds.') }}</li>
+            <li>{{ _('Rotate crops to avoid disease buildup.') }}</li>
+          </ul>
+          {% elif result == 'Goosegrass' %}
+          <p>
+            {{ _('Goosegrass is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Healthy' %}
+          <p>{{ _('Your crop is healthy.') }}</p>
+          {% elif result == 'Leaf Curl' %}
+          <p>
+            {{ _('Leaf curl disease is a viral infection that causes curling and
+            distortion of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Remove and destroy infected plants.') }}</li>
+            <li>{{ _('Control insect vectors like whiteflies.') }}</li>
+          </ul>
+          {% elif result == 'Leaf smut' %}
+          <p>
+            {{ _('Leaf smut is a fungal disease causing dark streaks and spots
+            on leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Apply appropriate fungicides.') }}</li>
+          </ul>
+          {% elif result == 'Morningglory' %}
+          <p>
+            {{ _('Morningglory is a weed that can compete with crops for
+            nutrients and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Mosaic sugarcane' %}
+          <p>
+            {{ _('Mosaic disease in sugarcane causes mottling and discoloration
+            of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Plant resistant varieties.') }}</li>
+            <li>{{ _('Control insect vectors.') }}</li>
+          </ul>
+          {% elif result == 'Nutsedge' %}
+          <p>
+            {{ _('Nutsedge is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'PalmerAmaranth' %}
+          <p>
+            {{ _('Palmer amaranth is a weed that can compete with crops for
+            nutrients and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Powdery_Mildew' %}
+          <p>
+            {{ _('Powdery mildew is a fungal disease causing white powdery spots
+            on leaves and stems.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'Prickly Sida' %}
+          <p>
+            {{ _('Prickly sida is a weed that can compete with crops for
+            nutrients and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Purslane' %}
+          <p>
+            {{ _('Purslane is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Ragweed' %}
+          <p>
+            {{ _('Ragweed is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'RedRot sugarcane' %}
+          <p>
+            {{ _('Red rot is a serious fungal disease affecting sugarcane,
+            causing red discoloration of stalks.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Ensure proper drainage and field sanitation.') }}</li>
+          </ul>
+          {% elif result == 'RedRust sugarcane' %}
+          <p>
+            {{ _('Red rust is a fungal disease affecting sugarcane, leading to
+            reddish-brown pustules on leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Apply appropriate fungicides.') }}</li>
+          </ul>
+          {% elif result == 'Rice Blast' %}
+          <p>
+            {{ _('Rice blast is a fungal disease causing lesions on leaves,
+            nodes, and panicles.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'Sicklepod' %}
+          <p>
+            {{ _('Sicklepod is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'SpottedSpurge' %}
+          <p>
+            {{ _('Spotted spurge is a weed that can compete with crops for
+            nutrients and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'SpurredAnoda' %}
+          <p>
+            {{ _('Spurred anoda is a weed that can compete with crops for
+            nutrients and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Sugarcane Healthy' %}
+          <p>{{ _('Your sugarcane crop is healthy.') }}</p>
+          {% elif result == 'Swinecress' %}
+          <p>
+            {{ _('Swinecress is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Target_spot' %}
+          <p>
+            {{ _('Target spot is a fungal disease causing dark, necrotic spots
+            on leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Ensure good air circulation in the field.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'Tungro' %}
+          <p>
+            {{ _('Tungro is a viral disease in rice causing stunted growth and
+            yellowing of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Plant resistant varieties.') }}</li>
+            <li>{{ _('Control insect vectors like green leafhoppers.') }}</li>
+          </ul>
+          {% elif result == 'Waterhemp' %}
+          <p>
+            {{ _('Waterhemp is a weed that can compete with crops for nutrients
+            and space.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Maintain good field sanitation and use mulches.') }}</li>
+            <li>{{ _('Apply appropriate herbicides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Wheat Brown leaf Rust' %}
+          <p>
+            {{ _('Wheat brown leaf rust is a fungal disease causing
+            reddish-brown pustules on leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'Wheat Stem fly' %}
+          <p>
+            {{ _('Wheat stem fly is a pest that lays eggs on wheat plants,
+            causing damage to stems.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>{{ _('Apply insecticides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Wheat aphid' %}
+          <p>
+            {{ _('Wheat aphids are sap-sucking insects that can cause yellowing
+            and curling of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use natural predators like ladybugs.') }}</li>
+            <li>{{ _('Apply insecticidal soaps or oils.') }}</li>
+          </ul>
+          {% elif result == 'Wheat black rust' %}
+          <p>
+            {{ _('Wheat black rust is a fungal disease causing black pustules on
+            stems and leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Apply fungicides when necessary.') }}</li>
+          </ul>
+          {% elif result == 'Wheat leaf blight' %}
+          <p>
+            {{ _('Wheat leaf blight is a fungal disease causing dark, necrotic
+            spots on leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Ensure good air circulation in the field.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'Wheat mite' %}
+          <p>
+            {{ _('Wheat mites are tiny pests that can cause yellowing and
+            bronzing of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>{{ _('Apply miticides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'Wheat powdery mildew' %}
+          <p>
+            {{ _('Wheat powdery mildew is a fungal disease causing white powdery
+            spots on leaves and stems.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'Wheat scab' %}
+          <p>
+            {{ _('Wheat scab is a fungal disease causing pink or reddish
+            discoloration of wheat heads.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Ensure good field sanitation.') }}</li>
+          </ul>
+          {% elif result == 'Wheat___Yellow_Rust' %}
+          <p>
+            {{ _('Wheat yellow rust is a fungal disease causing yellowish
+            pustules on leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use resistant varieties.') }}</li>
+            <li>{{ _('Apply fungicides when necessary.') }}</li>
+          </ul>
+          {% elif result == 'Wilt' %}
+          <p>
+            {{ _('Wilt is a disease causing wilting and yellowing of plants due
+            to various pathogens.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Remove and destroy infected plants.') }}</li>
+            <li>{{ _('Ensure proper drainage and avoid overwatering.') }}</li>
+          </ul>
+          {% elif result == 'Yellow Rust Sugarcane' %}
+          <p>
+            {{ _('Yellow rust is a fungal disease affecting sugarcane, causing
+            yellowish pustules on leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Apply appropriate fungicides.') }}</li>
+          </ul>
+          {% elif result == 'bacterial_blight in Cotton' %}
+          <p>
+            {{ _('Bacterial blight in cotton causes leaf spots, stem blight, and
+            boll rot.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Plant resistant varieties.') }}</li>
+            <li>{{ _('Apply appropriate bactericides if necessary.') }}</li>
+          </ul>
+          {% elif result == 'bollrot on Cotton' %}
+          <p>
+            {{ _('Boll rot is a fungal disease causing rotting of cotton
+            bolls.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Ensure good field sanitation.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'bollworm on Cotton' %}
+          <p>
+            {{ _('Bollworms are pests that cause significant damage to cotton
+            bolls.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% elif result == 'cotton mealy bug' %}
+          <p>
+            {{ _('Cotton mealybugs are sap-sucking insects causing yellowing and
+            curling of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Use natural predators like ladybugs.') }}</li>
+            <li>{{ _('Apply insecticidal soaps or oils.') }}</li>
+          </ul>
+          {% elif result == 'cotton whitefly' %}
+          <p>
+            {{ _('Cotton whiteflies are sap-sucking insects causing yellowing
+            and wilting of leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% elif result == 'curl_virus' %}
+          <p>
+            {{ _('Curl virus is a viral disease causing curling and yellowing of
+            leaves.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Remove and destroy infected plants.') }}</li>
+            <li>{{ _('Control insect vectors like whiteflies.') }}</li>
+          </ul>
+          {% elif result == 'fussarium_wilt' %}
+          <p>
+            {{ _('Fusarium wilt is a fungal disease causing wilting and
+            yellowing of plants.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Remove and destroy infected plants.') }}</li>
+            <li>{{ _('Ensure proper drainage and avoid overwatering.') }}</li>
+          </ul>
+          {% elif result == 'maize ear rot' %}
+          <p>
+            {{ _('Maize ear rot is a fungal disease causing rotting of maize
+            ears.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Ensure good field sanitation.') }}</li>
+            <li>{{ _('Apply fungicides as needed.') }}</li>
+          </ul>
+          {% elif result == 'maize fall armyworm' %}
+          <p>
+            {{ _('Maize fall armyworm is a pest causing significant damage to
+            maize crops.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% elif result == 'maize stem borer' %}
+          <p>
+            {{ _('Maize stem borer is a pest causing damage to maize stems and
+            reducing yield.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% elif result == 'pink bollworm in cotton' %}
+          <p>
+            {{ _('Pink bollworm is a pest causing significant damage to cotton
+            bolls.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% elif result == 'red cotton bug' %}
+          <p>
+            {{ _('Red cotton bug is a pest causing damage to cotton crops.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% elif result == 'thirps on cotton' %}
+          <p>
+            {{ _('Thrips are pests causing damage to cotton leaves and reducing
+            yield.') }}
+          </p>
+          <h3>{{ _('Prevention and Control') }}</h3>
+          <ul>
+            <li>{{ _('Monitor crops for signs of infestation.') }}</li>
+            <li>
+              {{ _('Use insecticides or biological controls to manage
+              populations.') }}
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      <a href="{{ url_for('dashboard') }}">{{ _('Back to Dashboard') }}</a>
+    </div>
+    <footer>
+      <a href="#">Privacy Policy</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">DMCA Policy</a>
+      <a href="#">Sitemap</a>
+      <p>&copy; 2024 Exper Cotton Prediction. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,548 @@
+# Urdu translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-05-22 20:41+0500\n"
+"PO-Revision-Date: 2024-05-22 20:42+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ur\n"
+"Language-Team: ur <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+msgid "Dashboard"
+msgstr "ڈیش بورڈ"
+
+msgid "Welcome,"
+msgstr "خوش آمدید،"
+
+msgid "Disease Detection"
+msgstr "بیماری کی تشخیص"
+
+msgid "Weather Forecasting"
+msgstr "موسم کی پیشن گوئی"
+
+msgid "Chatbot"
+msgstr "چیٹ بوٹ"
+
+msgid "Fertilizer Calculator Simple"
+msgstr "سادہ کھاد کیلکولیٹر"
+
+
+msgid "Fertilizer Calculator"
+msgstr "کھاد کیلکولیٹر"
+
+msgid "Alerts"
+msgstr "الرٹس"
+
+msgid "News"
+msgstr "خبریں"
+
+msgid "Logout"
+msgstr "لاگ آوٹ"
+
+
+msgid "Disease Alerts"
+msgstr "بیماری کی الرٹس"
+
+msgid "Date:"
+msgstr "تاریخ:"
+
+msgid "No disease alerts at the moment."
+msgstr "اس وقت کوئی بیماری کی الرٹس نہیں ہیں."
+
+msgid "Back to Dashboard"
+msgstr "ڈیش بورڈ پر واپس جائیں"
+
+msgid "Cotton Plant Disease Classifier"
+msgstr "کپاس کے پودوں کی بیماری کی درجہ بندی"
+
+msgid "Upload and Detect"
+msgstr "اپ لوڈ کریں اور پتہ لگائیں"
+
+msgid "Result:"
+msgstr "نتیجہ:"
+
+msgid "Detected Image"
+msgstr "پتہ چلائی گئی تصویر"
+
+msgid "Fusarium Wilt (caused by the soilborne fungus Fusarium oxysporum) is a widespread and economically important disease."
+msgstr "فوسیریم وِلت (مٹی کے فنگس فوسیریم آکسیسپورم کی وجہ سے) ایک وسیع پیمانے پر پھیلنے والی اور اقتصادی لحاظ سے اہم بیماری ہے۔"
+
+msgid "Prevention and Control"
+msgstr "روک تھام اور کنٹرول"
+
+msgid "Once Fusarium Wilt is infected, there is no effective treatment."
+msgstr "ایک بار فوسیریم وِلت متاثر ہو جائے تو اس کا کوئی موثر علاج نہیں ہے۔"
+
+msgid "Remove and dispose of the affected plant immediately."
+msgstr "متاثرہ پودے کو فوری طور پر ہٹا دیں اور ٹھکانے لگا دیں۔"
+
+msgid "Remove and replace fusarium-infected garden soil."
+msgstr "فوسیریم سے متاثرہ باغ کی مٹی کو ہٹا کر تبدیل کریں۔"
+
+msgid "Fungus populations can be reduced by soil solarization and fumigation."
+msgstr "مٹی کی شمسی کاری اور دھوئیں سے فنگس کی آبادی کو کم کیا جا سکتا ہے۔"
+
+msgid "The use of resistant cultivars and pathogen-free cotton seed are good preventions of disease."
+msgstr "مزاحمتی اقسام اور جراثیم سے پاک کپاس کے بیج کا استعمال بیماری کی اچھی روک تھام ہیں۔"
+
+msgid "Cotton leaf curl disease (CLCuD) is a viral infection of cotton and other susceptible host plants that is transmitted by silverleaf whitefly (Bemisia tabaci)."
+msgstr "کپاس کے پتوں کی کرل بیماری (CLCuD) کپاس اور دیگر حساس پودوں کا ایک وائرل انفیکشن ہے جو سلورلیف وائٹ فلائی (بیماسیا تاباکی) کے ذریعے منتقل ہوتا ہے۔"
+
+msgid "Immediately remove infected-looking plants and bury them."
+msgstr "متاثرہ نظر آنے والے پودوں کو فوری طور پر ہٹا کر دفن کر دیں۔"
+
+msgid "Protect seedlings from whiteflies and control weeds."
+msgstr "پودوں کو سفید مکھیوں سے بچائیں اور جڑی بوٹیوں پر قابو پائیں۔"
+
+msgid "Use resistant or tolerant cultivars."
+msgstr "مزاحمتی یا بردبار اقسام کا استعمال کریں۔"
+
+msgid "Your Cotton Plant is Healthy."
+msgstr "آپ کا کپاس کا پودا صحت مند ہے۔"
+
+msgid "Your Cotton Leaf is Healthy."
+msgstr "آپ کا کپاس کا پتہ صحت مند ہے۔"
+
+msgid "Back to Dashboard"
+msgstr "ڈیش بورڈ پر واپس جائیں"
+
+msgid "Weather Forecasting"
+msgstr "موسم کی پیشن گوئی"
+
+msgid "Enter City:"
+msgstr "شہر داخل کریں:"
+
+msgid "Get Weather"
+msgstr "موسم حاصل کریں"
+
+msgid "Weather in"
+msgstr "موسم"
+
+msgid "Temperature:"
+msgstr "درجہ حرارت:"
+
+msgid "Pressure:"
+msgstr "دباؤ:"
+
+msgid "Humidity:"
+msgstr "نمی:"
+
+msgid "Description:"
+msgstr "تفصیل:"
+
+msgid "Weather icon"
+msgstr "موسم کا آئکن"
+
+msgid "Weather data not available."
+msgstr "موسم کے اعداد و شمار دستیاب نہیں ہیں۔"
+
+msgid "Back to Dashboard"
+msgstr "ڈیش بورڈ پر واپس جائیں"
+
+msgid "Leaf Spot Disease Alert"
+msgstr "پتے کی داغ کی بیماری کی الرٹ"
+
+msgid "Leaf Spot disease detected in cotton fields in the southern region. Immediate action required."
+msgstr "جنوبی علاقے کے کپاس کے کھیتوں میں پتے کی داغ کی بیماری کی نشاندہی کی گئی ہے۔ فوری کارروائی کی ضرورت ہے۔"
+
+msgid "Bacterial Blight Outbreak"
+msgstr "بیکٹیریل بلائٹ کی وبا"
+
+msgid "Bacterial Blight outbreak reported in several cotton farms. Farmers are advised to monitor their crops closely."
+msgstr "متعدد کپاس کے کھیتوں میں بیکٹیریل بلائٹ کی وبا کی اطلاع دی گئی ہے۔ کسانوں کو مشورہ دیا جاتا ہے کہ وہ اپنی فصلوں پر قریب سے نظر رکھیں۔"
+
+msgid "Fusarium Wilt Warning"
+msgstr "فیوزیریم ویلٹ کی وارننگ"
+
+msgid "Fusarium Wilt has been identified in the northern cotton-growing regions. Preventive measures recommended."
+msgstr "شمالی کپاس کی کاشت کے علاقوں میں فیوزیریم ویلٹ کی نشاندہی کی گئی ہے۔ احتیاطی تدابیر کی سفارش کی گئی ہے۔"
+
+msgid "Date:"
+msgstr "تاریخ:"
+
+msgid "Best Cotton Seeds in Pakistan"
+msgstr "پاکستان میں بہترین کپاس کے بیج"
+
+msgid "Available Varieties"
+msgstr "دستیاب اقسام"
+
+msgid "Blog"
+msgstr "بلاگ"
+
+msgid "Latest Articles"
+msgstr "تازہ ترین مضامین"
+
+msgid "Importance of Crop Rotation"
+msgstr "فصل کی گردش کی اہمیت"
+
+msgid "Crop rotation helps in maintaining soil fertility and reducing soil erosion..."
+msgstr "فصل کی گردش مٹی کی زرخیزی کو برقرار رکھنے اور مٹی کے کٹاؤ کو کم کرنے میں مدد دیتی ہے..."
+
+msgid "Pest Management in Cotton Farming"
+msgstr "کپاس کی کاشت میں کیڑوں کا انتظام"
+
+msgid "Effective pest management practices are crucial for a healthy cotton crop..."
+msgstr "موثر کیڑوں کے انتظام کے طریقے صحت مند کپاس کی فصل کے لئے انتہائی ضروری ہیں..."
+
+msgid "Organic Cotton Farming"
+msgstr "نامیاتی کپاس کی کاشت"
+
+msgid "Organic cotton farming avoids the use of synthetic chemicals..."
+msgstr "نامیاتی کپاس کی کاشت مصنوعی کیمیکلز کے استعمال سے گریز کرتی ہے..."
+
+msgid "Bt Cotton"
+msgstr "بی ٹی کاٹن"
+
+msgid "Bt cotton is genetically modified to produce an insecticide to combat bollworm."
+msgstr "بی ٹی کاٹن جینیاتی طور پر ترمیم شدہ ہے تاکہ بول ورم کے خلاف انسیکٹی سائیڈ پیدا کر سکے۔"
+
+msgid "IR Cotton"
+msgstr "آئی آر کاٹن"
+
+msgid "IR cotton varieties are known for their resistance to certain pests and diseases."
+msgstr "آئی آر کاٹن کی اقسام بعض کیڑوں اور بیماریوں کے خلاف مزاحمت کے لیے جانی جاتی ہیں۔"
+
+msgid "Desi Cotton"
+msgstr "دیسی کاٹن"
+
+msgid "Desi cotton varieties are traditional varieties that are well-suited to local growing conditions."
+msgstr "دیسی کاٹن کی اقسام روایتی اقسام ہیں جو مقامی کاشت کے حالات کے لئے بہت موزوں ہیں۔"
+
+msgid "Hybrid Cotton"
+msgstr "ہائبرڈ کاٹن"
+
+msgid "Hybrid cotton varieties are bred to increase yield and improve fiber quality."
+msgstr "ہائبرڈ کاٹن کی اقسام پیداوار بڑھانے اور فائبر کے معیار کو بہتر بنانے کے لئے پیدا کی گئی ہیں۔"
+
+msgid "Disease Detection"
+msgstr "بیماری کی شناخت"
+
+msgid "Cotton Plant Disease Classifier"
+msgstr "کپاس کے پودے کی بیماری کا درجہ بندی"
+
+msgid "Upload and Detect"
+msgstr "اپ لوڈ کریں اور شناخت کریں"
+
+msgid "Result:"
+msgstr "نتیجہ:"
+
+msgid "Detected Image"
+msgstr "پہچانی گئی تصویر"
+
+msgid "Prevention and Control"
+msgstr "روک تھام اور کنٹرول"
+
+msgid "American Bollworm on Cotton"
+msgstr "کپاس پر امریکی بولوورم"
+
+msgid "American Bollworm on Cotton is a common pest causing significant damage to cotton crops."
+msgstr "کپاس پر امریکی بولوورم ایک عام کیڑا ہے جو کپاس کی فصلوں کو نمایاں نقصان پہنچاتا ہے۔"
+
+msgid "Monitor crops regularly for signs of infestation."
+msgstr "کیڑے کی علامات کے لئے فصلوں کی باقاعدگی سے نگرانی کریں۔"
+
+msgid "Use pheromone traps to capture adult moths."
+msgstr "بالغ کیڑے پکڑنے کے لئے فیرومون ٹریپ استعمال کریں۔"
+
+msgid "Apply appropriate insecticides as recommended."
+msgstr "تجویز کردہ مناسب کیڑے مار ادویات کا استعمال کریں۔"
+
+msgid "Encourage natural predators and parasitoids."
+msgstr "قدرتی شکاریوں اور پیراسائٹائڈز کو فروغ دیں۔"
+
+msgid "Anthracnose on Cotton"
+msgstr "کپاس پر انترکنوز"
+
+msgid "Anthracnose is a fungal disease affecting cotton, leading to dark lesions on leaves, stems, and bolls."
+msgstr "انترکنوز ایک فنگل بیماری ہے جو کپاس کو متاثر کرتی ہے، جس کے نتیجے میں پتوں، تنے اور گولوں پر سیاہ نشان ہوتے ہیں۔"
+
+msgid "Plant resistant varieties if available."
+msgstr "اگر دستیاب ہوں تو مزاحمتی اقسام لگائیں۔"
+
+msgid "Ensure good field sanitation by removing infected debris."
+msgstr "متاثرہ ملبے کو ہٹا کر اچھے فیلڈ کی صفائی کو یقینی بنائیں۔"
+
+msgid "Apply fungicides as necessary."
+msgstr "ضرورت کے مطابق فنگسائڈز کا استعمال کریں۔"
+
+msgid "Back to Dashboard"
+msgstr "ڈیش بورڈ پر واپس جائیں"
+
+msgid "English"
+msgstr "انگریزی"
+
+msgid "اردو"
+msgstr "Urdu"
+
+msgid "Healthy Maize"
+msgstr "صحت مند مکئی"
+
+msgid "Your maize crop is healthy."
+msgstr "آپ کی مکئی کی فصل صحت مند ہے۔"
+
+msgid "Healthy Wheat"
+msgstr "صحت مند گندم"
+
+msgid "Your wheat crop is healthy."
+msgstr "آپ کی گندم کی فصل صحت مند ہے۔"
+
+msgid "Healthy cotton"
+msgstr "صحت مند کپاس"
+
+msgid "Your cotton crop is healthy."
+msgstr "آپ کی کپاس کی فصل صحت مند ہے۔"
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Disease Detection"
+msgstr "بیماری کی نشاندہی"
+
+msgid "Cotton Plant Disease Classifier"
+msgstr "کپاس کے پودے کی بیماری کی درجہ بندی"
+
+msgid "Upload and Detect"
+msgstr "اپ لوڈ کریں اور معلوم کریں"
+
+msgid "Result:"
+msgstr "نتیجہ:"
+
+msgid "Detected Image"
+msgstr "پہچانی گئی تصویر"
+
+msgid "Back to Dashboard"
+msgstr "ڈیش بورڈ پر واپس جائیں"
+
+msgid "American Bollworm on Cotton is a common pest causing significant damage to cotton crops."
+msgstr "کپاس پر امریکن بولورم ایک عام کیڑا ہے جو کپاس کی فصلوں کو نمایاں نقصان پہنچاتا ہے۔"
+
+msgid "Prevention and Control"
+msgstr "روک تھام اور کنٹرول"
+
+msgid "Monitor crops regularly for signs of infestation."
+msgstr "انفیکشن کے آثار کے لیے فصلوں کی باقاعدگی سے نگرانی کریں۔"
+
+msgid "Use pheromone traps to capture adult moths."
+msgstr "بالغ کیڑوں کو پکڑنے کے لیے فیرومون ٹریپس استعمال کریں۔"
+
+msgid "Apply appropriate insecticides as recommended."
+msgstr "تجویز کردہ مناسب کیڑے مار ادویات کا استعمال کریں۔"
+
+msgid "Encourage natural predators and parasitoids."
+msgstr "قدرتی شکار اور پیراسائٹائڈز کی حوصلہ افزائی کریں۔"
+
+msgid "Anthracnose is a fungal disease affecting cotton, leading to dark lesions on leaves, stems, and bolls."
+msgstr "اینٹراکنوز ایک فنگل بیماری ہے جو کپاس کو متاثر کرتی ہے، جس سے پتوں، تنوں، اور بولوں پر سیاہ دھبے بن جاتے ہیں۔"
+
+msgid "Plant resistant varieties if available."
+msgstr "اگر دستیاب ہو تو مزاحمتی اقسام لگائیں۔"
+
+msgid "Ensure good field sanitation by removing infected debris."
+msgstr "متاثرہ ملبہ ہٹا کر اچھی فیلڈ صفائی کو یقینی بنائیں۔"
+
+msgid "Apply fungicides as necessary."
+msgstr "ضرورت کے مطابق فنگسائڈز لگائیں۔"
+
+msgid "Aphids are small sap-sucking insects that can cause yellowing and curling of leaves."
+msgstr "افڈس چھوٹے رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مڑنے کا سبب بن سکتے ہیں۔"
+
+msgid "Use natural predators like ladybugs."
+msgstr "قدرتی شکاری جیسے لیڈی بگز استعمال کریں۔"
+
+msgid "Apply insecticidal soaps or oils."
+msgstr "کیڑے مار صابن یا تیل لگائیں۔"
+
+msgid "Army worms are destructive pests that can cause significant damage to crops."
+msgstr "آرمی ورم تباہ کن کیڑے ہیں جو فصلوں کو نمایاں نقصان پہنچا سکتے ہیں۔"
+
+msgid "Inspect crops regularly for signs of infestation."
+msgstr "انفیکشن کے آثار کے لیے فصلوں کا باقاعدگی سے معائنہ کریں۔"
+
+msgid "Use insecticides or biological controls to manage populations."
+msgstr "آبادیوں کو کنٹرول کرنے کے لیے کیڑے مار ادویات یا حیاتیاتی کنٹرول استعمال کریں۔"
+
+msgid "Carpetweeds are common weeds that compete with crops for nutrients."
+msgstr "کارپٹ ویڈز عام جڑی بوٹیاں ہیں جو غذائی اجزاء کے لیے فصلوں سے مقابلہ کرتی ہیں۔"
+
+msgid "Maintain good field sanitation and use mulches."
+msgstr "اچھی فیلڈ صفائی برقرار رکھیں اور ملچس استعمال کریں۔"
+
+msgid "Apply appropriate herbicides if necessary."
+msgstr "ضرورت کے مطابق مناسب جڑی بوٹی مار ادویات لگائیں۔"
+
+msgid "Crabgrass is a weed that can compete with crops for nutrients and space."
+msgstr "کریب گراس ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Eclipta is a weed that can compete with crops for nutrients and space."
+msgstr "ایکلپٹا ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Flag smut is a fungal disease causing long, black lesions on leaves and stems."
+msgstr "فلیگ سموٹ ایک فنگل بیماری ہے جو پتوں اور تنوں پر لمبے، کالے دھبے بناتی ہے۔"
+
+msgid "Use disease-free seeds."
+msgstr "بیماری سے پاک بیج استعمال کریں۔"
+
+msgid "Rotate crops to avoid disease buildup."
+msgstr "بیماری کے جمع ہونے سے بچنے کے لیے فصلوں کو گھمائیں۔"
+
+msgid "Goosegrass is a weed that can compete with crops for nutrients and space."
+msgstr "گوس گراس ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Your crop is healthy."
+msgstr "آپ کی فصل صحت مند ہے۔"
+
+msgid "Leaf curl disease is a viral infection that causes curling and distortion of leaves."
+msgstr "پتوں کا مڑنا ایک وائرل انفیکشن ہے جو پتوں کے مڑنے اور مسخ ہونے کا سبب بنتا ہے۔"
+
+msgid "Remove and destroy infected plants."
+msgstr "متاثرہ پودوں کو ہٹا کر تباہ کریں۔"
+
+msgid "Control insect vectors like whiteflies."
+msgstr "کیڑوں کے ویکٹرز جیسے سفید مکھیوں کو کنٹرول کریں۔"
+
+msgid "Leaf smut is a fungal disease causing dark streaks and spots on leaves."
+msgstr "لیاف سموٹ ایک فنگل بیماری ہے جو پتوں پر سیاہ لکیریں اور دھبے بناتی ہے۔"
+
+msgid "Morningglory is a weed that can compete with crops for nutrients and space."
+msgstr "مارننگ گلوری ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Mosaic disease in sugarcane causes mottling and discoloration of leaves."
+msgstr "گنے میں موزیک بیماری پتوں کی دھبے دار اور بد رنگی کا سبب بنتی ہے۔"
+
+msgid "Nutsedge is a weed that can compete with crops for nutrients and space."
+msgstr "نٹسیج ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Palmer amaranth is a weed that can compete with crops for nutrients and space."
+msgstr "پالمر ایمرانتھ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Powdery mildew is a fungal disease causing white powdery spots on leaves and stems."
+msgstr "پاؤڈری ملڈیو ایک فنگل بیماری ہے جو پتوں اور تنوں پر سفید پاوڈری دھبے بناتی ہے۔"
+
+msgid "Prickly sida is a weed that can compete with crops for nutrients and space."
+msgstr "پرکلی سڈا ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Purslane is a weed that can compete with crops for nutrients and space."
+msgstr "پرسی لین ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Ragweed is a weed that can compete with crops for nutrients and space."
+msgstr "ریگ ویڈ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Red rot is a serious fungal disease affecting sugarcane, causing red discoloration of stalks."
+msgstr "ریڈ روٹ ایک سنگین فنگل بیماری ہے جو گنے کو متاثر کرتی ہے، جس سے ڈنٹھلوں کی سرخ بد رنگی ہوتی ہے۔"
+
+msgid "Ensure proper drainage and field sanitation."
+msgstr "مناسب نکاسی آب اور فیلڈ صفائی کو یقینی بنائیں۔"
+
+msgid "Red rust is a fungal disease affecting sugarcane, leading to reddish-brown pustules on leaves."
+msgstr "ریڈ رسٹ ایک فنگل بیماری ہے جو گنے کو متاثر کرتی ہے، جس سے پتوں پر سرخی مائل بھورے پھوڑے بن جاتے ہیں۔"
+
+msgid "Apply appropriate fungicides."
+msgstr "مناسب فنگسائڈز لگائیں۔"
+
+msgid "Rice blast is a fungal disease causing lesions on leaves, nodes, and panicles."
+msgstr "رائس بلاسٹ ایک فنگل بیماری ہے جو پتوں، گرہوں، اور پینیکلز پر زخم بناتی ہے۔"
+
+msgid "Sicklepod is a weed that can compete with crops for nutrients and space."
+msgstr "سیکل پوڈ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Spotted spurge is a weed that can compete with crops for nutrients and space."
+msgstr "سپوٹڈ اسپرج ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Spurred anoda is a weed that can compete with crops for nutrients and space."
+msgstr "سپرد انوڈا ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Swinecress is a weed that can compete with crops for nutrients and space."
+msgstr "سوائن کریس ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Target spot is a fungal disease causing dark, necrotic spots on leaves."
+msgstr "ٹارگٹ سپاٹ ایک فنگل بیماری ہے جو پتوں پر سیاہ، مردہ دھبے بناتی ہے۔"
+
+msgid "Tungro is a viral disease in rice causing stunted growth and yellowing of leaves."
+msgstr "ٹن گرو چاول میں ایک وائرل بیماری ہے جو پودوں کی بونا پن اور پتوں کی زردی کا سبب بنتی ہے۔"
+
+msgid "Waterhemp is a weed that can compete with crops for nutrients and space."
+msgstr "واٹر ہیمپ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ کرسکتی ہے۔"
+
+msgid "Wheat brown leaf rust is a fungal disease causing reddish-brown pustules on leaves."
+msgstr "گندم کی بھوری پتیوں کا زنگ ایک فنگل بیماری ہے جو پتوں پر سرخی مائل بھورے پھوڑے بناتی ہے۔"
+
+msgid "Wheat stem fly is a pest that lays eggs on wheat plants, causing damage to stems."
+msgstr "گندم کا تنوں کا مکھی ایک کیڑا ہے جو گندم کے پودوں پر انڈے دیتا ہے، جس سے تنوں کو نقصان ہوتا ہے۔"
+
+msgid "Wheat aphids are sap-sucking insects that can cause yellowing and curling of leaves."
+msgstr "گندم کے افڈس رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مڑنے کا سبب بن سکتے ہیں۔"
+
+msgid "Wheat black rust is a fungal disease causing black pustules on stems and leaves."
+msgstr "گندم کا کالا زنگ ایک فنگل بیماری ہے جو تنوں اور پتوں پر کالے پھوڑے بناتی ہے۔"
+
+msgid "Wheat leaf blight is a fungal disease causing dark, necrotic spots on leaves."
+msgstr "گندم کا پتوں کا بگڑا ہوا پن ایک فنگل بیماری ہے جو پتوں پر سیاہ، مردہ دھبے بناتی ہے۔"
+
+msgid "Wheat mites are tiny pests that can cause yellowing and bronzing of leaves."
+msgstr "گندم کے مائٹس چھوٹے کیڑے ہیں جو پتوں کو زرد اور کانسی کا سبب بن سکتے ہیں۔"
+
+msgid "Wheat powdery mildew is a fungal disease causing white powdery spots on leaves and stems."
+msgstr "گندم کا پاوڈری ملڈیو ایک فنگل بیماری ہے جو پتوں اور تنوں پر سفید پاوڈری دھبے بناتی ہے۔"
+
+msgid "Wheat scab is a fungal disease causing pink or reddish discoloration of wheat heads."
+msgstr "گندم کا سکیب ایک فنگل بیماری ہے جو گندم کے سروں کی گلابی یا سرخی مائل بد رنگی کا سبب بنتی ہے۔"
+
+msgid "Wheat yellow rust is a fungal disease causing yellowish pustules on leaves."
+msgstr "گندم کا زرد زنگ ایک فنگل بیماری ہے جو پتوں پر زردی مائل پھوڑے بناتی ہے۔"
+
+msgid "Wilt is a disease causing wilting and yellowing of plants due to various pathogens."
+msgstr "ولٹ ایک بیماری ہے جو مختلف پیتھوجنز کی وجہ سے پودوں کے مڑنے اور زرد ہونے کا سبب بنتی ہے۔"
+
+msgid "Yellow rust is a fungal disease affecting sugarcane, causing yellowish pustules on leaves."
+msgstr "زرد زنگ ایک فنگل بیماری ہے جو گنے کو متاثر کرتی ہے، جس سے پتوں پر زردی مائل پھوڑے بن جاتے ہیں۔"
+
+msgid "Bacterial blight in cotton causes leaf spots, stem blight, and boll rot."
+msgstr "کپاس میں بیکٹیریل بلیٹ پتوں کے دھبے، تنوں کے بگڑا ہوا پن، اور بول کا سڑنا کا سبب بنتی ہے۔"
+
+msgid "Boll rot is a fungal disease causing rotting of cotton bolls."
+msgstr "بول روٹ ایک فنگل بیماری ہے جو کپاس کے بولوں کے سڑنے کا سبب بنتی ہے۔"
+
+msgid "Bollworms are pests that cause significant damage to cotton bolls."
+msgstr "بول ورمز کیڑے ہیں جو کپاس کے بولوں کو نمایاں نقصان پہنچاتے ہیں۔"
+
+msgid "Cotton mealybugs are sap-sucking insects causing yellowing and curling of leaves."
+msgstr "کپاس کے میلی بگ رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مڑنے کا سبب بنتے ہیں۔"
+
+msgid "Cotton whiteflies are sap-sucking insects causing yellowing and wilting of leaves."
+msgstr "کپاس کی سفید مکھی رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مرجھانے کا سبب بنتے ہیں۔"
+
+msgid "Curl virus is a viral disease causing curling and yellowing of leaves."
+msgstr "کرل وائرس ایک وائرل بیماری ہے جو پتوں کے مڑنے اور زرد ہونے کا سبب بنتی ہے۔"
+
+msgid "Fusarium wilt is a fungal disease causing wilting and yellowing of plants."
+msgstr "فوسیریم ولٹ ایک فنگل بیماری ہے جو پودوں کے مڑنے اور زرد ہونے کا سبب بنتی ہے۔"
+
+msgid "Maize ear rot is a fungal disease causing rotting of maize ears."
+msgstr "مکئی کے کان کا روٹ ایک فنگل بیماری ہے جو مکئی کے کانوں کے سڑنے کا سبب بنتی ہے۔"
+
+msgid "Maize fall armyworm is a pest causing significant damage to maize crops."
+msgstr "مکئی کا فال آرمی ورم ایک کیڑا ہے جو مکئی کی فصلوں کو نمایاں نقصان پہنچاتا ہے۔"
+
+msgid "Maize stem borer is a pest causing damage to maize stems and reducing yield."
+msgstr "مکئی کا تنوں کا بورا ایک کیڑا ہے جو مکئی کے تنوں کو نقصان پہنچاتا ہے اور پیداوار کو کم کرتا ہے۔"
+
+msgid "Pink bollworm is a pest causing significant damage to cotton bolls."
+msgstr "گلابی بول ورم ایک کیڑا ہے جو کپاس کے بولوں کو نمایاں نقصان پہنچاتا ہے۔"
+
+msgid "Red cotton bug is a pest causing damage to cotton crops."
+msgstr "سرخ کپاس کا بگ ایک کیڑا ہے جو کپاس کی فصلوں کو نقصان پہنچاتا ہے۔"
+
+msgid "Thrips are pests causing damage to cotton leaves and reducing yield."
+msgstr "تھرپس کیڑے ہیں جو کپاس کے پتوں کو نقصان پہنچاتے ہیں اور پیداوار کو کم کرتے ہیں۔"

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Fertilizer Calculator for Cotton in Punjab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+        a {
+            color: #00796b;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #004d40;
+            color: #ffffff;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            /* padding: 20px; */
+            background: #f4f4f4;
+        }
+        .my-image {
+            width: 300px; /* Sets the width of the image */
+            height: auto; /* Keeps the aspect ratio of the image */
+            border: 5px solid black; /* Adds a border around the image */
+            display: block; /* Makes the image a block to apply margin auto */
+            margin: 10px auto; /* Centers the image horizontally */
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #005b4f;
+        }
+        label {
+            font-weight: 500;
+        }
+        .result {
+            margin-top: 20px;
+            background: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        /* Navigation Styles */
+        nav {
+            background-color: #00796b;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .logo img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav .links a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        nav .links a:hover {
+            background-color: #004d40;
+        }
+
+        /* Language Selection */
+        .language-selection {
+            position: fixed;
+            top: 100px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-selection a {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .language-selection a:hover {
+            background-color: #004d40;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #00796b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+<nav>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header">
+    </div>
+    <div class="links">
+        <a href="{{ url_for('disease_detection') }}">{{ _('Disease Detection') }}</a>
+        <a href="{{ url_for('weather_forecasting') }}">{{ _('Weather Forecasting') }}</a>
+        <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
+        <a href="{{ url_for('n_fertilizer') }}">{{ _('Fertilizer Calculator Simple') }}</a>
+        <a href="{{ url_for('fertilizer_calculator') }}">{{ _('Fertilizer Calculator') }}</a>
+        <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
+        <a href="{{ url_for('cotton_seeds') }}">{{ _('Best Cotton Seeds in Pakistan') }}</a>
+        <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
+        <!-- <a href="{{ url_for('news') }}">{{ _('News') }}</a> -->
+        <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
+    </div>
+</nav>
+    <div class="container">
+        <h1>Fertilizer Calculator for Cotton in Punjab</h1>
+        <label for="area">Field Area (in hectares):</label>
+        <input type="number" id="area" placeholder="Enter the area in hectares" required>
+
+        <label for="soilType">Soil Type:</label>
+        <select id="soilType">
+            <option value="alluvial">Alluvial</option>
+            <option value="sandy">Sandy</option>
+            <option value="clayey">Clayey</option>
+        </select>
+
+        <label for="soilPH">Soil pH:</label>
+        <select id="soilPH">
+            <option value="acidic">Acidic (&lt; 6.5)</option>
+            <option value="neutral">Neutral (6.5 - 7.5)</option>
+            <option value="alkaline">Alkaline (&gt; 7.5)</option>
+        </select>
+
+        <label for="organicMatter">Organic Matter Content:</label>
+        <select id="organicMatter">
+            <option value="low">Low (&lt; 2%)</option>
+            <option value="medium">Medium (2% - 4%)</option>
+            <option value="high">High (&gt; 4%)</option>
+        </select>
+
+        <label for="previousCrop">Previous Crop:</label>
+        <select id="previousCrop">
+            <option value="legumes">Legumes (Nitrogen-fixing)</option>
+            <option value="cereals">Cereals (e.g., Wheat, Corn)</option>
+            <option value="none">Fallow (No previous crop)</option>
+        </select>
+
+        <label for="growthStage">Cotton Growth Stage:</label>
+        <select id="growthStage">
+            <option value="early">Early Growth</option>
+            <option value="bollDevelopment">Boll Development</option>
+            <option value="preHarvest">Pre-Harvest</option>
+        </select>
+
+        <label for="irrigation">Irrigation Level (based on last year's monsoon):</label>
+        <select id="irrigation">
+            <option value="good">Good Monsoon</option>
+            <option value="average">Average Monsoon</option>
+            <option value="poor">Poor Monsoon</option>
+        </select>
+
+        <button onclick="calculateFertilizer()">Calculate Fertilizer Needs</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateFertilizer() {
+            const area = document.getElementById('area').value;
+            const soilType = document.getElementById('soilType').value;
+            const soilPH = document.getElementById('soilPH').value;
+            const organicMatter = document.getElementById('organicMatter').value;
+            const previousCrop = document.getElementById('previousCrop').value;
+            const growthStage = document.getElementById('growthStage').value;
+            const irrigation = document.getElementById('irrigation').value;
+            let nitrogen, phosphorus, potassium;
+
+            // Base fertilizer needs (kg per hectare)
+            switch (soilType) {
+                case 'alluvial':
+                    nitrogen = 120;
+                    phosphorus = 60;
+                    potassium = 40;
+                    break;
+                case 'sandy':
+                    nitrogen = 140;
+                    phosphorus = 50;
+                    potassium = 60;
+                    break;
+                case 'clayey':
+                    nitrogen = 130;
+                    phosphorus = 70;
+                    potassium = 50;
+                    break;
+            }
+
+            // Adjustment for soil pH
+            if (soilPH === 'acidic') {
+                phosphorus *= 1.2; // Increase phosphorus in acidic soils
+            } else if (soilPH === 'alkaline') {
+                nitrogen *= 0.85; // Reduce nitrogen in alkaline soils
+            }
+
+            // Organic matter adjustment
+            if (organicMatter === 'high') {
+                nitrogen *= 0.9; // Reduce nitrogen if high organic matter content
+            }
+
+            // Growth stage adjustment
+            if (growthStage === 'bollDevelopment') {
+                phosphorus *= 1.15; // Increase phosphorus during boll development
+                potassium *= 1.15;
+            } else if (growthStage === 'preHarvest') {
+                potassium *= 1.25; // Increase potassium pre-harvest
+            }
+
+            // Previous crop and irrigation adjustments
+            if (previousCrop === 'legumes') {
+                nitrogen *= 0.9; // Reduce nitrogen if legumes were planted before
+            }
+            if (irrigation === 'good') {
+                nitrogen *= 0.85;
+                phosphorus *= 0.85;
+            } else if (irrigation === 'poor') {
+                nitrogen *= 1.15;
+                phosphorus *= 1.15;
+            }
+
+            const nitrogenTotal = nitrogen * area;
+            const phosphorusTotal = phosphorus * area;
+            const potassiumTotal = potassium * area;
+
+            const resultText = `
+                Based on your inputs, your cotton field in Punjab requires approximately:<br>
+                - Nitrogen: ${nitrogenTotal.toFixed(2)} kg<br>
+                - Phosphorus: ${phosphorusTotal.toFixed(2)} kg<br>
+                - Potassium: ${potassiumTotal.toFixed(2)} kg
+            `;
+
+            document.getElementById('result').innerHTML = resultText;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+    <!-- <div class="container">
+      <h1>Fertilizer Calculator</h1>
+      <form method="POST" action="{{ url_for('fertilizer_calculator') }}">
+        {{ form.hidden_tag() }}
+        <p>
+          <label for="nitrogen">{{ form.nitrogen.label }}</label>
+          {{ form.nitrogen(size=32, placeholder='Enter the nitrogen requirement') }}
+        </p>
+        <p>
+          <label for="phosphorus">{{ form.phosphorus.label }}</label>
+          {{ form.phosphorus(size=32, placeholder='Enter the phosphorus requirement') }}
+        </p>
+        <p>
+          <label for="potassium">{{ form.potassium.label }}</label>
+          {{ form.potassium(size=32, placeholder='Enter the potassium requirement') }}
+        </p>
+        <button type="submit">{{ form.submit.label }}</button>
+      </form>
+
+      {% if result %}
+      <div class="result-container">
+        <h2>Fertilizer Requirements</h2>
+        <p>{{ result }}</p>
+      </div>
+      {% endif %} -->
+
+      
+    </div>
+    <div class="container">
+      <h1>Understanding the Vital Trio: Nitrogen, Phosphorus, and Potassium in Crop Cultivation</h1>
+      <!-- <p>Here is a nicely styled image:</p> -->
+      <!-- <img src="static\content\NPK.jpg" alt="Styled Sample Image" class="my-image"> -->
+      <p>Welcome to our latest blog post where we delve into the essentials of fertilizer usage, specifically focusing on the big three nutrients vital for plant health: Nitrogen (N), Phosphorus (P), and Potassium (K). These elements are crucial for the growth and health of plants, and understanding when and how to use them can significantly enhance your agricultural yields.</p>
+
+      <h2>Why Nitrogen, Phosphorus, and Potassium?</h2>
+      <p><strong>Nitrogen (N)</strong> is primarily responsible for healthy leaf and stem growth and is a key component of chlorophyll, the compound plants use to photosynthesize. Simply put, nitrogen helps keep plants green and vigorous.</p>
+      <!-- <img src="static\content\nitrogen.jpg" alt="Styled Sample Image" class="my-image"> -->
+      <p><strong>Phosphorus (P)</strong> contributes to the development of roots, flowers, seeds, and fruits. It plays a pivotal role in energy transfer within the plant, helping to convert sunlight into usable energy.</p>
+      <!-- <img src="static\content\Phos.png" alt="Styled Sample Image" class="my-image"> -->
+      <p><strong>Potassium (K)</strong>, often referred to as potash, regulates plant metabolism and aids in photosynthesis. It is also crucial for water uptake and the activation of growth enzymes.</p>
+      <!-- <img src="static\content\ptash.jpg" alt="Styled Sample Image" class="my-image"> -->
+      <h2>When to Use NPK</h2>
+      <ul>
+          <li><strong>Early Growth Stage:</strong> During this phase, nitrogen is particularly crucial as it promotes vigorous vegetative growth. Light applications of phosphorus will also support root development which is vital early on.</li>
+          <li><strong>Flowering and Fruit Development:</strong> As plants enter the blooming and fruiting stages, phosphorus becomes more important. Increased phosphorus promotes better blooms and fruit development. Potassium also plays a critical role here, helping with the process of photosynthesis and nutrient movement within the plant.</li>
+          <li><strong>Maturity and Harvesting:</strong> Towards the end of the growing season, potassium usage should be increased to enhance the strength and quality of the plant tissues, ensuring robustness and resistance to diseases as the crops mature.</li>
+      </ul>
+
+      <h2>How to Use NPK</h2>
+      <p>The application of NPK should be based on soil tests, which provide a clear idea of the nutritional deficiencies in your soil. Here are some general guidelines on how to use these nutrients effectively:</p>
+      <ul>
+          <li><strong>Soil Testing:</strong> Before planting, conduct a soil test to determine the existing levels of N, P, and K. This will help you understand the baseline and tailor your fertilizer applications accordingly.</li>
+          <li><strong>Balanced Fertilizers:</strong> Products labeled as complete fertilizers contain all three primary nutrients (NPK), often in different ratios. Choose a fertilizer that matches your crop’s growth stage needs—for instance, a higher nitrogen ratio for early growth stages or a balanced one during fruiting.</li>
+          <li><strong>Method of Application:</strong> Fertilizers can be applied directly to the soil or used as foliar feeds. Soil applications should be evenly distributed and worked into the soil to avoid burning the roots. Foliar feeds can be useful for quick nutrient boosts during critical growth phases.</li>
+          <li><strong>Monitoring and Adjustment:</strong> Continuously monitor plant performance and adjust your fertilizer strategy based on visual cues. Stunted growth, discoloration, and poor flowering are signs that your plants may be lacking in one or more nutrients.</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Understanding when and how to use nitrogen, phosphorus, and potassium effectively can dramatically affect the health of your crops and the bounty of your harvest. Remember, the key to successful fertilization is balance and timing. Regular soil tests, observing plant health, and adjusting your nutrient applications based on specific growth stages will ensure that your plants grow strong and productive.</p>
+      <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+ 
+  <footer>
+    <a href="#">Privacy Policy</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">DMCA Policy</a>
+    <a href="#">Sitemap</a>
+    <p>&copy; 2024 Exper Cotton Prediction. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
+
+

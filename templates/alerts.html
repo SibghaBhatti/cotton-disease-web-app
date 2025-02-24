@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ _('Disease Alerts') }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      /* General Styles */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      /* Container */
+      .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 100%;
+        max-width: 780px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #00796b;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* List Styles */
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul li {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        transition: transform 0.2s;
+      }
+
+      ul li:hover {
+        transform: translateY(-5px);
+      }
+
+      ul li h2 {
+        margin: 0 0 10px;
+        color: #004d40;
+      }
+
+      ul li p {
+        margin: 5px 0;
+        color: #666;
+      }
+
+      ul li small {
+        color: #666;
+      }
+
+      a {
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Navigation Styles */
+      nav {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      nav .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .logo img {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+      }
+
+      nav .links {
+        display: flex;
+        gap: 10px;
+      }
+
+      nav .links a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      nav .links a:hover {
+        background-color: #004d40;
+      }
+
+      /* Language Selection */
+      .language-selection {
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .language-selection a {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .language-selection a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      footer a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
+      </div>
+      <div class="links">
+        <a href="{{ url_for('disease_detection') }}"
+          >{{ _('Disease Detection') }}</a
+        >
+        <a href="{{ url_for('weather_forecasting') }}"
+          >{{ _('Weather Forecasting') }}</a
+        >
+        <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
+        <a href="{{ url_for('n_fertilizer') }}"
+          >{{ _('Fertilizer Calculator Simple') }}</a
+        >
+        <a href="{{ url_for('fertilizer_calculator') }}"
+          >{{ _('Fertilizer Calculator') }}</a
+        >
+        <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
+        <a href="{{ url_for('cotton_seeds') }}"
+          >{{ _('Best Cotton Seeds in Pakistan') }}</a
+        >
+        <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
+        <!-- <a href="{{ url_for('news') }}">{{ _('News') }}</a> -->
+        <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
+      </div>
+    </nav>
+    <div class="language-selection">
+      <a href="{{ url_for('set_language', language='en') }}">English</a>
+      <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
+    </div>
+    <div class="container">
+      <h1>{{ _('Disease Alerts') }}</h1>
+
+      <ul>
+        <li>
+          <h2>{{ _('Leaf Spot Disease Alert') }}</h2>
+          <p>
+            {{ _('Leaf Spot disease detected in cotton fields in the southern
+            region. Immediate action required.') }}
+          </p>
+          <p><small>{{ _('Date:') }} 03-02-25</small></p>
+        </li>
+        <li>
+          <h2>{{ _('Bacterial Blight Outbreak') }}</h2>
+          <p>
+            {{ _('Bacterial Blight outbreak reported in several cotton farms.
+            Farmers are advised to monitor their crops closely.') }}
+          </p>
+          <p><small>{{ _('Date:') }} 08-02-25</small></p>
+        </li>
+        <li>
+          <h2>{{ _('Fusarium Wilt Warning') }}</h2>
+          <p>
+            {{ _('Fusarium Wilt has been identified in the northern
+            cotton-growing regions. Preventive measures recommended.') }}
+          </p>
+          <p><small>{{ _('Date:') }} 10-02-25</small></p>
+        </li>
+      </ul>
+
+      <p>
+        <a href="{{ url_for('dashboard') }}">{{ _('Back to Dashboard') }}</a>
+      </p>
+    </div>
+    <footer>
+      <a href="#">Privacy Policy</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">DMCA Policy</a>
+      <a href="#">Sitemap</a>
+      <p>&copy; 2024 Exper Cotton Prediction. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

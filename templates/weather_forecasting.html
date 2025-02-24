@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ _('Weather Forecasting') }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      /* General Styles */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e0f7fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      h1 {
+        color: #00796b;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      a {
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+      /* Container */
+      .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      /* Form Styles */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #00796b;
+      }
+
+      form input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+
+      form input[type="submit"] {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      form input[type="submit"]:hover {
+        background-color: #004d40;
+      }
+
+      /* Weather Info */
+      .weather-info {
+        background-color: #e0f2f1;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .weather-info h2 {
+        color: #004d40;
+        margin-bottom: 15px;
+      }
+
+      .weather-info p {
+        color: #00796b;
+        margin: 5px 0;
+      }
+
+      .weather-info img {
+        margin-top: 15px;
+      }
+
+      .back-link {
+        margin-top: 20px;
+        display: inline-block;
+        color: #00796b;
+        font-weight: bold;
+      }
+
+      .back-link:hover {
+        color: #004d40;
+      }
+
+      /* Navigation Styles */
+      nav {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      nav .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .logo img {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+      }
+
+      nav .links {
+        display: flex;
+        gap: 10px;
+      }
+
+      nav .links a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      nav .links a:hover {
+        background-color: #004d40;
+      }
+
+      /* Language Selection */
+      .language-selection {
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .language-selection a {
+        background-color: #00796b;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .language-selection a:hover {
+        background-color: #004d40;
+        color: #ffffff;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      footer a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
+      </div>
+      <div class="links">
+        <a href="{{ url_for('disease_detection') }}"
+          >{{ _('Disease Detection') }}</a
+        >
+        <a href="{{ url_for('weather_forecasting') }}"
+          >{{ _('Weather Forecasting') }}</a
+        >
+        <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
+        <a href="{{ url_for('n_fertilizer') }}"
+          >{{ _('Fertilizer Calculator Simple') }}</a
+        >
+        <a href="{{ url_for('fertilizer_calculator') }}"
+          >{{ _('Fertilizer Calculator') }}</a
+        >
+        <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
+        <a href="{{ url_for('cotton_seeds') }}"
+          >{{ _('Best Cotton Seeds in Pakistan') }}</a
+        >
+        <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
+        <!-- <a href="{{ url_for('news') }}">{{ _('News') }}</a> -->
+        <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
+      </div>
+    </nav>
+    <div class="language-selection">
+      <a href="{{ url_for('set_language', language='en') }}">English</a>
+      <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
+    </div>
+    <h1>{{ _('Weather Forecasting') }}</h1>
+    <div class="container">
+      <form action="{{ url_for('weather_forecasting') }}" method="POST">
+        <label for="city">{{ _('Enter City:') }}</label>
+        <input type="text" id="city" name="city" required />
+        <input type="submit" value="{{ _('Get Weather') }}" />
+      </form>
+      {% if weather_data %}
+      <div class="weather-info">
+        <h2>{{ _('Weather in') }} {{ weather_data.city }}</h2>
+        <p>{{ _('Temperature:') }} {{ weather_data.temperature }}°C</p>
+        <p>{{ _('Pressure:') }} {{ weather_data.pressure }} hPa</p>
+        <p>{{ _('Humidity:') }} {{ weather_data.humidity }}%</p>
+        <p>{{ _('Description:') }} {{ weather_data.description }}</p>
+        <img
+          src="http://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png"
+          alt="{{ _('Weather icon') }}"
+        />
+      </div>
+      {% else %}
+      <p>{{ _('Weather data not available.') }}</p>
+      {% endif %}
+      <a class="back-link" href="{{ url_for('dashboard') }}"
+        >{{ _('Back to Dashboard') }}</a
+      >
+    </div>
+    <footer>
+      <a href="#">Privacy Policy</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">DMCA Policy</a>
+      <a href="#">Sitemap</a>
+      <p>&copy; 2024 Exper Cotton Prediction. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
