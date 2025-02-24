@@ -10,6 +10,9 @@
         max-width: 100%;
         overflow-x: hidden;
       }
+      div#post-list {
+    width: 195%;
+}
       a {
         color: #00796b;
         text-decoration: none;
@@ -139,6 +142,47 @@
       footer a:hover {
         text-decoration: underline;
       }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .blog-container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+    .post {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 50%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .post h2 {
+      color: #004d40;
+      margin-top: 0;
+    }
+    .post p {
+      line-height: 1.6;
+    }
+    #load-more {
+      display: block;
+      width: 150px;
+      margin: 20px auto;
+      background-color: #00796b;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #load-more:hover {
+      background-color: #004d40;
+    }
     </style>
   </head>
   <body>
@@ -174,7 +218,7 @@
       <a href="{{ url_for('set_language', language='en') }}">English</a>
       <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
     </div>
-    <section class="blog-posts">
+    <!-- <section class="blog-posts">
       <h1 class="title">{{ _('Latest Articles') }}</h1>
       <div class="post-list">
         {% for post in posts %}
@@ -184,15 +228,64 @@
         </div>
         {% endfor %}
       </div>
-    </section>
+    </section> -->
+    
+  <div class="blog-container">
+    <div id="post-list">
+      <!-- Blog posts will appear here -->
+    </div>
+    <button id="load-more">Load More</button>
+  </div>
+
+  <script>
+    // Three static blog posts with long paragraphs (8-10 lines approx.)
+    const blogPosts = [
+      {
+        title: "The Importance of Sustainable Farming",
+        content: "Sustainable farming practices are essential for preserving our environment and ensuring long-term food security. By incorporating organic methods, crop rotation, and reduced chemical usage, farmers can maintain soil health and reduce water consumption. This approach not only benefits the planet but also improves the quality of the produce. Additionally, sustainable farming encourages biodiversity and reduces the risk of pest infestations. With growing awareness about environmental issues, consumers are increasingly seeking sustainably grown food. Implementing these practices leads to improved profitability and a resilient agricultural ecosystem. The transition to sustainable methods, although gradual, promises a healthier future for both farmers and the planet."
+      },
+      {
+        title: "Innovative Techniques in Modern Agriculture",
+        content: "Modern agriculture is rapidly evolving with the integration of new technologies that enhance efficiency and productivity. Precision farming methods, drone surveillance, and automated irrigation systems are just a few examples transforming crop management. These innovations help monitor crop health, optimize resource usage, and significantly improve yields. Technology also empowers farmers to make data-driven decisions that minimize waste and environmental impact. As these techniques become more accessible, they pave the way for a more sustainable and profitable agricultural sector. The blend of traditional knowledge with modern innovation is setting new standards for efficiency in farming practices."
+      },
+      {
+        title: "Embracing Organic Methods for a Healthier Future",
+        content: "Organic farming is gaining popularity as more consumers look for chemical-free and nutritious food options. This approach relies on natural growth processes and avoids synthetic pesticides and fertilizers, thereby preserving soil quality and water purity. Organic methods promote biodiversity and support local ecosystems while delivering produce that is often richer in flavor and nutrients. Transitioning to organic practices can be challenging but offers long-term benefits for health and the environment. With increasing demand for organic products, farmers are motivated to adopt these sustainable practices, ensuring that both the land and its inhabitants thrive."
+      }
+    ];
+
+    let currentIndex = 0; // Track how many posts have been loaded
+    const postsPerLoad = 1; // Load one post per click
+
+    function loadPosts() {
+      const postList = document.getElementById('post-list');
+      for (let i = currentIndex; i < currentIndex + postsPerLoad && i < blogPosts.length; i++) {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+        postDiv.innerHTML = `<h2>${blogPosts[i].title}</h2><p>${blogPosts[i].content}</p>`;
+        postList.appendChild(postDiv);
+      }
+      currentIndex += postsPerLoad;
+      if (currentIndex >= blogPosts.length) {
+        document.getElementById('load-more').style.display = 'none';
+      }
+    }
+
+    // Initially load the first post
+    loadPosts();
+
+    // Load more posts on button click
+    document.getElementById('load-more').addEventListener('click', loadPosts);
+  </script>
+
     <footer>
-      <a href="#">Privacy Policy</a>
+      <!-- <a href="#">Privacy Policy</a>
       <a href="#">About Us</a>
       <a href="#">Contact Us</a>
       <a href="#">Disclaimer</a>
       <a href="#">DMCA Policy</a>
-      <a href="#">Sitemap</a>
-      <p>&copy; 2024 Exper Cotton Prediction. All Rights Reserved.</p>
+      <a href="#">Sitemap</a> -->
+      <p>&copy; 2025 Expert Cotton Prediction. All Rights Reserved.</p>
     </footer>
   </body>
 </html>

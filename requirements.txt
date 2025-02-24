@@ -12,3 +12,4 @@ Flask-SQLAlchemy
 itsdangerous
 Flask-Mail
 pymysql
+groq
