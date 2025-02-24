@@ -124,29 +124,36 @@ classes = ['American Bollworm on Cotton', 'Anthracnose on Cotton', 'Aphids', 'Ar
 'Wheat Stem fly', 'Wheat aphid', 'Wheat black rust', 'Wheat leaf blight', 'Wheat mite', 'Wheat powdery mildew', 'Wheat scab',
 'Wheat___Yellow_Rust', 'Wilt', 'Yellow Rust Sugarcane', 'bacterial_blight in Cotton', 'bollrot on Cotton', 'bollworm on Cotton',
 'cotton mealy bug', 'cotton whitefly', 'curl_virus', 'fussarium_wilt', 'maize ear rot', 'maize fall armyworm', 'maize stem borer',
-'pink bollworm in cotton', 'red cotton bug', 'thirps on  cotton']
+'pink bollworm in cotton', 'red cotton bug', 'thirps on  cotton','Other']
 
 
-def predict_disease(image_path,model):
+def predict_disease(image_path,model,threshold = 0.045):
     
     test_image = image.load_img(image_path,target_size = (256,256))
     plt.imshow(plt.imread(image_path))
     test_image = image.img_to_array(test_image)
     test_image = test_image/255
     test_image = np.expand_dims(test_image, axis = 0)
-    result = model.predict(test_image)
-    result = result.ravel() 
-    max = result[0];    
-    index = 0; 
+    prediction = model.predict(test_image)[0]
+    probabilities = tf.nn.softmax(prediction).numpy()
+    # result = model.predict(test_image)
+    # result = result.ravel() 
+    # max = result[0];
+    max_prob = np.max(probabilities)
+    print(max_prob)
+    if max_prob <threshold:
+        return "Unknown/Not Cotton"
+    # index = 0; 
+    index = np.argmax(probabilities)
     #Loop through the array    
-    for i in range(0, len(result)):    
-      #Compare elements of array with max    
-      if(result[i] > max):    
-          max = result[i];    
-          index = i
+    # for i in range(0, len(result)):    
+    #   #Compare elements of array with max    
+    #   if(result[i] > max):    
+    #       max = result[i];    
+    #       index = i
     #print("Largest element present in given array: " + str(max) +" And it belongs to " +str(classes[index]) +" class."); 
-    pred = str(classes[index])
-    return pred
+    # pred = str(classes[index])
+    return classes[index]
 
 
 # def model_predict(img_path, model):
@@ -278,7 +285,7 @@ def disease_detection():
         f.save(file_path)
 
         # Make prediction
-        preds = predict_disease(file_path, model)
+        preds = predict_disease(file_path, model,0.045)
         result = preds
         img_url = url_for('static', filename=f'uploads/{secure_filename(f.filename)}')
         result=preds
