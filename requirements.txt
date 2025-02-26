@@ -13,3 +13,4 @@ itsdangerous
 Flask-Mail
 pymysql
 groq
+python-dotenv

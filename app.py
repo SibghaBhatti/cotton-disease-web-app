@@ -19,7 +19,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from flask_mail import Mail, Message
-import os
+from os import environ
 
 from groq import Groq
 import time
@@ -31,17 +31,17 @@ import time
 
 app = Flask(__name__)
 app.static_folder = 'static'
-app.config['SECRET_KEY'] = 'supersecretkey'
+app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 app.secret_key = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/cotton'
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'sibgha12@gmail.com'
-app.config['MAIL_PASSWORD'] = 'cnxtzlbepkbaejpt'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
+app.config['MAIL_SERVER'] = environ.get('MAIL_SERVER')
+app.config['MAIL_PORT'] = environ.get('MAIL_PORT')
+app.config['MAIL_USERNAME'] = environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = environ.get('MAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
@@ -295,7 +295,7 @@ def disease_detection():
 @app.route('/weather_forecasting', methods=['GET', 'POST'])
 @login_required
 def weather_forecasting():
-    api_key = "74fbb60fa9b326bf46b41f8db923ccaa"
+    api_key = environ.get('Weather_API_KEY')
     city = "Islamabad"
     
     if request.method == 'POST':
@@ -336,7 +336,7 @@ def get_response():
 def generate_response(user_input):
     try:
         # Call the OpenAI API to get a response
-        os.environ['GROQ_API_KEY'] = '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'
+        os.environ['GROQ_API_KEY'] = environ.get('GROQ_API')
         groq_client = Groq()
 
         messages=[
