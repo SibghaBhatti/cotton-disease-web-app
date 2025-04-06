@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ _('Weather Forecasting') }}</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/styles.css') }}"
-    />
+    /> -->
     <style>
       /* General Styles */
       html,
@@ -20,11 +20,6 @@
         background-color: #e0f7fa;
         margin: 0;
         padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        flex-direction: column;
       }
 
       h1 {
@@ -187,6 +182,13 @@
         background-color: #004d40;
         color: #ffffff;
       }
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+      }
+
 
       /* Footer */
       footer {
@@ -233,7 +235,7 @@
           >{{ _('Best Cotton Seeds in Pakistan') }}</a
         >
         <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
-        <!-- <a href="{{ url_for('news') }}">{{ _('News') }}</a> -->
+        <a href="{{ url_for('news') }}">{{ _('News') }}</a>
         <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
       </div>
     </nav>
@@ -241,6 +243,7 @@
       <a href="{{ url_for('set_language', language='en') }}">English</a>
       <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
     </div>
+    <main class="main-content">
     <h1>{{ _('Weather Forecasting') }}</h1>
     <div class="container">
       <form action="{{ url_for('weather_forecasting') }}" method="POST">
@@ -267,6 +270,7 @@
         >{{ _('Back to Dashboard') }}</a
       >
     </div>
+  </main>
     <footer>
       <!-- <a href="#">Privacy Policy</a>
       <a href="#">About Us</a>

@@ -296,7 +296,7 @@ def disease_detection():
 @login_required
 def weather_forecasting():
     api_key = environ.get('Weather_API_KEY')
-    city = "Islamabad"
+    city = "Lahore"
     
     if request.method == 'POST':
         city = request.form['city']
