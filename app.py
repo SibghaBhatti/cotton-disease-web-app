@@ -19,6 +19,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from flask_mail import Mail, Message
+from sqlalchemy import create_engine
 from os import environ
 from groq import Groq
 import time
