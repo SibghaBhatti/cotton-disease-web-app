@@ -4,30 +4,24 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
-from flask import Flask, render_template, redirect, url_for, request, flash, jsonify,session
+from flask import Flask, render_template, redirect, url_for, request, flash, jsonify, session
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
 from werkzeug.utils import secure_filename
-from wtforms import StringField, PasswordField, SubmitField, DecimalField,FloatField
+from wtforms import StringField, PasswordField, SubmitField, DecimalField, FloatField
 from wtforms.validators import DataRequired, EqualTo, Length, NumberRange
 from wtforms.validators import DataRequired, Email, EqualTo
 from PIL import Image
-from tensorflow.keras.models import  load_model # type: ignore
-from tensorflow.keras.preprocessing import  image # type: ignore
+from tensorflow.keras.models import load_model  # type: ignore
+from tensorflow.keras.preprocessing import image  # type: ignore
 from flask_babel import Babel, _
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from flask_mail import Mail, Message
 from os import environ
-
 from groq import Groq
 import time
-# from openai import OpenAI
-
-
-
-
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -38,6 +32,7 @@ app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 app.secret_key = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Added to suppress warning
 app.config['MAIL_SERVER'] = environ.get('MAIL_SERVER')
 app.config['MAIL_PORT'] = environ.get('MAIL_PORT')
 app.config['MAIL_USERNAME'] = environ.get('MAIL_USERNAME')
@@ -51,12 +46,10 @@ s = URLSafeTimedSerializer('your_secret_key')
 
 babel = Babel(app)
 
-
 def get_locale():
     return session.get('lang', 'en')
 
 babel = Babel(app, locale_selector=get_locale)
-
 
 @app.route('/set_language/<language>')
 def set_language(language):
@@ -67,8 +60,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-
 class User(UserMixin, db.Model):
+    __tablename__ = 'user'  # Match the table name in cotton.sql
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), nullable=False, unique=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
@@ -78,9 +71,6 @@ class User(UserMixin, db.Model):
         self.username = username
         self.email = email
         self.password = password
-
-
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -106,6 +96,7 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset Password')
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
