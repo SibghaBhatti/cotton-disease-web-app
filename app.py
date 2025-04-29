@@ -40,6 +40,8 @@ app.config['MAIL_PASSWORD'] = environ.get('MAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
+print(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}") 
+
 db = SQLAlchemy(app)
 mail = Mail(app)
 s = URLSafeTimedSerializer('your_secret_key')
