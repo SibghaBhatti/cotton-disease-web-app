@@ -30,9 +30,7 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
-app.secret_key = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Added to suppress warning
+app.secret_key = 'your_secret_key' # Added to suppress warning
 app.config['MAIL_SERVER'] = environ.get('MAIL_SERVER')
 app.config['MAIL_PORT'] = environ.get('MAIL_PORT')
 app.config['MAIL_USERNAME'] = environ.get('MAIL_USERNAME')
@@ -40,9 +38,28 @@ app.config['MAIL_PASSWORD'] = environ.get('MAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
-print(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}") 
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
+print(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
+
+# Debug CA certificate file
+ca_file_path = 'ca.pem'
+print(f"CA file exists: {os.path.exists(ca_file_path)}")
+print(f"CA file path: {os.path.abspath(ca_file_path)}")
+if os.path.exists(ca_file_path):
+    print(f"CA file size: {os.path.getsize(ca_file_path)} bytes")
+else:
+    print("CA file not found!")
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'creator': lambda: create_engine(
+        app.config['SQLALCHEMY_DATABASE_URI'],
+        connect_args={'ssl': {'ca': '/app/ca.pem', 'verify_cert': True}}
+    ).connect()
+}
 
 db = SQLAlchemy(app)
+
 mail = Mail(app)
 s = URLSafeTimedSerializer('your_secret_key')
 
