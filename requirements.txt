@@ -14,3 +14,5 @@ Flask-Mail
 pymysql
 groq
 python-dotenv
+gunicorn
+mysql-connector-python
