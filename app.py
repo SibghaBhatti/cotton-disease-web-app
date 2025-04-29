@@ -53,10 +53,7 @@ else:
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-    'creator': lambda: create_engine(
-        app.config['SQLALCHEMY_DATABASE_URI'],
-        connect_args={'ssl': {'ca': '/app/ca.pem', 'verify_cert': True}}
-    ).connect()
+    'creator': lambda: create_engine(app.config['SQLALCHEMY_DATABASE_URI']).connect()
 }
 
 db = SQLAlchemy(app)
