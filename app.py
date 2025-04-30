@@ -36,38 +36,17 @@ app.secret_key = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
 print(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
-# Load CA certificate from environment variable
-ca_cert = environ.get('MYSQL_SSL_CA')
-if ca_cert:
-    # Create a temporary file for the CA certificate
-    with tempfile.NamedTemporaryFile(delete=False, suffix='.pem') as temp_ca_file:
-        temp_ca_file.write(ca_cert.encode('utf-8'))
-        temp_ca_file_path = temp_ca_file.name
-    print(f"Temporary CA file created at: {temp_ca_file_path}")
-    # Update the URI with the temporary file path
-    app.config['SQLALCHEMY_DATABASE_URI'] = app.config['SQLALCHEMY_DATABASE_URI'].replace(
-        "ssl_verify_cert=true",
-        f"ssl_ca={temp_ca_file_path}&ssl_verify=true"
-    )
-else:
-    temp_ca_file_path = 'ca.pem'  # Fallback to file if env var not set
-    print("MYSQL_SSL_CA not set, falling back to file")
-    if "ssl_ca=" not in app.config['SQLALCHEMY_DATABASE_URI']:
-        app.config['SQLALCHEMY_DATABASE_URI'] += f"&ssl_ca={temp_ca_file_path}&ssl_verify=true"
-
 # Debug CA certificate file
-print(f"CA file exists: {os.path.exists(temp_ca_file_path)}")
-print(f"CA file path: {os.path.abspath(temp_ca_file_path)}")
-if os.path.exists(temp_ca_file_path):
-    print(f"CA file size: {os.path.getsize(temp_ca_file_path)} bytes")
+ca_file_path = 'ca.pem'
+print(f"CA file exists: {os.path.exists(ca_file_path)}")
+print(f"CA file path: {os.path.abspath(ca_file_path)}")
+if os.path.exists(ca_file_path):
+    print(f"CA file size: {os.path.getsize(ca_file_path)} bytes")
 else:
     print("CA file not found!")
 
-print(f"Updated SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
 mail = Mail(app)
 s = URLSafeTimedSerializer('your_secret_key')
 
