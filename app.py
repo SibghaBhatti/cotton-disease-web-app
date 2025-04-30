@@ -287,19 +287,33 @@ def dashboard():
 def disease_detection():
     if request.method == 'POST':
         # Get the file from post request
+        if 'file' not in request.files:
+            flash('No file part in the request', 'danger')
+            return redirect(request.url)
         f = request.files['file']
-        # Save the file to ./uploads
-        basepath = os.path.dirname(__file__)
-        file_path = os.path.join(
-            basepath, 'static/uploads', secure_filename(f.filename))
-        f.save(file_path)
+        if f.filename == '':
+            flash('No file selected', 'danger')
+            return redirect(request.url)
+        if f and allowed_file(f.filename):
+            # Save the file to ./uploads
+            basepath = os.path.dirname(__file__)
+            file_path = os.path.join(basepath, 'static/uploads', secure_filename(f.filename))
+            try:
+                f.save(file_path)
+                print(f"File saved successfully: {file_path}")
+            except Exception as e:
+                print(f"Error saving file: {e}")
+                flash('Error saving file', 'danger')
+                return redirect(request.url)
 
-        # Make prediction
-        preds = predict_disease(file_path, model,0.045)
-        result = preds
-        img_url = url_for('static', filename=f'uploads/{secure_filename(f.filename)}')
-        result=preds
-        return render_template('disease_detection.html',result=result,img_url=img_url)
+            # Make prediction
+            preds = predict_disease(file_path, model, 0.045)
+            result = preds
+            img_url = url_for('static', filename=f'uploads/{secure_filename(f.filename)}')
+            return render_template('disease_detection.html', result=result, img_url=img_url)
+        else:
+            flash('Invalid file type. Allowed types: png, jpg, jpeg', 'danger')
+            return redirect(request.url)
     return render_template('disease_detection.html')
 
 @app.route('/weather_forecasting', methods=['GET', 'POST'])
