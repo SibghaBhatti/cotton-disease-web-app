@@ -43,12 +43,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
 print(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
 # Load CA certificate from environment variable
+# Load CA certificate from environment variable
 ca_cert = environ.get('MYSQL_SSL_CA')
+temp_ca_file = None  # Keep the file object in scope
 if ca_cert:
     # Create a temporary file for the CA certificate
-    with tempfile.NamedTemporaryFile(delete=False, suffix='.pem') as temp_ca_file:
-        temp_ca_file.write(ca_cert.encode('utf-8'))
-        temp_ca_file_path = temp_ca_file.name
+    temp_ca_file = tempfile.NamedTemporaryFile(delete=False, suffix='.pem')
+    temp_ca_file.write(ca_cert.encode('utf-8'))
+    temp_ca_file.flush()  # Ensure the file is written to disk
+    temp_ca_file_path = temp_ca_file.name
     print(f"Temporary CA file created at: {temp_ca_file_path}")
     # Update the URI with the temporary file path
     if "?" in app.config['SQLALCHEMY_DATABASE_URI']:
@@ -56,7 +59,7 @@ if ca_cert:
     else:
         app.config['SQLALCHEMY_DATABASE_URI'] += f"?ssl_ca={temp_ca_file_path}"
 else:
-    temp_ca_file_path = 'ca.pem'  # Fallback to file if env var not set
+    temp_ca_file_path = '/app/ca.pem'  # Fallback to file if env var not set
     print("MYSQL_SSL_CA not set, falling back to file")
     if "?" in app.config['SQLALCHEMY_DATABASE_URI']:
         app.config['SQLALCHEMY_DATABASE_URI'] += f"&ssl_ca={temp_ca_file_path}"
@@ -76,6 +79,12 @@ print(f"Updated SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# Keep the file open to avoid deletion; close it on app shutdown
+@app.teardown_appcontext
+def cleanup_temp_file(exception):
+    if temp_ca_file:
+        temp_ca_file.close()
+        os.unlink(temp_ca_file.name)
 
 mail = Mail(app)
 s = URLSafeTimedSerializer('your_secret_key')
