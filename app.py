@@ -50,7 +50,7 @@ if ca_cert:
         f"ssl_ca={temp_ca_file_path}&ssl_verify=true"
     )
 else:
-    temp_ca_file_path = '/app/ca.pem'  # Fallback to file if env var not set
+    temp_ca_file_path = 'ca.pem'  # Fallback to file if env var not set
     print("MYSQL_SSL_CA not set, falling back to file")
     if "ssl_ca=" not in app.config['SQLALCHEMY_DATABASE_URI']:
         app.config['SQLALCHEMY_DATABASE_URI'] += f"&ssl_ca={temp_ca_file_path}&ssl_verify=true"
