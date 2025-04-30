@@ -1,7 +1,7 @@
 import os
-import requests
-os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
-import tensorflow as tf
+os.environ['CUDA_VISIBLE_DEVICES'] = ''  # Disable GPU usage
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Disable oneDNN optimizations
+import tensorflow.lite as tflite
 import numpy as np
 import matplotlib.pyplot as plt
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify, session
@@ -9,29 +9,27 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from flask_wtf import FlaskForm
 from werkzeug.utils import secure_filename
 from wtforms import StringField, PasswordField, SubmitField, DecimalField, FloatField
-from wtforms.validators import DataRequired, EqualTo, Length, NumberRange
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, EqualTo, Length, NumberRange, Email
 from PIL import Image
-from tensorflow.keras.models import load_model  # type: ignore
 from tensorflow.keras.preprocessing import image  # type: ignore
 from flask_babel import Babel, _
-from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 from flask_mail import Mail, Message
-from sqlalchemy import create_engine
-import tempfile
 from os import environ
 from groq import Groq
 import time
 import psutil
 import threading
+from flask_caching import Cache
+import requests
 
 app = Flask(__name__)
 app.static_folder = 'static'
 app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
+app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # Limit uploads to 1 MB
 app.config['MAIL_SERVER'] = environ.get('MAIL_SERVER')
 app.config['MAIL_PORT'] = environ.get('MAIL_PORT')
 app.config['MAIL_USERNAME'] = environ.get('MAIL_USERNAME')
@@ -40,11 +38,19 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+app.config['CACHE_TYPE'] = 'SimpleCache'  # Use simple in-memory cache
 app.secret_key = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
 print(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
-# Load CA certificate from environment variable
+# Log TensorFlow device placement
+print("TensorFlow devices:", tf.config.list_physical_devices())
+if not tf.config.list_physical_devices('GPU'):
+    print("TensorFlow is using CPU only")
+else:
+    print("Warning: TensorFlow is still trying to use GPU")
+
+# Debug CA certificate file
 ca_file_path = 'ca.pem'
 print(f"CA file exists: {os.path.exists(ca_file_path)}")
 print(f"CA file path: {os.path.abspath(ca_file_path)}")
@@ -53,6 +59,7 @@ if os.path.exists(ca_file_path):
 else:
     print("CA file not found!")
 
+# Ensure the uploads directory exists
 uploads_dir = os.path.join(os.path.dirname(__file__), app.config['UPLOAD_FOLDER'])
 if not os.path.exists(uploads_dir):
     os.makedirs(uploads_dir)
@@ -64,6 +71,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 mail = Mail(app)
 s = URLSafeTimedSerializer('your_secret_key')
+cache = Cache(app)
 
 babel = Babel(app)
 
@@ -82,7 +90,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'user'  # Match the table name in cotton.sql
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), nullable=False, unique=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
@@ -118,17 +126,24 @@ class ResetPasswordForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset Password')
 
-
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
+# Load TensorFlow Lite model
+print("Loading TensorFlow Lite model...")
+process = psutil.Process(os.getpid())
+mem_before = process.memory_info().rss / 1024 / 1024
+print(f"Memory before loading model: {mem_before:.2f} MB")
 
-MODEL_PATH ='desnet2.h5'
+interpreter = tflite.Interpreter(model_path='desnet2.tflite')
+interpreter.allocate_tensors()
+print("TensorFlow Lite model loaded successfully")
 
-# load trained model
-model = load_model(MODEL_PATH)
+mem_after = process.memory_info().rss / 1024 / 1024
+print(f"Memory after loading model: {mem_after:.2f} MB")
+print(f"Memory increase: {mem_after - mem_before:.2f} MB")
 
-# model =load_model("DenseNet121.h5")
+
 classes = ['American Bollworm on Cotton', 'Anthracnose on Cotton', 'Aphids', 'Army worm', 'Carpetweeds', 'Crabgrass', 'Eclipta',
 'Flag Smut', 'Goosegrass', 'Healthy', 'Leaf Curl', 'Leaf smut', 'Morningglory', 'Mosaic sugarcane', 'Nutsedge', 'PalmerAmaranth',
 'Powdery_Mildew', 'Prickly Sida', 'Purslane', 'Ragweed', 'RedRot sugarcane', 'RedRust sugarcane', 'Rice Blast', 'Sicklepod',
@@ -136,69 +151,40 @@ classes = ['American Bollworm on Cotton', 'Anthracnose on Cotton', 'Aphids', 'Ar
 'Wheat Stem fly', 'Wheat aphid', 'Wheat black rust', 'Wheat leaf blight', 'Wheat mite', 'Wheat powdery mildew', 'Wheat scab',
 'Wheat___Yellow_Rust', 'Wilt', 'Yellow Rust Sugarcane', 'bacterial_blight in Cotton', 'bollrot on Cotton', 'bollworm on Cotton',
 'cotton mealy bug', 'cotton whitefly', 'curl_virus', 'fussarium_wilt', 'maize ear rot', 'maize fall armyworm', 'maize stem borer',
-'pink bollworm in cotton', 'red cotton bug', 'thirps on  cotton','Other']
+'pink bollworm in cotton', 'red cotton bug', 'thirps on cotton', 'Other']
 
+def predict_disease(image_path, interpreter, threshold=0.045):
+    print("Starting prediction in thread...")
+    process = psutil.Process(os.getpid())
+    mem_before = process.memory_info().rss / 1024 / 1024
+    print(f"Memory before prediction: {mem_before:.2f} MB")
 
-def predict_disease(image_path,model,threshold = 0.045):
-    
-    test_image = image.load_img(image_path,target_size = (256,256))
+    test_image = image.load_img(image_path, target_size=(256, 256))
     plt.imshow(plt.imread(image_path))
     test_image = image.img_to_array(test_image)
-    test_image = test_image/255
-    test_image = np.expand_dims(test_image, axis = 0)
-    prediction = model.predict(test_image)[0]
+    test_image = test_image / 255
+    test_image = np.expand_dims(test_image, axis=0)
+
+    # Set input tensor
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+    interpreter.set_tensor(input_details[0]['index'], test_image)
+
+    # Run inference
+    interpreter.invoke()
+    prediction = interpreter.get_tensor(output_details[0]['index'])[0]
     probabilities = tf.nn.softmax(prediction).numpy()
-    # result = model.predict(test_image)
-    # result = result.ravel() 
-    # max = result[0];
+
+    mem_after = process.memory_info().rss / 1024 / 1024
+    print(f"Memory after prediction: {mem_after:.2f} MB")
+    print(f"Memory increase: {mem_after - mem_before:.2f} MB")
+
     max_prob = np.max(probabilities)
-    print(max_prob)
-    if max_prob <threshold:
+    print(f"Max probability: {max_prob}")
+    if max_prob < threshold:
         return "Unknown/Not Cotton"
-    # index = 0; 
     index = np.argmax(probabilities)
-    #Loop through the array    
-    # for i in range(0, len(result)):    
-    #   #Compare elements of array with max    
-    #   if(result[i] > max):    
-    #       max = result[i];    
-    #       index = i
-    #print("Largest element present in given array: " + str(max) +" And it belongs to " +str(classes[index]) +" class."); 
-    # pred = str(classes[index])
     return classes[index]
-
-
-# def model_predict(img_path, model):
-#     print('Uploaded image path: ',img_path)
-#     loaded_image = image.load_img(img_path, target_size=(224, 224))
-
-#     # preprocess the image
-#     loaded_image_in_array = image.img_to_array(loaded_image)
-
-#     # normalize
-#     loaded_image_in_array=loaded_image_in_array/255
-
-#     # add additional dim such as to match input dim of the model architecture
-#     x = np.expand_dims(loaded_image_in_array, axis=0)
-
-#     # prediction
-#     prediction = model.predict(x)
-
-#     results=np.argmax(prediction, axis=1)
-
-#     if results==0:
-#         results="The leaf is diseased cotton leaf"
-#     elif results==1:
-#         results="The leaf is diseased cotton plant"
-#     elif results==2:
-#         results="The leaf is fresh cotton leaf"
-#     else:
-#         results="The leaf is fresh cotton plant"
-
-#     return results
-
-
-
 
 @app.route('/')
 def index():
@@ -231,7 +217,6 @@ def login():
         else:
             flash('Invalid username or password', 'danger')
     return render_template('login.html', form=form)
-
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
@@ -283,11 +268,10 @@ def logout():
 def dashboard():
     return render_template('dashboard.html', username=current_user.username)
 
-
-def run_prediction(file_path, model, threshold=0.045):
+def run_prediction(file_path, interpreter, threshold=0.045):
     print("Starting prediction in thread...")
     start_time = time.time()
-    preds = predict_disease(file_path, model, threshold)
+    preds = predict_disease(file_path, interpreter, threshold)
     print(f"Prediction completed in thread (took {time.time() - start_time:.2f} seconds)")
     return preds
 
@@ -297,10 +281,9 @@ def disease_detection():
     if request.method == 'POST':
         print("Starting disease detection...")
         process = psutil.Process(os.getpid())
-        mem_before = process.memory_info().rss / 1024 / 1024  # Memory in MB
+        mem_before = process.memory_info().rss / 1024 / 1024
         print(f"Memory before processing: {mem_before:.2f} MB")
 
-        # Get the file from post request
         if 'file' not in request.files:
             flash('No file part in the request', 'danger')
             return redirect(request.url)
@@ -309,7 +292,6 @@ def disease_detection():
             flash('No file selected', 'danger')
             return redirect(request.url)
         if f and allowed_file(f.filename):
-            # Save the file to ./uploads
             basepath = os.path.dirname(__file__)
             file_path = os.path.join(basepath, 'static/uploads', secure_filename(f.filename))
             try:
@@ -322,18 +304,22 @@ def disease_detection():
                 flash('Error saving file', 'danger')
                 return redirect(request.url)
 
-            # Run prediction in a separate thread
-            result = [None]  # Use a list to store the result (mutable)
-            exception = [None]  # Use a list to store any exception
+            mem_after_save = process.memory_info().rss / 1024 / 1024
+            print(f"Memory after file saving: {mem_after_save:.2f} MB")
+            print(f"Memory increase after saving: {mem_after_save - mem_before:.2f} MB")
+
+            print("Starting prediction thread...")
+            result = [None]
+            exception = [None]
             def prediction_wrapper():
                 try:
-                    result[0] = run_prediction(file_path, model, 0.045)
+                    result[0] = run_prediction(file_path, interpreter, 0.045)
                 except Exception as e:
                     exception[0] = e
 
             prediction_thread = threading.Thread(target=prediction_wrapper)
             prediction_thread.start()
-            prediction_thread.join(timeout=60)  # Wait up to 60 seconds for prediction
+            prediction_thread.join(timeout=60)
 
             if prediction_thread.is_alive():
                 print("Prediction timed out after 60 seconds")
@@ -344,7 +330,7 @@ def disease_detection():
                 flash('Error during prediction', 'danger')
                 return redirect(request.url)
 
-            mem_after = process.memory_info().rss / 1024 / 1024  # Memory in MB
+            mem_after = process.memory_info().rss / 1024 / 1024
             print(f"Memory after processing: {mem_after:.2f} MB")
             print(f"Memory increase: {mem_after - mem_before:.2f} MB")
 
@@ -354,6 +340,7 @@ def disease_detection():
             flash('Invalid file type. Allowed types: png, jpg, jpeg', 'danger')
             return redirect(request.url)
     return render_template('disease_detection.html')
+
 @app.route('/weather_forecasting', methods=['GET', 'POST'])
 @login_required
 def weather_forecasting():
@@ -387,56 +374,54 @@ def weather_forecasting():
 def chatbot():
     return render_template('chatbot.html')
 
-
 @app.route('/get_response', methods=['POST'])
 @login_required
+@cache.memoize(timeout=300)
 def get_response():
     print("Starting chatbot response generation...")
     process = psutil.Process(os.getpid())
-    mem_before = process.memory_info().rss / 1024 / 1024  # Memory in MB
+    mem_before = process.memory_info().rss / 1024 / 1024
     print(f"Memory before API call: {mem_before:.2f} MB")
 
     user_input = request.form['user_input']
     print(f"User input: {user_input}")
 
-    start_time = time.time()
-    response = generate_response(user_input)
-    print(f"Chatbot response: {response} (took {time.time() - start_time:.2f} seconds)")
+    try:
+        start_time = time.time()
+        response = generate_response(user_input)
+        print(f"Chatbot response: {response} (took {time.time() - start_time:.2f} seconds)")
 
-    mem_after = process.memory_info().rss / 1024 / 1024  # Memory in MB
-    print(f"Memory after API call: {mem_after:.2f} MB")
-    print(f"Memory increase: {mem_after - mem_before:.2f} MB")
+        mem_after = process.memory_info().rss / 1024 / 1024
+        print(f"Memory after API call: {mem_after:.2f} MB")
+        print(f"Memory increase: {mem_after - mem_before:.2f} MB")
 
-    return jsonify(response=response)
+        return jsonify(response=response)
+    except Exception as e:
+        print(f"Chatbot error: {e}")
+        return jsonify(response="Sorry, I encountered an error. Please try again."), 500
 
 def generate_response(user_input):
     try:
-        # Call the OpenAI API to get a response
         os.environ['GROQ_API_KEY'] = environ.get('GROQ_API')
         groq_client = Groq()
 
-        messages=[
-                {"role": "system", "content": "You are a helpful assistant with expertise in farming and crop management."},
-                
-            ]
-
-        # human = input('USER: ')
-        messages.append({"role":"user",
-                    "content":user_input})
-        a = time.time()
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant with expertise in farming and crop management."},
+            {"role": "user", "content": user_input}
+        ]
 
         chat_completion = groq_client.chat.completions.create(
-        messages=messages,
-        model="llama3-70b-8192", #mixtral-8x7b-32768 #llama3-8b-8192 #llama3-70b-8192 #gpt-3.5-turbo-0125
-        temperature=0.1,
-        max_tokens=200,
-        stream=False,
+            messages=messages,
+            model="llama3-8b-8192",  # Use a lighter model
+            temperature=0.1,
+            max_tokens=200,
+            stream=False,
+            timeout=10
         )
         response = chat_completion.choices[0].message.content
         return response
     except Exception as e:
         return f"Error: {str(e)}"
-
 
 class FertilizerForm1(FlaskForm):
     area = DecimalField('Area (hectares)', validators=[DataRequired(), NumberRange(min=0.1)], places=2)
@@ -469,13 +454,11 @@ def n_fertilizer():
         }
     return render_template('fertilizer_calculator_simple.html', form=form, result=result)
 
-
 class FertilizerForm(FlaskForm):
     nitrogen = FloatField('Nitrogen', validators=[DataRequired()])
     phosphorus = FloatField('Phosphorus', validators=[DataRequired()])
     potassium = FloatField('Potassium', validators=[DataRequired()])
     submit = SubmitField('Get Advice')
-
 
 @app.route('/fertilizer_calculator_1', methods=['GET', 'POST'])
 @login_required
@@ -499,7 +482,6 @@ def generate_r(user_input=None):
     if not user_input:
         user_input = request.json.get('user_input')
     try:
-        # Call the OpenAI API to get a response
         os.environ['GROQ_API_KEY'] = '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'
         groq_client = Groq()
 
@@ -509,7 +491,7 @@ def generate_r(user_input=None):
 
         chat_completion = groq_client.chat.completions.create(
             messages=messages,
-            model="llama3-70b-8192",  # Adjust the model as needed
+            model="llama3-8b-8192",  # Use a lighter model
             temperature=0.1,
             max_tokens=500,
             stream=False,
@@ -519,9 +501,6 @@ def generate_r(user_input=None):
     except Exception as e:
         return f"Error: {str(e)}"
 
-
-
-    
 # Dummy database for disease alerts
 disease_alerts = [
     {
@@ -540,7 +519,6 @@ disease_alerts = [
         "date": "2025-02-03"
     }
 ]
-
 
 @app.route('/alerts')
 @login_required
@@ -562,7 +540,6 @@ def news():
 
     return render_template('news.html', articles=articles)
 
-
 @app.route('/cotton_seeds')
 @login_required
 def cotton_seeds():
@@ -577,7 +554,7 @@ def cotton_seeds():
 def fetch_blog_posts():
     api_url = "http://api.mediastack.com/v1/news"
     params = {
-        'access_key': 'your_api_key',  # Replace with your actual Mediastack API key
+        'access_key': 'your_api_key',
         'categories': 'agriculture',
         'keywords': 'farming, cotton',
         'languages': 'en',
@@ -612,8 +589,5 @@ def blog():
     blog_posts = fetch_blog_posts()
     return render_template('blog.html', posts=blog_posts)
 
-
-
 if __name__ == '__main__':
-    db.create_all()
-    app.run(debug=True)
+    pass  # Do not run the development server in production
