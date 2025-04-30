@@ -17,3 +17,4 @@ python-dotenv
 gunicorn
 mysql-connector-python
 pymysql
+email_validator
