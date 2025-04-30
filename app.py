@@ -23,6 +23,7 @@ import psutil
 import threading
 from flask_caching import Cache
 import requests
+import tensorflow as tf
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -135,14 +136,13 @@ process = psutil.Process(os.getpid())
 mem_before = process.memory_info().rss / 1024 / 1024
 print(f"Memory before loading model: {mem_before:.2f} MB")
 
-interpreter = tflite.Interpreter(model_path='desnet2.tflite')
+interpreter = tflite.Interpreter(model_path='desnet2_optimized.tflite')
 interpreter.allocate_tensors()
 print("TensorFlow Lite model loaded successfully")
 
 mem_after = process.memory_info().rss / 1024 / 1024
 print(f"Memory after loading model: {mem_after:.2f} MB")
 print(f"Memory increase: {mem_after - mem_before:.2f} MB")
-
 
 classes = ['American Bollworm on Cotton', 'Anthracnose on Cotton', 'Aphids', 'Army worm', 'Carpetweeds', 'Crabgrass', 'Eclipta',
 'Flag Smut', 'Goosegrass', 'Healthy', 'Leaf Curl', 'Leaf smut', 'Morningglory', 'Mosaic sugarcane', 'Nutsedge', 'PalmerAmaranth',
