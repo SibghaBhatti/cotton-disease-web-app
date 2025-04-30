@@ -282,10 +282,24 @@ def dashboard():
     return render_template('dashboard.html', username=current_user.username)
 
 
+import threading
+
+def run_prediction(file_path, model, threshold=0.045):
+    print("Starting prediction in thread...")
+    start_time = time.time()
+    preds = predict_disease(file_path, model, threshold)
+    print(f"Prediction completed in thread (took {time.time() - start_time:.2f} seconds)")
+    return preds
+
 @app.route('/disease_detection', methods=['GET', 'POST'])
 @login_required
 def disease_detection():
     if request.method == 'POST':
+        print("Starting disease detection...")
+        process = psutil.Process(os.getpid())
+        mem_before = process.memory_info().rss / 1024 / 1024  # Memory in MB
+        print(f"Memory before processing: {mem_before:.2f} MB")
+
         # Get the file from post request
         if 'file' not in request.files:
             flash('No file part in the request', 'danger')
@@ -299,23 +313,47 @@ def disease_detection():
             basepath = os.path.dirname(__file__)
             file_path = os.path.join(basepath, 'static/uploads', secure_filename(f.filename))
             try:
+                print("Saving file...")
+                start_time = time.time()
                 f.save(file_path)
-                print(f"File saved successfully: {file_path}")
+                print(f"File saved successfully: {file_path} (took {time.time() - start_time:.2f} seconds)")
             except Exception as e:
                 print(f"Error saving file: {e}")
                 flash('Error saving file', 'danger')
                 return redirect(request.url)
 
-            # Make prediction
-            preds = predict_disease(file_path, model, 0.045)
-            result = preds
+            # Run prediction in a separate thread
+            result = [None]  # Use a list to store the result (mutable)
+            exception = [None]  # Use a list to store any exception
+            def prediction_wrapper():
+                try:
+                    result[0] = run_prediction(file_path, model, 0.045)
+                except Exception as e:
+                    exception[0] = e
+
+            prediction_thread = threading.Thread(target=prediction_wrapper)
+            prediction_thread.start()
+            prediction_thread.join(timeout=60)  # Wait up to 60 seconds for prediction
+
+            if prediction_thread.is_alive():
+                print("Prediction timed out after 60 seconds")
+                flash('Prediction timed out', 'danger')
+                return redirect(request.url)
+            if exception[0]:
+                print(f"Prediction error: {exception[0]}")
+                flash('Error during prediction', 'danger')
+                return redirect(request.url)
+
+            mem_after = process.memory_info().rss / 1024 / 1024  # Memory in MB
+            print(f"Memory after processing: {mem_after:.2f} MB")
+            print(f"Memory increase: {mem_after - mem_before:.2f} MB")
+
             img_url = url_for('static', filename=f'uploads/{secure_filename(f.filename)}')
-            return render_template('disease_detection.html', result=result, img_url=img_url)
+            return render_template('disease_detection.html', result=result[0], img_url=img_url)
         else:
             flash('Invalid file type. Allowed types: png, jpg, jpeg', 'danger')
             return redirect(request.url)
     return render_template('disease_detection.html')
-
 @app.route('/weather_forecasting', methods=['GET', 'POST'])
 @login_required
 def weather_forecasting():
@@ -353,8 +391,22 @@ def chatbot():
 @app.route('/get_response', methods=['POST'])
 @login_required
 def get_response():
+    print("Starting chatbot response generation...")
+    process = psutil.Process(os.getpid())
+    mem_before = process.memory_info().rss / 1024 / 1024  # Memory in MB
+    print(f"Memory before API call: {mem_before:.2f} MB")
+
     user_input = request.form['user_input']
+    print(f"User input: {user_input}")
+
+    start_time = time.time()
     response = generate_response(user_input)
+    print(f"Chatbot response: {response} (took {time.time() - start_time:.2f} seconds)")
+
+    mem_after = process.memory_info().rss / 1024 / 1024  # Memory in MB
+    print(f"Memory after API call: {mem_after:.2f} MB")
+    print(f"Memory increase: {mem_after - mem_before:.2f} MB")
+
     return jsonify(response=response)
 
 def generate_response(user_input):
