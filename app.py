@@ -51,6 +51,13 @@ if os.path.exists(ca_file_path):
 else:
     print("CA file not found!")
 
+uploads_dir = os.path.join(os.path.dirname(__file__), app.config['UPLOAD_FOLDER'])
+if not os.path.exists(uploads_dir):
+    os.makedirs(uploads_dir)
+    print(f"Created uploads directory: {uploads_dir}")
+else:
+    print(f"Uploads directory already exists: {uploads_dir}")
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 mail = Mail(app)
