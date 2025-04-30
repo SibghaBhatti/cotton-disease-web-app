@@ -16,3 +16,4 @@ groq
 python-dotenv
 gunicorn
 mysql-connector-python
+pymysql
