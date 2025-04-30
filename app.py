@@ -24,6 +24,8 @@ import tempfile
 from os import environ
 from groq import Groq
 import time
+import psutil
+import threading
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -281,8 +283,6 @@ def logout():
 def dashboard():
     return render_template('dashboard.html', username=current_user.username)
 
-
-import threading
 
 def run_prediction(file_path, model, threshold=0.045):
     print("Starting prediction in thread...")
