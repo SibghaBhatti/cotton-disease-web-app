@@ -139,6 +139,35 @@
       footer a:hover {
         text-decoration: underline;
       }
+      @media (max-width: 768px) {
+  .seed-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .seed {
+    width: 90%;
+    margin: 10px 0;
+  }
+
+  .seed h2 {
+    font-size: 1.3em;
+  }
+
+  .seed p {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .seed h2 {
+    font-size: 1.1em;
+  }
+
+  .seed p {
+    font-size: 0.85em;
+  }
+}
     </style>
   </head>
   <body>
