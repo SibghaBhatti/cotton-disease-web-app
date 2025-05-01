@@ -128,6 +128,55 @@
             left: 0;
             z-index: 1000;
         }
+        @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .signup_nav {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    position: static;
+    padding: 10px;
+  }
+
+  .signup_nav a {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 120px;
+    margin: 0 auto;
+  }
+
+  .signup_heading {
+    min-height: calc(100vh - 120px);
+  }
+
+  .signup_heading h1 {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 100px;
+  }
+
+  .signup_heading h1 {
+    font-size: 1.5em;
+  }
+
+  .signup_nav a {
+    font-size: 12px;
+  }
+}
     </style>
 </head>
 <body>
