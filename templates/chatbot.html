@@ -197,6 +197,42 @@
 
       footer a:hover {
         text-decoration: underline;
+
+        @media (max-width: 768px) {
+  .chat-container {
+    max-width: 100%;
+  }
+
+  .chat-box {
+    height: 300px;
+  }
+
+  .chat-input {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .chat-button {
+    width: 100%;
+  }
+
+  .chat-message {
+    max-width: 90%;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-box {
+    height: 250px;
+  }
+
+  .chat-input,
+  .chat-button {
+    font-size: 0.85em;
+  }
+}
       }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
