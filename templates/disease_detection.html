@@ -212,6 +212,49 @@
       footer a:hover {
         text-decoration: underline;
       }
+      @media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  form input[type="file"],
+  form button {
+    font-size: 0.9em;
+  }
+
+  .image {
+    max-width: 100%;
+  }
+
+  .result-container {
+    padding: 15px;
+  }
+
+  .result-container h2 {
+    font-size: 1.3em;
+  }
+
+  .result-container p,
+  .result-container ul li {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  form input[type="file"],
+  form button {
+    font-size: 0.85em;
+  }
+
+  .result-container h2 {
+    font-size: 1.1em;
+  }
+
+  .result-container p,
+  .result-container ul li {
+    font-size: 0.85em;
+  }
+}
     </style>
   </head>
   <body>
