@@ -411,14 +411,18 @@ def generate_response(user_input):
         farming_keywords = [
             'farm', 'farming', 'agriculture', 'crop', 'cotton', 'soil', 'irrigation',
             'pesticide', 'fertilizer', 'harvest', 'planting', 'seed', 'yield',
-            'pest', 'disease', 'weather', 'cultivation', 'tillage', 'sowing', 'cottons'
+            'pest', 'disease', 'weather', 'cultivation', 'tillage', 'sowing', 'cottons', 'Hi', 'Hello', 'farmer'
         ]
         input_lower = user_input.lower()
+        print(f"Checking input for relevance: {input_lower}")
         is_relevant = any(keyword in input_lower for keyword in farming_keywords)
+        print(f"Input relevance check result: {is_relevant}")
 
         if not is_relevant:
+            print("Input is not relevant, returning off-topic message")
             return "Sorry, I can only assist with questions related to farming and cotton crops. Please ask about these topics."
 
+        print("Input is relevant, proceeding with API call")
         os.environ['GROQ_API_KEY'] = environ.get('GROQ_API')
         groq_client = Groq()
 
@@ -436,8 +440,10 @@ def generate_response(user_input):
             timeout=10
         )
         response = chat_completion.choices[0].message.content
+        print(f"API response: {response}")
         return response
     except Exception as e:
+        print(f"Error in generate_response: {str(e)}")
         return f"Error: {str(e)}"
         
 class FertilizerForm1(FlaskForm):
