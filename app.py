@@ -407,11 +407,23 @@ def get_response():
 
 def generate_response(user_input):
     try:
+        # Check if input is related to farming or cotton crops
+        farming_keywords = [
+            'farm', 'farming', 'agriculture', 'crop', 'cotton', 'soil', 'irrigation',
+            'pesticide', 'fertilizer', 'harvest', 'planting', 'seed', 'yield',
+            'pest', 'disease', 'weather', 'cultivation', 'tillage', 'sowing', 'cottons'
+        ]
+        input_lower = user_input.lower()
+        is_relevant = any(keyword in input_lower for keyword in farming_keywords)
+
+        if not is_relevant:
+            return "Sorry, I can only assist with questions related to farming and cotton crops. Please ask about these topics."
+
         os.environ['GROQ_API_KEY'] = environ.get('GROQ_API')
         groq_client = Groq()
 
         messages = [
-            {"role": "system", "content": "You are a helpful assistant with expertise in farming and crop management."},
+            {"role": "system", "content": "You are a helpful assistant with expertise in farming and cotton crop management. Only respond to queries related to farming and cotton crops. For any other topic, politely decline to answer."},
             {"role": "user", "content": user_input}
         ]
 
@@ -427,7 +439,7 @@ def generate_response(user_input):
         return response
     except Exception as e:
         return f"Error: {str(e)}"
-
+        
 class FertilizerForm1(FlaskForm):
     area = DecimalField('Area (hectares)', validators=[DataRequired(), NumberRange(min=0.1)], places=2)
     nitrogen = DecimalField('Nitrogen (kg/ha)', validators=[DataRequired(), NumberRange(min=0)], places=2)
