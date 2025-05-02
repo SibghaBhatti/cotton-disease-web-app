@@ -407,32 +407,11 @@ def get_response():
 
 def generate_response(user_input):
     try:
-        # Normalize input for better caching and matching
-        input_normalized = user_input.lower().strip()
-        print(f"Normalized input: {input_normalized}")
-
-        # Check if input is related to farming or cotton crops
-        farming_keywords = [
-            'farm', 'farming', 'agriculture', 'crop', 'cotton', 'soil', 'irrigation',
-            'pesticide', 'fertilizer', 'harvest', 'planting', 'seed', 'yield',
-            'pest', 'disease', 'weather', 'cultivation', 'tillage', 'sowing'
-        ]
-        # Split input into words for more accurate matching
-        input_words = input_normalized.split()
-        print(f"Input words: {input_words}")
-        is_relevance = any(keyword in word for word in input_words for keyword in farming_keywords)
-        print(f"Input relevance check result: {is_relevance}")
-
-        if not is_relevance:
-            print("Input is not relevant, returning off-topic message")
-            return "Sorry, I can only assist with questions related to farming and cotton crops. Please ask about these topics."
-
-        print("Input is relevant, proceeding with API call")
         os.environ['GROQ_API_KEY'] = environ.get('GROQ_API')
         groq_client = Groq()
 
         messages = [
-            {"role": "system", "content": "You are a helpful assistant with expertise in farming and cotton crop management. Only respond to queries related to farming and cotton crops. For any other topic, politely decline to answer."},
+            {"role": "system", "content": "You are a helpful assistant with expertise in farming and crop management."},
             {"role": "user", "content": user_input}
         ]
 
@@ -440,15 +419,13 @@ def generate_response(user_input):
             messages=messages,
             model="llama3-8b-8192",  # Use a lighter model
             temperature=0.1,
-            max_tokens=100,  # Reduced for faster response
+            max_tokens=200,
             stream=False,
             timeout=10
         )
         response = chat_completion.choices[0].message.content
-        print(f"API response: {response}")
         return response
     except Exception as e:
-        print(f"Error in generate_response: {str(e)}")
         return f"Error: {str(e)}"
         
 class FertilizerForm1(FlaskForm):
