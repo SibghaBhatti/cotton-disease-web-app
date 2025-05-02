@@ -407,18 +407,23 @@ def get_response():
 
 def generate_response(user_input):
     try:
+        # Normalize input for better caching and matching
+        input_normalized = user_input.lower().strip()
+        print(f"Normalized input: {input_normalized}")
+
         # Check if input is related to farming or cotton crops
         farming_keywords = [
             'farm', 'farming', 'agriculture', 'crop', 'cotton', 'soil', 'irrigation',
             'pesticide', 'fertilizer', 'harvest', 'planting', 'seed', 'yield',
-            'pest', 'disease', 'weather', 'cultivation', 'tillage', 'sowing', 'cottons', 'Hi', 'Hello', 'farmer'
+            'pest', 'disease', 'weather', 'cultivation', 'tillage', 'sowing'
         ]
-        input_lower = user_input.lower()
-        print(f"Checking input for relevance: {input_lower}")
-        is_relevant = any(keyword in input_lower for keyword in farming_keywords)
-        print(f"Input relevance check result: {is_relevant}")
+        # Split input into words for more accurate matching
+        input_words = input_normalized.split()
+        print(f"Input words: {input_words}")
+        is_relevance = any(keyword in word for word in input_words for keyword in farming_keywords)
+        print(f"Input relevance check result: {is_relevance}")
 
-        if not is_relevant:
+        if not is_relevance:
             print("Input is not relevant, returning off-topic message")
             return "Sorry, I can only assist with questions related to farming and cotton crops. Please ask about these topics."
 
@@ -435,7 +440,7 @@ def generate_response(user_input):
             messages=messages,
             model="llama3-8b-8192",  # Use a lighter model
             temperature=0.1,
-            max_tokens=200,
+            max_tokens=100,  # Reduced for faster response
             stream=False,
             timeout=10
         )
