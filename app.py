@@ -1,6 +1,7 @@
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = ''  # Disable GPU usage
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Disable oneDNN optimizations
+import uuid
 import tensorflow.lite as tflite
 import numpy as np
 import matplotlib.pyplot as plt
