@@ -232,7 +232,7 @@ def forgot_password():
         user = User.query.filter_by(email=email).first()
         if user:
             token = s.dumps(email, salt='email-confirm')
-            msg = Message('Password Reset Request', sender='your_email@gmail.com', recipients=[email])
+            msg = Message('Password Reset Request', sender='codcanva@gmail.com', recipients=[email])
             link = url_for('reset_password', token=token, _external=True)
             msg.body = f'Your link is {link}'
             mail.send(msg)
