@@ -381,7 +381,6 @@ def chatbot():
 
 @app.route('/get_response', methods=['POST'])
 @login_required
-@cache.memoize(timeout=300)
 def get_response():
     print("Starting chatbot response generation...")
     process = psutil.Process(os.getpid())
@@ -411,17 +410,18 @@ def generate_response(user_input):
         groq_client = Groq()
 
         messages = [
-            {"role": "system", "content": "You are a helpful assistant with expertise in farming and crop management."},
+            {"role": "system", "content": "You are a specialized assistant with expertise in cotton farming. Only provide responses related to cotton farming and crop management. If the user asks about other topics, politely redirect them to cotton farming or say you can only assist with cotton-related questions."},
             {"role": "user", "content": user_input}
         ]
 
         chat_completion = groq_client.chat.completions.create(
             messages=messages,
-            model="llama3-8b-8192",  # Use a lighter model
+            model="llama3-8b-8192",
             temperature=0.1,
             max_tokens=200,
             stream=False,
-            timeout=10
+            timeout=10,
+            extra_headers={"X-Request-ID": str(uuid.uuid4())}
         )
         response = chat_completion.choices[0].message.content
         return response
