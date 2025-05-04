@@ -4,23 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cotton Industry News</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
     <style>
-      /* General Styles */
+      /* Global Reset */
+      * {
+        box-sizing: border-box;
+      }
 
       html,
       body {
         max-width: 100%;
         overflow-x: hidden;
+        margin: 0;
+        padding: 0;
       }
+
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(135deg, #e0f7fa, #ffffff);
-        margin: 0;
-        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -35,34 +35,58 @@
         text-align: center;
       }
 
-     /* Adjust the anchor tag styling */
-a {
-  color: #00796b;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s; /* Only transition the color, remove padding and background */
-}
+      a {
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
 
-/* Remove padding and background changes on hover to prevent layout shifts */
-a:hover {
-  color: #004d40; /* Only change the text color on hover */
-}
+      a:hover {
+        color: #004d40;
+      }
 
-/* Ensure the h2 and a inside it are properly constrained */
-ul li h2 {
-  margin: 0 0 10px;
-  font-size: 1.5em;
-  color: #00796b;
-}
+      /* Navigation Styles */
+      nav {
+        background-color: #00796b;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+      }
 
-ul li h2 a {
-  display: inline-block; /* Prevents inline wrapping issues */
-}
+      nav .logo {
+        display: flex;
+        align-items: center;
+      }
 
-/* Keep the list item hover effect for the shadow */
-ul li:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
+      nav .logo img {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+      }
+
+      nav .links {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      nav .links a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      nav .links a:hover {
+        background-color: #004d40;
+      }
 
       /* Container */
       .container {
@@ -90,6 +114,19 @@ ul li:hover {
         transition: box-shadow 0.3s;
       }
 
+      ul li:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      ul li h2 {
+        margin: 0 0 10px;
+        font-size: 1.5em;
+        color: #00796b;
+      }
+
+      ul li h2 a {
+        display: inline-block;
+      }
 
       ul li p {
         margin: 5px 0;
@@ -98,61 +135,6 @@ ul li:hover {
 
       ul li small {
         color: #666;
-      }
-
-      /* Flash Message Styles */
-      .flash-message {
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        color: white;
-        font-weight: bold;
-      }
-
-      .flash-message.success {
-        background-color: #4caf50;
-      }
-
-      .flash-message.error {
-        background-color: #f44336;
-      }
-      /* Navigation Styles */
-      nav {
-        background-color: #00796b;
-        color: white;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      nav .logo {
-        display: flex;
-        align-items: center;
-      }
-
-      nav .logo img {
-        width: 150px;
-        height: auto;
-        margin-right: 20px;
-      }
-
-      nav .links {
-        display: flex;
-        gap: 10px;
-      }
-
-      nav .links a {
-        color: white;
-        text-decoration: none;
-        font-size: 13px;
-      }
-
-      nav .links a:hover {
-        background-color: #004d40;
       }
 
       /* Language Selection */
@@ -197,128 +179,112 @@ ul li:hover {
       footer a:hover {
         text-decoration: underline;
       }
+
+      /* Responsive Design */
       @media (max-width: 768px) {
-  ul li {
-    margin-bottom: 10px;
-    padding: 15px;
-  }
-  ul li p {
-    font-size: 0.9em;
-  }
+        body {
+          padding: 10px;
+        }
 
-@media (max-width: 480px) {
-  ul li h2 {
-    font-size: 1.1em;
-  }
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px;
+        }
 
-  ul li p,
-  ul li small {
-    font-size: 0.85em;
-  }
-}
-      @media (max-width: 768px) {
-    body {
-      padding: 10px;
-    }
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px;
-    }
-    nav .logo img {
-      width: 120px;
-    }
-    nav .links {
-      flex-direction: column;
-      width: 100%;
-      gap: 5px;
-    }
-    nav .links a {
-      display: block;
-      padding: 10px;
-      font-size: 14px;
-      width: 100%;
-      text-align: center;
-    }
-    .container,
-    .main-content {
-      width: 95%;
-      padding: 20px;
-      margin: 10px auto;
-    }
-    h1 {
-      font-size: 1.8em;
-    }
-    p,
-    li,
-    label {
-      font-size: 1em;
-    }
-    .language-selection {
-      top: 80px;
-      right: 5px;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .language-selection a {
-      padding: 8px 12px;
-      font-size: 14px;
-    }
-    footer {
-      padding: 15px;
-      font-size: 0.9em;
-    }
-    footer a {
-      margin: 5px;
-      font-size: 0.9em;
-    }
-    form input[type="text"],
-    form input[type="number"],
-    form input[type="email"],
-    form input[type="password"],
-    form select,
-    form button,
-    form input[type="submit"] {
-      font-size: 0.9em;
-      padding: 8px;
-    }
-  }
+        nav .logo img {
+          width: 120px;
+        }
 
-  @media (max-width: 480px) {
-    nav .logo img {
-      width: 100px;
-    }
-    nav .links a {
-      font-size: 12px;
-      padding: 8px;
-    }
-    .container,
-    .main-content {
-      padding: 15px;
-    }
-    h1 {
-      font-size: 1.5em;
-    }
-    p,
-    li,
-    label {
-      font-size: 0.9em;
-    }
-    .language-selection a {
-      padding: 6px 10px;
-      font-size: 12px;
-    }
-    form input[type="text"],
-    form input[type="number"],
-    form input[type="email"],
-    form input[type="password"],
-    form select,
-    form button,
-    form input[type="submit"] {
-      font-size: 0.85em;
-      padding: 7px;
-    }
-  }
+        nav .links {
+          flex-direction: column;
+          width: 100%;
+          gap: 5px;
+          margin-top: 10px;
+        }
+
+        nav .links a {
+          display: block;
+          padding: 10px;
+          font-size: 14px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .container {
+          width: 95%;
+          padding: 20px;
+          margin: 10px auto;
+        }
+
+        h1 {
+          font-size: 1.8em;
+        }
+
+        ul li {
+          margin-bottom: 10px;
+          padding: 15px;
+        }
+
+        ul li h2 {
+          font-size: 1.3em;
+        }
+
+        ul li p,
+        ul li small {
+          font-size: 0.9em;
+        }
+
+        .language-selection {
+          top: 80px;
+          right: 5px;
+          flex-direction: column;
+          gap: 5px;
+        }
+
+        .language-selection a {
+          padding: 8px 12px;
+          font-size: 14px;
+        }
+
+        footer {
+          padding: 15px;
+          font-size: 0.9em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav .logo img {
+          width: 100px;
+        }
+
+        nav .links a {
+          font-size: 12px;
+          padding: 8px;
+        }
+
+        .container {
+          padding: 15px;
+        }
+
+        h1 {
+          font-size: 1.5em;
+        }
+
+        ul li h2 {
+          font-size: 1.1em;
+        }
+
+        ul li p,
+        ul li small {
+          font-size: 0.85em;
+        }
+
+        .language-selection a {
+          padding: 6px 10px;
+          font-size: 12px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -327,28 +293,24 @@ ul li:hover {
         <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
       </div>
       <div class="links">
-        <a href="{{ url_for('disease_detection') }}"
-          >{{ _('Disease Detection') }}</a
-        >
-        <a href="{{ url_for('weather_forecasting') }}"
-          >{{ _('Weather Forecasting') }}</a
-        >
+        <a href="{{ url_for('disease_detection') }}">{{ _('Disease Detection') }}</a>
+        <a href="{{ url_for('weather_forecasting') }}">{{ _('Weather Forecasting') }}</a>
         <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
-        <a href="{{ url_for('n_fertilizer') }}"
-          >{{ _('Fertilizer Calculator Simple') }}</a
-        >
-        <a href="{{ url_for('fertilizer_calculator') }}"
-          >{{ _('Fertilizer Calculator') }}</a
-        >
+        <a href="{{ url_for('n_fertilizer') }}">{{ _('Fertilizer Calculator Simple') }}</a>
+        <a href="{{ url_for('fertilizer_calculator') }}">{{ _('Fertilizer Calculator') }}</a>
         <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
-        <a href="{{ url_for('cotton_seeds') }}"
-          >{{ _('Best Cotton Seeds in Pakistan') }}</a
-        >
+        <a href="{{ url_for('cotton_seeds') }}">{{ _('Best Cotton Seeds in Pakistan') }}</a>
         <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
         <a href="{{ url_for('news') }}">{{ _('News') }}</a>
         <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
       </div>
     </nav>
+
+    <div class="language-selection">
+      <a href="{{ url_for('set_language', language='en') }}">English</a>
+      <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
+    </div>
+
     <div class="container">
       <h1>Cotton Industry News</h1>
       {% if articles %}
@@ -361,8 +323,7 @@ ul li:hover {
           <p>{{ article.description }}</p>
           <p>
             <small>
-              Source: {{ article.source.name }} | Published: {{
-              article.publishedAt }}
+              Source: {{ article.source.name }} | Published: {{ article.publishedAt }}
             </small>
           </p>
         </li>
@@ -373,14 +334,9 @@ ul li:hover {
       {% endif %}
       <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
     </div>
+
     <footer>
-      <!-- <a href="#">Privacy Policy</a>
-      <a href="#">About Us</a>
-      <a href="#">Contact Us</a>
-      <a href="#">Disclaimer</a>
-      <a href="#">DMCA Policy</a>
-      <a href="#">Sitemap</a> -->
-      <p>&copy; 2025 Expert Cotton Prediction. All Rights Reserved.</p>
+      <p>© 2025 Expert Cotton Prediction. All Rights Reserved.</p>
     </footer>
   </body>
 </html>
