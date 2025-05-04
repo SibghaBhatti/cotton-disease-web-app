@@ -5,62 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ _('Blog') }}</title>
     <style>
+      /* Global Reset */
+      * {
+        box-sizing: border-box;
+      }
+
       html,
       body {
         max-width: 100%;
         overflow-x: hidden;
+        margin: 0;
+        padding: 0;
       }
-      div#post-list {
-    width: 195%;
-}
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+
       a {
         color: #00796b;
         text-decoration: none;
         font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background-color 0.3s, color 0.3s;
+        transition: color 0.3s;
       }
 
       a:hover {
-        background-color: #004d40;
-        color: #ffffff;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f5f5f5;
-      }
-      .heading {
-        text-align: center;
-        padding: 20px;
-      }
-      .blog-posts {
-        padding: 20px;
-        text-align: center;
-      }
-      .title {
-        color: #00796b;
-        font-size: 2.5em;
-      }
-      .post-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .post {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin: 10px;
-        width: 300px;
-        text-align: left;
-      }
-      .post h2 {
         color: #004d40;
       }
+
       /* Navigation Styles */
       nav {
         background-color: #00796b;
@@ -71,7 +44,6 @@
         align-items: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         width: 100%;
-        box-sizing: border-box;
       }
 
       nav .logo {
@@ -94,6 +66,7 @@
         color: white;
         text-decoration: none;
         font-size: 13px;
+        padding: 10px;
       }
 
       nav .links a:hover {
@@ -123,6 +96,55 @@
         color: #ffffff;
       }
 
+      /* Blog Container */
+      .blog-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+
+      #post-list {
+        width: 100%;
+      }
+
+      .post {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .post h2 {
+        color: #004d40;
+        margin-top: 0;
+        font-size: 1.8em;
+        text-align: left;
+      }
+
+      .post p {
+        line-height: 1.6;
+        color: #333;
+        text-align: justify;
+      }
+
+      #load-more {
+        display: block;
+        width: 150px;
+        margin: 20px auto;
+        background-color: #00796b;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      #load-more:hover {
+        background-color: #004d40;
+      }
+
       /* Footer */
       footer {
         background-color: #00796b;
@@ -142,194 +164,106 @@
       footer a:hover {
         text-decoration: underline;
       }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-    .blog-container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 0 10px;
-    }
-    .post {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 20px;
-      width: 50%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .post h2 {
-      color: #004d40;
-      margin-top: 0;
-    }
-    .post p {
-      line-height: 1.6;
-    }
-    #load-more {
-      display: block;
-      width: 150px;
-      margin: 20px auto;
-      background-color: #00796b;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    #load-more:hover {
-      background-color: #004d40;
-    }
-      /* Fix post-list width and add responsive styles */
-#post-list {
-  width: 100% !important; /* Override the 195% width */
-}
 
-@media (max-width: 768px) {
-  .blog-container {
-    padding: 15px;
-  }
-
-  .post {
-    width: 100%;
-    margin: 10px 0;
-    padding: 15px;
-  }
-
-  .post h2 {
-    font-size: 1.3em;
-  }
-
-  .post p {
-    font-size: 0.9em;
-  }
-
-  #load-more {
-    width: 120px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .post h2 {
-    font-size: 1.1em;
-  }
-
-  .post p {
-    font-size: 0.85em;
-  }
-
-  #load-more {
-    width: 100px;
-    font-size: 12px;
-  }
-}
+      /* Responsive Design */
       @media (max-width: 768px) {
-    body {
-      padding: 10px;
-    }
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px;
-    }
-    nav .logo img {
-      width: 120px;
-    }
-    nav .links {
-      flex-direction: column;
-      width: 100%;
-      gap: 5px;
-    }
-    nav .links a {
-      display: block;
-      padding: 10px;
-      font-size: 14px;
-      width: 100%;
-      text-align: center;
-    }
-    .container,
-    .main-content {
-      width: 95%;
-      padding: 20px;
-      margin: 10px auto;
-    }
-    h1 {
-      font-size: 1.8em;
-    }
-    p,
-    li,
-    label {
-      font-size: 1em;
-    }
-    .language-selection {
-      top: 80px;
-      right: 5px;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .language-selection a {
-      padding: 8px 12px;
-      font-size: 14px;
-    }
-    footer {
-      padding: 15px;
-      font-size: 0.9em;
-    }
-    footer a {
-      margin: 5px;
-      font-size: 0.9em;
-    }
-    form input[type="text"],
-    form input[type="number"],
-    form input[type="email"],
-    form input[type="password"],
-    form select,
-    form button,
-    form input[type="submit"] {
-      font-size: 0.9em;
-      padding: 8px;
-    }
-  }
+        body {
+          padding: 10px;
+        }
 
-  @media (max-width: 480px) {
-    nav .logo img {
-      width: 100px;
-    }
-    nav .links a {
-      font-size: 12px;
-      padding: 8px;
-    }
-    .container,
-    .main-content {
-      padding: 15px;
-    }
-    h1 {
-      font-size: 1.5em;
-    }
-    p,
-    li,
-    label {
-      font-size: 0.9em;
-    }
-    .language-selection a {
-      padding: 6px 10px;
-      font-size: 12px;
-    }
-    form input[type="text"],
-    form input[type="number"],
-    form input[type="email"],
-    form input[type="password"],
-    form select,
-    form button,
-    form input[type="submit"] {
-      font-size: 0.85em;
-      padding: 7px;
-    }
-  }
+        .blog-container {
+          max-width: 100%;
+          padding: 0 15px;
+        }
+
+        .post {
+          padding: 15px;
+          margin-bottom: 15px;
+        }
+
+        .post h2 {
+          font-size: 1.5em;
+        }
+
+        .post p {
+          font-size: 0.95em;
+        }
+
+        #load-more {
+          width: 120px;
+          font-size: 14px;
+        }
+
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px;
+        }
+
+        nav .logo img {
+          width: 120px;
+        }
+
+        nav .links {
+          flex-direction: column;
+          width: 100%;
+          gap: 5px;
+        }
+
+        nav .links a {
+          display: block;
+          padding: 10px;
+          font-size: 14px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .language-selection {
+          top: 80px;
+          right: 5px;
+          flex-direction: column;
+          gap: 5px;
+        }
+
+        .language-selection a {
+          padding: 8px 12px;
+          font-size: 14px;
+        }
+
+        footer {
+          padding: 15px;
+          font-size: 0.9em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .post h2 {
+          font-size: 1.3em;
+        }
+
+        .post p {
+          font-size: 0.9em;
+        }
+
+        #load-more {
+          width: 100px;
+          font-size: 12px;
+        }
+
+        nav .logo img {
+          width: 100px;
+        }
+
+        nav .links a {
+          font-size: 12px;
+          padding: 8px;
+        }
+
+        .language-selection a {
+          padding: 6px 10px;
+          font-size: 12px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -338,23 +272,13 @@
         <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
       </div>
       <div class="links">
-        <a href="{{ url_for('disease_detection') }}"
-          >{{ _('Disease Detection') }}</a
-        >
-        <a href="{{ url_for('weather_forecasting') }}"
-          >{{ _('Weather Forecasting') }}</a
-        >
+        <a href="{{ url_for('disease_detection') }}">{{ _('Disease Detection') }}</a>
+        <a href="{{ url_for('weather_forecasting') }}">{{ _('Weather Forecasting') }}</a>
         <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
-        <a href="{{ url_for('n_fertilizer') }}"
-          >{{ _('Fertilizer Calculator Simple') }}</a
-        >
-        <a href="{{ url_for('fertilizer_calculator') }}"
-          >{{ _('Fertilizer Calculator') }}</a
-        >
+        <a href="{{ url_for('n_fertilizer') }}">{{ _('Fertilizer Calculator Simple') }}</a>
+        <a href="{{ url_for('fertilizer_calculator') }}">{{ _('Fertilizer Calculator') }}</a>
         <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
-        <a href="{{ url_for('cotton_seeds') }}"
-          >{{ _('Best Cotton Seeds in Pakistan') }}</a
-        >
+        <a href="{{ url_for('cotton_seeds') }}">{{ _('Best Cotton Seeds in Pakistan') }}</a>
         <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
         <a href="{{ url_for('news') }}">{{ _('News') }}</a>
         <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
@@ -365,74 +289,55 @@
       <a href="{{ url_for('set_language', language='en') }}">English</a>
       <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
     </div>
-    <!-- <section class="blog-posts">
-      <h1 class="title">{{ _('Latest Articles') }}</h1>
-      <div class="post-list">
-        {% for post in posts %}
-        <div class="post">
-          <h2>{{ _(post.title) }}</h2>
-          <p>{{ _(post.content) }}</p>
-        </div>
-        {% endfor %}
+
+    <div class="blog-container">
+      <div id="post-list">
+        <!-- Blog posts will appear here -->
       </div>
-    </section> -->
-    
-  <div class="blog-container">
-    <div id="post-list">
-      <!-- Blog posts will appear here -->
+      <button id="load-more">Load More</button>
     </div>
-    <button id="load-more">Load More</button>
-  </div>
 
-  <script>
-    // Three static blog posts with long paragraphs (8-10 lines approx.)
-    const blogPosts = [
-      {
-        title: "The Importance of Sustainable Farming",
-        content: "Sustainable farming practices are essential for preserving our environment and ensuring long-term food security. By incorporating organic methods, crop rotation, and reduced chemical usage, farmers can maintain soil health and reduce water consumption. This approach not only benefits the planet but also improves the quality of the produce. Additionally, sustainable farming encourages biodiversity and reduces the risk of pest infestations. With growing awareness about environmental issues, consumers are increasingly seeking sustainably grown food. Implementing these practices leads to improved profitability and a resilient agricultural ecosystem. The transition to sustainable methods, although gradual, promises a healthier future for both farmers and the planet."
-      },
-      {
-        title: "Innovative Techniques in Modern Agriculture",
-        content: "Modern agriculture is rapidly evolving with the integration of new technologies that enhance efficiency and productivity. Precision farming methods, drone surveillance, and automated irrigation systems are just a few examples transforming crop management. These innovations help monitor crop health, optimize resource usage, and significantly improve yields. Technology also empowers farmers to make data-driven decisions that minimize waste and environmental impact. As these techniques become more accessible, they pave the way for a more sustainable and profitable agricultural sector. The blend of traditional knowledge with modern innovation is setting new standards for efficiency in farming practices."
-      },
-      {
-        title: "Embracing Organic Methods for a Healthier Future",
-        content: "Organic farming is gaining popularity as more consumers look for chemical-free and nutritious food options. This approach relies on natural growth processes and avoids synthetic pesticides and fertilizers, thereby preserving soil quality and water purity. Organic methods promote biodiversity and support local ecosystems while delivering produce that is often richer in flavor and nutrients. Transitioning to organic practices can be challenging but offers long-term benefits for health and the environment. With increasing demand for organic products, farmers are motivated to adopt these sustainable practices, ensuring that both the land and its inhabitants thrive."
+    <script>
+      // Three static blog posts with long paragraphs (8-10 lines approx.)
+      const blogPosts = [
+        {
+          title: "The Importance of Sustainable Farming",
+          content: "Sustainable farming practices are essential for preserving our environment and ensuring long-term food security. By incorporating organic methods, crop rotation, and reduced chemical usage, farmers can maintain soil health and reduce water consumption. This approach not only benefits the planet but also improves the quality of the produce. Additionally, sustainable farming encourages biodiversity and reduces the risk of pest infestations. With growing awareness about environmental issues, consumers are increasingly seeking sustainably grown food. Implementing these practices leads to improved profitability and a resilient agricultural ecosystem. The transition to sustainable methods, although gradual, promises a healthier future for both farmers and the planet."
+        },
+        {
+          title: "Innovative Techniques in Modern Agriculture",
+          content: "Modern agriculture is rapidly evolving with the integration of new technologies that enhance efficiency and productivity. Precision farming methods, drone surveillance, and automated irrigation systems are just a few examples transforming crop management. These innovations help monitor crop health, optimize resource usage, and significantly improve yields. Technology also empowers farmers to make data-driven decisions that minimize waste and environmental impact. As these techniques become more accessible, they pave the way for a more sustainable and profitable agricultural sector. The blend of traditional knowledge with modern innovation is setting new standards for efficiency in farming practices."
+        },
+        {
+          title: "Embracing Organic Methods for a Healthier Future",
+          content: "Organic farming is gaining popularity as more consumers look for chemical-free and nutritious food options. This approach relies on natural growth processes and avoids synthetic pesticides and fertilizers, thereby preserving soil quality and water purity. Organic methods promote biodiversity and support local ecosystems while delivering produce that is often richer in flavor and nutrients. Transitioning to organic practices can be challenging but offers long-term benefits for health and the environment. With increasing demand for organic products, farmers are motivated to adopt these sustainable practices, ensuring that both the land and its inhabitants thrive."
+        }
+      ];
+
+      let currentIndex = 0;
+      const postsPerLoad = 1;
+
+      function loadPosts() {
+        const postList = document.getElementById('post-list');
+        for (let i = currentIndex; i < currentIndex + postsPerLoad && i < blogPosts.length; i++) {
+          const postDiv = document.createElement('div');
+          postDiv.className = 'post';
+          postDiv.innerHTML = `<h2>${blogPosts[i].title}</h2><p>${blogPosts[i].content}</p>`;
+          postList.appendChild(postDiv);
+        }
+        currentIndex += postsPerLoad;
+        if (currentIndex >= blogPosts.length) {
+          document.getElementById('load-more').style.display = 'none';
+        }
       }
-    ];
 
-    let currentIndex = 0; // Track how many posts have been loaded
-    const postsPerLoad = 1; // Load one post per click
+      loadPosts();
 
-    function loadPosts() {
-      const postList = document.getElementById('post-list');
-      for (let i = currentIndex; i < currentIndex + postsPerLoad && i < blogPosts.length; i++) {
-        const postDiv = document.createElement('div');
-        postDiv.className = 'post';
-        postDiv.innerHTML = `<h2>${blogPosts[i].title}</h2><p>${blogPosts[i].content}</p>`;
-        postList.appendChild(postDiv);
-      }
-      currentIndex += postsPerLoad;
-      if (currentIndex >= blogPosts.length) {
-        document.getElementById('load-more').style.display = 'none';
-      }
-    }
-
-    // Initially load the first post
-    loadPosts();
-
-    // Load more posts on button click
-    document.getElementById('load-more').addEventListener('click', loadPosts);
-  </script>
+      document.getElementById('load-more').addEventListener('click', loadPosts);
+    </script>
 
     <footer>
-      <!-- <a href="#">Privacy Policy</a>
-      <a href="#">About Us</a>
-      <a href="#">Contact Us</a>
-      <a href="#">Disclaimer</a>
-      <a href="#">DMCA Policy</a>
-      <a href="#">Sitemap</a> -->
-      <p>&copy; 2025 Expert Cotton Prediction. All Rights Reserved.</p>
+      <p>© 2025 Expert Cotton Prediction. All Rights Reserved.</p>
     </footer>
   </body>
 </html>
