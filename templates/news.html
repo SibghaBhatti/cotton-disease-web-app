@@ -35,19 +35,34 @@
         text-align: center;
       }
 
-      a {
-        color: #00796b;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background-color 0.3s, color 0.3s;
-      }
+     /* Adjust the anchor tag styling */
+a {
+  color: #00796b;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s; /* Only transition the color, remove padding and background */
+}
 
-      a:hover {
-        background-color: #004d40;
-        color: #ffffff;
-      }
+/* Remove padding and background changes on hover to prevent layout shifts */
+a:hover {
+  color: #004d40; /* Only change the text color on hover */
+}
+
+/* Ensure the h2 and a inside it are properly constrained */
+ul li h2 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: #00796b;
+}
+
+ul li h2 a {
+  display: inline-block; /* Prevents inline wrapping issues */
+}
+
+/* Keep the list item hover effect for the shadow */
+ul li:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
       /* Container */
       .container {
@@ -75,15 +90,6 @@
         transition: box-shadow 0.3s;
       }
 
-      ul li:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      }
-
-      ul li h2 {
-        margin: 0 0 10px;
-        font-size: 1.5em;
-        color: #00796b;
-      }
 
       ul li p {
         margin: 5px 0;
@@ -196,20 +202,9 @@
     margin-bottom: 10px;
     padding: 15px;
   }
-
-  ul li h2 {
-    font-size: 1.3em;
-  }
-
   ul li p {
     font-size: 0.9em;
   }
-
-  ul li:hover {
-    box-shadow: none;
-    transform: none;
-  }
-}
 
 @media (max-width: 480px) {
   ul li h2 {
