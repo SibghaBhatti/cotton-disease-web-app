@@ -28,7 +28,7 @@ import tensorflow as tf
 
 app = Flask(__name__)
 app.static_folder = 'static'
-app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = environ.get('SECRET_KEY', 'your_secret_key')  # Ensure a default for safety
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # Limit uploads to 1 MB
@@ -41,7 +41,6 @@ app.config['MAIL_USE_SSL'] = False
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 app.config['CACHE_TYPE'] = 'SimpleCache'  # Use simple in-memory cache
-app.secret_key = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQLALCHEMY_DATABASE_URI')
 print(f"SQLALCHEMY_DATABASE_URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
@@ -77,7 +76,7 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 mail = Mail(app)
-s = URLSafeTimedSerializer('your_secret_key')
+s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 cache = Cache(app)
 
 babel = Babel(app)
@@ -88,9 +87,17 @@ def get_locale():
 babel = Babel(app, locale_selector=get_locale)
 
 @app.route('/set_language/<language>')
+@login_required  # Ensure only logged-in users can change language
 def set_language(language):
+    # Preserve the user ID in the session to prevent logout
+    user_id = session.get('_user_id')
     session['lang'] = language
-    return redirect(request.referrer)
+    # Ensure the user ID is retained after session modification
+    if user_id:
+        session['_user_id'] = user_id
+    # Redirect to the referrer if available, otherwise to the dashboard
+    referrer = request.referrer if request.referrer else url_for('dashboard')
+    return redirect(referrer)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -466,7 +473,7 @@ class FertilizerForm(FlaskForm):
     potassium = FloatField('Potassium', validators=[DataRequired()])
     submit = SubmitField('Get Advice')
 
-@app.route('/fertilizer_calculator_1', methods=['GET', 'POST'])
+@app.route('/fertilizer_calculator', methods=['GET', 'POST'])
 @login_required
 def fertilizer_calculator():
     result = ''
