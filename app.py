@@ -543,13 +543,11 @@ def alerts():
 @login_required
 def news():
     api_key = "70181cc2861d4ffbb83a92f38b3f9662"
-    from_date = (datetime.utcnow() - timedelta(days=60)).strftime('%Y-%m-%d')
 
         # Add sorting and date range to fetch recent news
     url = (
         f"https://newsapi.org/v2/everything?"
         f"q=cotton-farming&"
-        f"from={from_date}&"
         f"sortBy=publishedAt&"
         f"apiKey={api_key}"
     )
