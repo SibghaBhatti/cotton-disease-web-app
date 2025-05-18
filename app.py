@@ -25,6 +25,7 @@ import threading
 from flask_caching import Cache
 import requests
 import tensorflow as tf
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -519,17 +520,17 @@ disease_alerts = [
     {
         "title": "Leaf Spot Disease Alert",
         "description": "Leaf Spot disease detected in cotton fields in the southern region. Immediate action required.",
-        "date": "2025-02-10"
+        "date": "2025-05-16"
     },
     {
         "title": "Bacterial Blight Outbreak",
         "description": "Bacterial Blight outbreak reported in several cotton farms. Farmers are advised to monitor their crops closely.",
-        "date": "2025-02-08"
+        "date": "2025-05-18"
     },
     {
         "title": "Fusarium Wilt Warning",
         "description": "Fusarium Wilt has been identified in the northern cotton-growing regions. Preventive measures recommended.",
-        "date": "2025-02-03"
+        "date": "2025-05-19"
     }
 ]
 
@@ -542,9 +543,25 @@ def alerts():
 @login_required
 def news():
     api_key = "70181cc2861d4ffbb83a92f38b3f9662"
-    url = f"https://newsapi.org/v2/everything?q=cotton-farming&apiKey={api_key}"
+    from_date = (datetime.utc - timedelta(days=7)).strftime('%Y-%m-%d')
 
-    response = requests.get(url)
+        # Add sorting and date range to fetch recent news
+    url = (
+        f"https://newsapi.org/v2/everything?"
+        f"q=cotton-farming&"
+        f"from={from_date}&"
+        f"sortBy=publishedAt&"
+        f"apiKey={api_key}"
+    )
+
+        # Add headers to prevent caching
+    headers = {
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache"
+    }
+
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # Raise an exception for bad status codes
     data = response.json()
 
     articles = []
