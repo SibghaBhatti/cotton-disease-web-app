@@ -544,15 +544,11 @@ def alerts():
 def news():
     api_key = "70181cc2861d4ffbb83a92f38b3f9662"
 
-        # Add sorting and date range to fetch recent news
-    url = (
-        f"https://newsapi.org/v2/everything?"
-        f"q=cotton-farming&"
-        f"sortBy=publishedAt&"
-        f"apiKey={api_key}"
-    )
+    # Add sorting and date range to fetch recent news
+    url = f"https://newsapi.org/v2/everything?q=cotton-farming&apiKey={api_key}"
 
-        # Add headers to prevent caching
+
+    # Add headers to prevent caching
     headers = {
         "Cache-Control": "no-cache",
         "Pragma": "no-cache"
