@@ -520,7 +520,7 @@ disease_alerts = [
     {
         "title": "Leaf Spot Disease Alert",
         "description": "Leaf Spot disease detected in cotton fields in the southern region. Immediate action required.",
-        "date": "2025-05-16"
+        "date": "2025-05-19"
     },
     {
         "title": "Bacterial Blight Outbreak",
@@ -530,7 +530,7 @@ disease_alerts = [
     {
         "title": "Fusarium Wilt Warning",
         "description": "Fusarium Wilt has been identified in the northern cotton-growing regions. Preventive measures recommended.",
-        "date": "2025-05-19"
+        "date": "2025-05-16"
     }
 ]
 
