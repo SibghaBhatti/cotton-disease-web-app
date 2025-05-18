@@ -543,7 +543,7 @@ def alerts():
 @login_required
 def news():
     api_key = "70181cc2861d4ffbb83a92f38b3f9662"
-    from_date = (datetime.utc - timedelta(days=7)).strftime('%Y-%m-%d')
+    from_date = (datetime.utcnow() - timedelta(days=7)).strftime('%Y-%m-%d')
 
         # Add sorting and date range to fetch recent news
     url = (
