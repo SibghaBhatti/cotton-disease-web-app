@@ -266,76 +266,81 @@
       }
     </style>
   </head>
-  <body>
+<body>
     <nav>
       <div class="logo">
         <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Header" />
       </div>
       <div class="links">
-        <a href="{{ url_for('disease_detection') }}">{{ _('Disease Detection') }}</a>
-        <a href="{{ url_for('weather_forecasting') }}">{{ _('Weather Forecasting') }}</a>
+        <a href="{{ url_for('disease_detection') }}"
+          >{{ _('Disease Detection') }}</a
+        >
+        <a href="{{ url_for('weather_forecasting') }}"
+          >{{ _('Weather Forecasting') }}</a
+        >
         <a href="{{ url_for('chatbot') }}">{{ _('Chatbot') }}</a>
-        <a href="{{ url_for('n_fertilizer') }}">{{ _('Fertilizer Calculator Simple') }}</a>
-        <a href="{{ url_for('fertilizer_calculator') }}">{{ _('Fertilizer Calculator') }}</a>
+        <a href="{{ url_for('n_fertilizer') }}"
+          >{{ _('Fertilizer Calculator Simple') }}</a
+        >
+        <a href="{{ url_for('fertilizer_calculator') }}"
+          >{{ _('Fertilizer Calculator') }}</a
+        >
         <a href="{{ url_for('blog') }}">{{ _('Blog') }}</a>
-        <a href="{{ url_for('cotton_seeds') }}">{{ _('Best Cotton Seeds in Pakistan') }}</a>
+        <a href="{{ url_for('cotton_seeds') }}"
+          >{{ _('Best Cotton Seeds in Pakistan') }}</a
+        >
         <a href="{{ url_for('alerts') }}">{{ _('Alerts') }}</a>
         <a href="{{ url_for('news') }}">{{ _('News') }}</a>
         <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
       </div>
     </nav>
-
     <div class="language-selection">
       <a href="{{ url_for('set_language', language='en') }}">English</a>
       <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
     </div>
 
     <div class="blog-container">
-      <div id="post-list">
-        <!-- Blog posts will appear here -->
-      </div>
-      <button id="load-more">Load More</button>
+        <div id="post-list"></div>
+        <button class="bg-green-600 text-white p-2 rounded" id="load-more">{{ _('Load More') }}</button>
     </div>
 
     <script>
-      // Three static blog posts with long paragraphs (8-10 lines approx.)
-      const blogPosts = [
-        {
-          title: "The Importance of Sustainable Farming",
-          content: "Sustainable farming practices are essential for preserving our environment and ensuring long-term food security. By incorporating organic methods, crop rotation, and reduced chemical usage, farmers can maintain soil health and reduce water consumption. This approach not only benefits the planet but also improves the quality of the produce. Additionally, sustainable farming encourages biodiversity and reduces the risk of pest infestations. With growing awareness about environmental issues, consumers are increasingly seeking sustainably grown food. Implementing these practices leads to improved profitability and a resilient agricultural ecosystem. The transition to sustainable methods, although gradual, promises a healthier future for both farmers and the planet."
-        },
-        {
-          title: "Innovative Techniques in Modern Agriculture",
-          content: "Modern agriculture is rapidly evolving with the integration of new technologies that enhance efficiency and productivity. Precision farming methods, drone surveillance, and automated irrigation systems are just a few examples transforming crop management. These innovations help monitor crop health, optimize resource usage, and significantly improve yields. Technology also empowers farmers to make data-driven decisions that minimize waste and environmental impact. As these techniques become more accessible, they pave the way for a more sustainable and profitable agricultural sector. The blend of traditional knowledge with modern innovation is setting new standards for efficiency in farming practices."
-        },
-        {
-          title: "Embracing Organic Methods for a Healthier Future",
-          content: "Organic farming is gaining popularity as more consumers look for chemical-free and nutritious food options. This approach relies on natural growth processes and avoids synthetic pesticides and fertilizers, thereby preserving soil quality and water purity. Organic methods promote biodiversity and support local ecosystems while delivering produce that is often richer in flavor and nutrients. Transitioning to organic practices can be challenging but offers long-term benefits for health and the environment. With increasing demand for organic products, farmers are motivated to adopt these sustainable practices, ensuring that both the land and its inhabitants thrive."
+        const blogPosts = [
+            {
+                title: "{{ _('The Importance of Sustainable Farming') }}",
+                content: "{{ _('Sustainable farming practices are essential for preserving our environment and ensuring long-term food security. By incorporating organic methods, crop rotation, and reduced chemical usage, farmers can maintain soil health and reduce water consumption. This approach not only benefits the planet but also improves the quality of the produce. Additionally, sustainable farming encourages biodiversity and reduces the risk of pest infestations. With growing awareness about environmental issues, consumers are increasingly seeking sustainably grown food. Implementing these practices leads to improved profitability and a resilient agricultural ecosystem. The transition to sustainable methods, although gradual, promises a healthier future for both farmers and the planet.') }}"
+            },
+            {
+                title: "{{ _('Innovative Techniques in Modern Agriculture') }}",
+                content: "{{ _('Modern agriculture is rapidly evolving with the integration of new technologies that enhance efficiency and productivity. Precision farming methods, drone surveillance, and automated irrigation systems are just a few examples transforming crop management. These innovations help monitor crop health, optimize resource usage, and significantly improve yields. Technology also empowers farmers to make data-driven decisions that minimize waste and environmental impact. As these techniques become more accessible, they pave the way for a more sustainable and profitable agricultural sector. The blend of traditional knowledge with modern innovation is setting new standards for efficiency in farming practices.') }}"
+            },
+            {
+                title: "{{ _('Embracing Organic Methods for a Healthier Future') }}",
+                content: "{{ _('Organic farming is gaining popularity as more consumers look for chemical-free and nutritious food options. This approach relies on natural growth processes and avoids synthetic pesticides and fertilizers, thereby preserving soil quality and water purity. Organic methods promote biodiversity and support local ecosystems while delivering produce that is often richer in flavor and nutrients. Transitioning to organic practices can be challenging but offers long-term benefits for health and the environment. With increasing demand for organic products, farmers are motivated to adopt these sustainable practices, ensuring that both the land and its inhabitants thrive.') }}"
+            }
+        ];
+
+        let currentIndex = 0;
+        const postsPerLoad = 1;
+
+        function loadPosts() {
+            const postList = document.getElementById('post-list');
+            for (let i = currentIndex; i < currentIndex + postsPerLoad && i < blogPosts.length; i++) {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'post';
+                postDiv.innerHTML = `<h2>${blogPosts[i].title}</h2><p>${blogPosts[i].content}</p>`;
+                postList.appendChild(postDiv);
+            }
+            currentIndex += postsPerLoad;
+            if (currentIndex >= blogPosts.length) {
+                document.getElementById('load-more').style.display = 'none';
+            }
         }
-      ];
 
-      let currentIndex = 0;
-      const postsPerLoad = 1;
+        loadPosts();
 
-      function loadPosts() {
-        const postList = document.getElementById('post-list');
-        for (let i = currentIndex; i < currentIndex + postsPerLoad && i < blogPosts.length; i++) {
-          const postDiv = document.createElement('div');
-          postDiv.className = 'post';
-          postDiv.innerHTML = `<h2>${blogPosts[i].title}</h2><p>${blogPosts[i].content}</p>`;
-          postList.appendChild(postDiv);
-        }
-        currentIndex += postsPerLoad;
-        if (currentIndex >= blogPosts.length) {
-          document.getElementById('load-more').style.display = 'none';
-        }
-      }
-
-      loadPosts();
-
-      document.getElementById('load-more').addEventListener('click', loadPosts);
+        document.getElementById('load-more').addEventListener('click', loadPosts);
     </script>
-
     <footer>
       <p>© 2025 Expert Cotton Prediction. All Rights Reserved.</p>
     </footer>
