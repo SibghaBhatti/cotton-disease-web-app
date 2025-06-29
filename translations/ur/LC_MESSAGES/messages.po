@@ -1,0 +1,1370 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-06-29 21:31+0500\n"
+"PO-Revision-Date: 2024-05-22 20:42+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ur\n"
+"Language-Team: ur <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: templates/alerts.html:6 templates/alerts.html:342
+msgid "Disease Alerts"
+msgstr "بیماری کی الرٹس"
+
+#: templates/alerts.html:316 templates/blog.html:15 templates/chatbot.html:380
+#: templates/cotton_seeds.html:283 templates/dashboard.html:272
+#: templates/disease_detection.html:6 templates/disease_detection.html:370
+#: templates/fertilizer_calculator_1.html:15
+#: templates/fertilizer_calculator_simple.html:340 templates/news.html:296
+#: templates/weather_forecasting.html:372
+msgid "Disease Detection"
+msgstr "بیماری کی تشخیص"
+
+#: templates/alerts.html:319 templates/blog.html:16 templates/chatbot.html:383
+#: templates/cotton_seeds.html:286 templates/dashboard.html:275
+#: templates/disease_detection.html:373
+#: templates/fertilizer_calculator_1.html:16
+#: templates/fertilizer_calculator_simple.html:343 templates/news.html:297
+#: templates/weather_forecasting.html:6 templates/weather_forecasting.html:375
+#: templates/weather_forecasting.html:398
+msgid "Weather Forecasting"
+msgstr "موسم کی پیشن گوئی"
+
+#: templates/alerts.html:321 templates/blog.html:17 templates/chatbot.html:385
+#: templates/cotton_seeds.html:288 templates/dashboard.html:277
+#: templates/disease_detection.html:375
+#: templates/fertilizer_calculator_1.html:17
+#: templates/fertilizer_calculator_simple.html:345 templates/news.html:298
+#: templates/weather_forecasting.html:377
+msgid "Chatbot"
+msgstr "چیٹ بوٹ"
+
+#: templates/alerts.html:323 templates/blog.html:18 templates/chatbot.html:387
+#: templates/cotton_seeds.html:290 templates/dashboard.html:279
+#: templates/disease_detection.html:377
+#: templates/fertilizer_calculator_1.html:18
+#: templates/fertilizer_calculator_simple.html:347 templates/news.html:299
+#: templates/weather_forecasting.html:379
+msgid "Fertilizer Calculator Simple"
+msgstr "سادہ کھاد کیلکولیٹر"
+
+#: templates/alerts.html:326 templates/blog.html:19 templates/chatbot.html:390
+#: templates/cotton_seeds.html:293 templates/dashboard.html:282
+#: templates/disease_detection.html:380
+#: templates/fertilizer_calculator_1.html:6
+#: templates/fertilizer_calculator_1.html:19
+#: templates/fertilizer_calculator_1.html:32
+#: templates/fertilizer_calculator_simple.html:350 templates/news.html:300
+#: templates/weather_forecasting.html:382
+msgid "Fertilizer Calculator"
+msgstr "کھاد کیلکولیٹر"
+
+#: templates/alerts.html:328 templates/blog.html:6 templates/blog.html:20
+#: templates/blog.html:32 templates/chatbot.html:392
+#: templates/cotton_seeds.html:295 templates/dashboard.html:284
+#: templates/disease_detection.html:382
+#: templates/fertilizer_calculator_1.html:20
+#: templates/fertilizer_calculator_simple.html:352 templates/news.html:301
+#: templates/weather_forecasting.html:384
+msgid "Blog"
+msgstr "بلاگ"
+
+#: templates/alerts.html:330 templates/blog.html:21 templates/chatbot.html:394
+#: templates/cotton_seeds.html:6 templates/cotton_seeds.html:297
+#: templates/dashboard.html:286 templates/disease_detection.html:384
+#: templates/fertilizer_calculator_1.html:21
+#: templates/fertilizer_calculator_simple.html:354 templates/news.html:302
+#: templates/weather_forecasting.html:386
+msgid "Best Cotton Seeds in Pakistan"
+msgstr "پاکستان میں بہترین کپاس کے بیج"
+
+#: templates/alerts.html:332 templates/blog.html:22 templates/chatbot.html:396
+#: templates/cotton_seeds.html:299 templates/dashboard.html:288
+#: templates/disease_detection.html:386
+#: templates/fertilizer_calculator_1.html:22
+#: templates/fertilizer_calculator_simple.html:356 templates/news.html:303
+#: templates/weather_forecasting.html:388
+msgid "Alerts"
+msgstr "الرٹس"
+
+#: templates/alerts.html:333 templates/blog.html:23 templates/chatbot.html:397
+#: templates/cotton_seeds.html:300 templates/dashboard.html:289
+#: templates/disease_detection.html:387
+#: templates/fertilizer_calculator_1.html:23
+#: templates/fertilizer_calculator_simple.html:357 templates/news.html:304
+#: templates/weather_forecasting.html:389
+msgid "News"
+msgstr "خبریں"
+
+#: templates/alerts.html:334 templates/blog.html:24 templates/chatbot.html:398
+#: templates/cotton_seeds.html:301 templates/dashboard.html:290
+#: templates/disease_detection.html:388
+#: templates/fertilizer_calculator_1.html:24
+#: templates/fertilizer_calculator_simple.html:358 templates/news.html:305
+#: templates/weather_forecasting.html:390
+msgid "Logout"
+msgstr "لاگ آوٹ"
+
+#: templates/alerts.html:346
+msgid "Leaf Spot Disease Alert"
+msgstr "پتے کی داغ کی بیماری کی الرٹ"
+
+#: templates/alerts.html:348
+#, fuzzy
+msgid ""
+"Leaf Spot disease detected in cotton fields in the southern\n"
+"            region. Immediate action required."
+msgstr ""
+"جنوبی علاقے کے کپاس کے کھیتوں میں پتے کی داغ کی بیماری کی نشاندہی کی گئی "
+"ہے۔ فوری کارروائی کی ضرورت ہے۔"
+
+#: templates/alerts.html:351 templates/alerts.html:359
+#: templates/alerts.html:367
+msgid "Date:"
+msgstr "تاریخ:"
+
+#: templates/alerts.html:354
+msgid "Bacterial Blight Outbreak"
+msgstr "بیکٹیریل بلائٹ کی وبا"
+
+#: templates/alerts.html:356
+#, fuzzy
+msgid ""
+"Bacterial Blight outbreak reported in several cotton farms.\n"
+"            Farmers are advised to monitor their crops closely."
+msgstr ""
+"متعدد کپاس کے کھیتوں میں بیکٹیریل بلائٹ کی وبا کی اطلاع دی گئی ہے۔ کسانوں"
+" کو مشورہ دیا جاتا ہے کہ وہ اپنی فصلوں پر قریب سے نظر رکھیں۔"
+
+#: templates/alerts.html:362
+msgid "Fusarium Wilt Warning"
+msgstr "فیوزیریم ویلٹ کی وارننگ"
+
+#: templates/alerts.html:364
+#, fuzzy
+msgid ""
+"Fusarium Wilt has been identified in the northern\n"
+"            cotton-growing regions. Preventive measures recommended."
+msgstr ""
+"شمالی کپاس کی کاشت کے علاقوں میں فیوزیریم ویلٹ کی نشاندہی کی گئی ہے۔ "
+"احتیاطی تدابیر کی سفارش کی گئی ہے۔"
+
+#: templates/alerts.html:372 templates/disease_detection.html:981
+#: templates/weather_forecasting.html:421
+msgid "Back to Dashboard"
+msgstr "ڈیش بورڈ پر واپس جائیں"
+
+#: templates/blog.html:13 templates/dashboard.html:6
+#: templates/fertilizer_calculator_1.html:13
+msgid "Dashboard"
+msgstr "ڈیش بورڈ"
+
+#: templates/blog.html:25 templates/fertilizer_calculator_1.html:25
+msgid "English"
+msgstr "انگریزی"
+
+#: templates/blog.html:26 templates/fertilizer_calculator_1.html:26
+msgid "اردو"
+msgstr "Urdu"
+
+#: templates/blog.html:33
+msgid "Latest Articles"
+msgstr "تازہ ترین مضامین"
+
+#: templates/blog.html:35
+msgid "Load More"
+msgstr "مزید لوڈ کریں"
+
+#: templates/blog.html:41
+msgid "The Importance of Sustainable Farming"
+msgstr "پائیدار زراعت کی اہمیت"
+
+#: templates/blog.html:42
+msgid ""
+"Sustainable farming practices are essential for preserving our "
+"environment and ensuring long-term food security. By incorporating "
+"organic methods, crop rotation, and reduced chemical usage, farmers can "
+"maintain soil health and reduce water consumption. This approach not only"
+" benefits the planet but also improves the quality of the produce. "
+"Additionally, sustainable farming encourages biodiversity and reduces the"
+" risk of pest infestations. With growing awareness about environmental "
+"issues, consumers are increasingly seeking sustainably grown food. "
+"Implementing these practices leads to improved profitability and a "
+"resilient agricultural ecosystem. The transition to sustainable methods, "
+"although gradual, promises a healthier future for both farmers and the "
+"planet."
+msgstr ""
+"پائیدار زرعی طریقے ہمارے ماحول کو محفوظ رکھنے اور طویل مدتی خوراک کی "
+"حفاظت کو یقینی بنانے کے لیے ضروری ہیں۔ نامیاتی طریقوں، فصل کی گردش، اور "
+"کیمیکلز کے استعمال کو کم کرنے سے کسان مٹی کی صحت کو برقرار رکھ سکتے ہیں "
+"اور پانی کی کھپت کو کم کر سکتے ہیں۔ یہ طریقہ نہ صرف سیارے کو فائدہ "
+"پہنچاتا ہے بلکہ پیداوار کے معیار کو بھی بہتر بناتا ہے۔ اس کے علاوہ، "
+"پائیدار زراعت حیاتیاتی تنوع کو فروغ دیتی ہے اور کیڑوں کے حملوں کے خطرے کو"
+" کم کرتی ہے۔ ماحولیاتی مسائل کے بارے میں بڑھتی ہوئی بیداری کے ساتھ، "
+"صارفین تیزی سے پائیدار طریقے سے اگائی گئی خوراک کی تلاش میں ہیں۔ ان "
+"طریقوں کو نافذ کرنے سے منافع میں بہتری اور ایک لچکدار زرعی ماحولیاتی نظام"
+" حاصل ہوتا ہے۔ پائیدار طریقوں کی طرف منتقلی، اگرچہ آہستہ آہستہ ہوتی ہے، "
+"کسانوں اور سیارے دونوں کے لیے ایک صحت مند مستقبل کا وعدہ کرتی ہے۔"
+
+#: templates/blog.html:45
+msgid "Innovative Techniques in Modern Agriculture"
+msgstr "جدید زراعت میں اختراعی تکنیکیں"
+
+#: templates/blog.html:46
+msgid ""
+"Modern agriculture is rapidly evolving with the integration of new "
+"technologies that enhance efficiency and productivity. Precision farming "
+"methods, drone surveillance, and automated irrigation systems are just a "
+"few examples transforming crop management. These innovations help monitor"
+" crop health, optimize resource usage, and significantly improve yields. "
+"Technology also empowers farmers to make data-driven decisions that "
+"minimize waste and environmental impact. As these techniques become more "
+"accessible, they pave the way for a more sustainable and profitable "
+"agricultural sector. The blend of traditional knowledge with modern "
+"innovation is setting new standards for efficiency in farming practices."
+msgstr ""
+"جدید زراعت نئی ٹیکنالوجیز کے انضمام کے ساتھ تیزی سے ترقی کر رہی ہے جو "
+"کارکردگی اور پیداواریت کو بڑھاتی ہیں۔ درست کاشتکاری کے طریقے، ڈرون "
+"نگرانی، اور خودکار ایریگیشن سسٹم چند مثالیں ہیں جو فصل کے انتظام کو تبدیل"
+" کر رہی ہیں۔ یہ اختراعات فصل کی صحت کی نگرانی، وسائل کے استعمال کو بہتر "
+"بنانے، اور پیداوار میں نمایاں بہتری لانے میں مدد دیتی ہیں۔ ٹیکنالوجی "
+"کسانوں کو ڈیٹا پر مبنی فیصلے کرنے کی طاقت دیتی ہے جو فضلہ اور ماحولیاتی "
+"اثرات کو کم کرتی ہے۔ جیسے جیسے یہ تکنیکیں زیادہ قابل رسائی ہوتی جا رہی "
+"ہیں، وہ زیادہ پائیدار اور منافع بخش زرعی شعبے کی راہ ہموار کرتی ہیں۔ "
+"روایتی علم کا جدید اختراع کے ساتھ امتزاج زرعی طریقوں میں کارکردگی کے لیے "
+"نئے معیارات قائم کر رہا ہے۔"
+
+#: templates/blog.html:49
+msgid "Embracing Organic Methods for a Healthier Future"
+msgstr "صحت مند مستقبل کے لیے نامیاتی طریقوں کو اپنانا"
+
+#: templates/blog.html:50
+msgid ""
+"Organic farming is gaining popularity as more consumers look for "
+"chemical-free and nutritious food options. This approach relies on "
+"natural growth processes and avoids synthetic pesticides and fertilizers,"
+" thereby preserving soil quality and water purity. Organic methods "
+"promote biodiversity and support local ecosystems while delivering "
+"produce that is often richer in flavor and nutrients. Transitioning to "
+"organic practices can be challenging but offers long-term benefits for "
+"health and the environment. With increasing demand for organic products, "
+"farmers are motivated to adopt these sustainable practices, ensuring that"
+" both the land and its inhabitants thrive."
+msgstr ""
+"نامیاتی زراعت تیزی سے مقبولیت حاصل کر رہی ہے کیونکہ زیادہ صارفین کیمیکل "
+"سے پاک اور غذائیت سے بھرپور خوراک کے اختیارات تلاش کر رہے ہیں۔ یہ طریقہ "
+"قدرتی نشوونما کے عمل پر انحصار کرتا ہے اور مصنوعی کیڑے مار ادویات اور "
+"کھادوں سے گریز کرتا ہے، اس طرح مٹی کے معیار اور پانی کی پاکیزگی کو محفوظ "
+"رکھتا ہے۔ نامیاتی طریقے حیاتیاتی تنوع کو فروغ دیتے ہیں اور مقامی "
+"ماحولیاتی نظام کی حمایت کرتے ہیں جبکہ ایسی پیداوار فراہم کرتے ہیں جو اکثر"
+" ذائقے اور غذائیت میں زیادہ بھرپور ہوتی ہے۔ نامیاتی طریقوں کی طرف منتقلی "
+"مشکل ہو سکتی ہے لیکن یہ صحت اور ماحول کے لیے طویل مدتی فوائد پیش کرتی ہے۔"
+" نامیاتی مصنوعات کی بڑھتی ہوئی مانگ کے ساتھ، کسان ان پائیدار طریقوں کو "
+"اپنانے کی ترغیب پاتے ہیں، اس بات کو یقینی بناتے ہوئے کہ زمین اور اس کے "
+"باشندے دونوں ترقی کریں۔"
+
+#: templates/cotton_seeds.html:309
+msgid "Available Varieties"
+msgstr "دستیاب اقسام"
+
+#: templates/dashboard.html:295
+msgid "Welcome,"
+msgstr "خوش آمدید،"
+
+#: templates/disease_detection.html:396
+msgid "Cotton Plant Disease Classifier"
+msgstr "کپاس کے پودوں کی بیماری کی درجہ بندی"
+
+#: templates/disease_detection.html:399
+msgid "Upload and Detect"
+msgstr "اپ لوڈ کریں اور پتہ لگائیں"
+
+#: templates/disease_detection.html:404
+msgid "Result:"
+msgstr "نتیجہ:"
+
+#: templates/disease_detection.html:408
+msgid "Detected Image"
+msgstr "پتہ چلائی گئی تصویر"
+
+#: templates/disease_detection.html:413
+#, fuzzy
+msgid ""
+"American Bollworm on Cotton is a common pest causing\n"
+"            significant damage to cotton crops."
+msgstr ""
+"کپاس پر امریکی بولوورم ایک عام کیڑا ہے جو کپاس کی فصلوں کو نمایاں نقصان "
+"پہنچاتا ہے۔"
+
+#: templates/disease_detection.html:416 templates/disease_detection.html:430
+#: templates/disease_detection.html:444 templates/disease_detection.html:454
+#: templates/disease_detection.html:469 templates/disease_detection.html:479
+#: templates/disease_detection.html:489 templates/disease_detection.html:499
+#: templates/disease_detection.html:509 templates/disease_detection.html:521
+#: templates/disease_detection.html:531 templates/disease_detection.html:541
+#: templates/disease_detection.html:551 templates/disease_detection.html:561
+#: templates/disease_detection.html:571 templates/disease_detection.html:581
+#: templates/disease_detection.html:591 templates/disease_detection.html:601
+#: templates/disease_detection.html:611 templates/disease_detection.html:621
+#: templates/disease_detection.html:631 templates/disease_detection.html:640
+#: templates/disease_detection.html:650 templates/disease_detection.html:660
+#: templates/disease_detection.html:670 templates/disease_detection.html:682
+#: templates/disease_detection.html:692 templates/disease_detection.html:702
+#: templates/disease_detection.html:712 templates/disease_detection.html:722
+#: templates/disease_detection.html:732 templates/disease_detection.html:742
+#: templates/disease_detection.html:752 templates/disease_detection.html:762
+#: templates/disease_detection.html:772 templates/disease_detection.html:782
+#: templates/disease_detection.html:792 templates/disease_detection.html:802
+#: templates/disease_detection.html:812 templates/disease_detection.html:822
+#: templates/disease_detection.html:831 templates/disease_detection.html:841
+#: templates/disease_detection.html:851 templates/disease_detection.html:864
+#: templates/disease_detection.html:874 templates/disease_detection.html:887
+#: templates/disease_detection.html:897 templates/disease_detection.html:907
+#: templates/disease_detection.html:917 templates/disease_detection.html:930
+#: templates/disease_detection.html:943 templates/disease_detection.html:955
+#: templates/disease_detection.html:968
+msgid "Prevention and Control"
+msgstr "روک تھام اور کنٹرول"
+
+#: templates/disease_detection.html:419
+msgid "Monitor crops regularly for signs of infestation."
+msgstr "کیڑے کی علامات کے لئے فصلوں کی باقاعدگی سے نگرانی کریں۔"
+
+#: templates/disease_detection.html:421
+msgid "Use pheromone traps to capture adult moths."
+msgstr "بالغ کیڑے پکڑنے کے لئے فیرومون ٹریپ استعمال کریں۔"
+
+#: templates/disease_detection.html:422
+msgid "Apply appropriate insecticides as recommended."
+msgstr "تجویز کردہ مناسب کیڑے مار ادویات کا استعمال کریں۔"
+
+#: templates/disease_detection.html:423
+msgid "Encourage natural predators and parasitoids."
+msgstr "قدرتی شکاریوں اور پیراسائٹائڈز کو فروغ دیں۔"
+
+#: templates/disease_detection.html:427
+#, fuzzy
+msgid ""
+"Anthracnose is a fungal disease affecting cotton, leading to\n"
+"            dark lesions on leaves, stems, and bolls."
+msgstr ""
+"انترکنوز ایک فنگل بیماری ہے جو کپاس کو متاثر کرتی ہے، جس کے نتیجے میں "
+"پتوں، تنے اور گولوں پر سیاہ نشان ہوتے ہیں۔"
+
+#: templates/disease_detection.html:432
+msgid "Plant resistant varieties if available."
+msgstr "اگر دستیاب ہوں تو مزاحمتی اقسام لگائیں۔"
+
+#: templates/disease_detection.html:434
+msgid "Ensure good field sanitation by removing infected debris."
+msgstr "متاثرہ ملبے کو ہٹا کر اچھے فیلڈ کی صفائی کو یقینی بنائیں۔"
+
+#: templates/disease_detection.html:437
+msgid "Apply fungicides as necessary."
+msgstr "ضرورت کے مطابق فنگسائڈز کا استعمال کریں۔"
+
+#: templates/disease_detection.html:441
+#, fuzzy
+msgid ""
+"Aphids are small sap-sucking insects that can cause yellowing\n"
+"            and curling of leaves."
+msgstr ""
+"افڈس چھوٹے رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مڑنے کا سبب بن سکتے "
+"ہیں۔"
+
+#: templates/disease_detection.html:446 templates/disease_detection.html:744
+#: templates/disease_detection.html:866
+msgid "Use natural predators like ladybugs."
+msgstr "قدرتی شکاری جیسے لیڈی بگز استعمال کریں۔"
+
+#: templates/disease_detection.html:447 templates/disease_detection.html:745
+#: templates/disease_detection.html:867
+msgid "Apply insecticidal soaps or oils."
+msgstr "کیڑے مار صابن یا تیل لگائیں۔"
+
+#: templates/disease_detection.html:451
+#, fuzzy
+msgid ""
+"Army worms are destructive pests that can cause significant\n"
+"            damage to crops."
+msgstr "آرمی ورم تباہ کن کیڑے ہیں جو فصلوں کو نمایاں نقصان پہنچا سکتے ہیں۔"
+
+#: templates/disease_detection.html:457
+msgid "Inspect crops regularly for signs of infestation."
+msgstr "انفیکشن کے آثار کے لیے فصلوں کا باقاعدگی سے معائنہ کریں۔"
+
+#: templates/disease_detection.html:460 templates/disease_detection.html:855
+#: templates/disease_detection.html:878 templates/disease_detection.html:921
+#: templates/disease_detection.html:934 templates/disease_detection.html:947
+#: templates/disease_detection.html:959 templates/disease_detection.html:972
+#, fuzzy
+msgid ""
+"Use insecticides or biological controls to manage\n"
+"              populations."
+msgstr ""
+"آبادیوں کو کنٹرول کرنے کے لیے کیڑے مار ادویات یا حیاتیاتی کنٹرول استعمال "
+"کریں۔"
+
+#: templates/disease_detection.html:466
+#, fuzzy
+msgid ""
+"Carpetweeds are common weeds that compete with crops for\n"
+"            nutrients."
+msgstr ""
+"کارپٹ ویڈز عام جڑی بوٹیاں ہیں جو غذائی اجزاء کے لیے فصلوں سے مقابلہ کرتی "
+"ہیں۔"
+
+#: templates/disease_detection.html:471 templates/disease_detection.html:481
+#: templates/disease_detection.html:491 templates/disease_detection.html:511
+#: templates/disease_detection.html:543 templates/disease_detection.html:563
+#: templates/disease_detection.html:573 templates/disease_detection.html:593
+#: templates/disease_detection.html:603 templates/disease_detection.html:613
+#: templates/disease_detection.html:652 templates/disease_detection.html:662
+#: templates/disease_detection.html:672 templates/disease_detection.html:684
+#: templates/disease_detection.html:714
+msgid "Maintain good field sanitation and use mulches."
+msgstr "اچھی فیلڈ صفائی برقرار رکھیں اور ملچس استعمال کریں۔"
+
+#: templates/disease_detection.html:472 templates/disease_detection.html:482
+#: templates/disease_detection.html:492 templates/disease_detection.html:512
+#: templates/disease_detection.html:544 templates/disease_detection.html:564
+#: templates/disease_detection.html:574 templates/disease_detection.html:594
+#: templates/disease_detection.html:604 templates/disease_detection.html:614
+#: templates/disease_detection.html:653 templates/disease_detection.html:663
+#: templates/disease_detection.html:673 templates/disease_detection.html:685
+#: templates/disease_detection.html:715
+msgid "Apply appropriate herbicides if necessary."
+msgstr "ضرورت کے مطابق مناسب جڑی بوٹی مار ادویات لگائیں۔"
+
+#: templates/disease_detection.html:476
+#, fuzzy
+msgid ""
+"Crabgrass is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"کریب گراس ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:486
+#, fuzzy
+msgid ""
+"Eclipta is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"ایکلپٹا ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:496
+#, fuzzy
+msgid ""
+"Flag smut is a fungal disease causing long, black lesions on\n"
+"            leaves and stems."
+msgstr "فلیگ سموٹ ایک فنگل بیماری ہے جو پتوں اور تنوں پر لمبے، کالے دھبے بناتی ہے۔"
+
+#: templates/disease_detection.html:501
+msgid "Use disease-free seeds."
+msgstr "بیماری سے پاک بیج استعمال کریں۔"
+
+#: templates/disease_detection.html:502
+msgid "Rotate crops to avoid disease buildup."
+msgstr "بیماری کے جمع ہونے سے بچنے کے لیے فصلوں کو گھمائیں۔"
+
+#: templates/disease_detection.html:506
+#, fuzzy
+msgid ""
+"Goosegrass is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"گوس گراس ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:515
+msgid "Your crop is healthy."
+msgstr "آپ کی فصل صحت مند ہے۔"
+
+#: templates/disease_detection.html:518
+#, fuzzy
+msgid ""
+"Leaf curl disease is a viral infection that causes curling and\n"
+"            distortion of leaves."
+msgstr ""
+"پتوں کا مڑنا ایک وائرل انفیکشن ہے جو پتوں کے مڑنے اور مسخ ہونے کا سبب "
+"بنتا ہے۔"
+
+#: templates/disease_detection.html:523 templates/disease_detection.html:814
+#: templates/disease_detection.html:889 templates/disease_detection.html:899
+msgid "Remove and destroy infected plants."
+msgstr "متاثرہ پودوں کو ہٹا کر تباہ کریں۔"
+
+#: templates/disease_detection.html:524 templates/disease_detection.html:890
+msgid "Control insect vectors like whiteflies."
+msgstr "کیڑوں کے ویکٹرز جیسے سفید مکھیوں کو کنٹرول کریں۔"
+
+#: templates/disease_detection.html:528
+#, fuzzy
+msgid ""
+"Leaf smut is a fungal disease causing dark streaks and spots\n"
+"            on leaves."
+msgstr "لیاف سموٹ ایک فنگل بیماری ہے جو پتوں پر سیاہ لکیریں اور دھبے بناتی ہے۔"
+
+#: templates/disease_detection.html:533 templates/disease_detection.html:583
+#: templates/disease_detection.html:623 templates/disease_detection.html:642
+#: templates/disease_detection.html:724 templates/disease_detection.html:754
+#: templates/disease_detection.html:784 templates/disease_detection.html:794
+#: templates/disease_detection.html:804
+#, fuzzy
+msgid "Use resistant varieties."
+msgstr "اگر دستیاب ہوں تو مزاحمتی اقسام لگائیں۔"
+
+#: templates/disease_detection.html:534 templates/disease_detection.html:633
+#: templates/disease_detection.html:824
+msgid "Apply appropriate fungicides."
+msgstr "مناسب فنگسائڈز لگائیں۔"
+
+#: templates/disease_detection.html:538
+#, fuzzy
+msgid ""
+"Morningglory is a weed that can compete with crops for\n"
+"            nutrients and space."
+msgstr ""
+"مارننگ گلوری ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے "
+"مقابلہ کرسکتی ہے۔"
+
+#: templates/disease_detection.html:548
+#, fuzzy
+msgid ""
+"Mosaic disease in sugarcane causes mottling and discoloration\n"
+"            of leaves."
+msgstr "گنے میں موزیک بیماری پتوں کی دھبے دار اور بد رنگی کا سبب بنتی ہے۔"
+
+#: templates/disease_detection.html:553 templates/disease_detection.html:704
+#: templates/disease_detection.html:833
+#, fuzzy
+msgid "Plant resistant varieties."
+msgstr "اگر دستیاب ہوں تو مزاحمتی اقسام لگائیں۔"
+
+#: templates/disease_detection.html:554
+#, fuzzy
+msgid "Control insect vectors."
+msgstr "کیڑوں کے ویکٹرز جیسے سفید مکھیوں کو کنٹرول کریں۔"
+
+#: templates/disease_detection.html:558
+#, fuzzy
+msgid ""
+"Nutsedge is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"نٹسیج ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:568
+#, fuzzy
+msgid ""
+"Palmer amaranth is a weed that can compete with crops for\n"
+"            nutrients and space."
+msgstr ""
+"پالمر ایمرانتھ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے "
+"مقابلہ کرسکتی ہے۔"
+
+#: templates/disease_detection.html:578
+#, fuzzy
+msgid ""
+"Powdery mildew is a fungal disease causing white powdery spots\n"
+"            on leaves and stems."
+msgstr ""
+"پاؤڈری ملڈیو ایک فنگل بیماری ہے جو پتوں اور تنوں پر سفید پاوڈری دھبے "
+"بناتی ہے۔"
+
+#: templates/disease_detection.html:584 templates/disease_detection.html:643
+#: templates/disease_detection.html:695 templates/disease_detection.html:725
+#: templates/disease_detection.html:765 templates/disease_detection.html:785
+#: templates/disease_detection.html:844 templates/disease_detection.html:910
+#, fuzzy
+msgid "Apply fungicides as needed."
+msgstr "ضرورت کے مطابق فنگسائڈز کا استعمال کریں۔"
+
+#: templates/disease_detection.html:588
+#, fuzzy
+msgid ""
+"Prickly sida is a weed that can compete with crops for\n"
+"            nutrients and space."
+msgstr ""
+"پرکلی سڈا ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:598
+#, fuzzy
+msgid ""
+"Purslane is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"پرسی لین ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:608
+#, fuzzy
+msgid ""
+"Ragweed is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"ریگ ویڈ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:618
+#, fuzzy
+msgid ""
+"Red rot is a serious fungal disease affecting sugarcane,\n"
+"            causing red discoloration of stalks."
+msgstr ""
+"ریڈ روٹ ایک سنگین فنگل بیماری ہے جو گنے کو متاثر کرتی ہے، جس سے ڈنٹھلوں "
+"کی سرخ بد رنگی ہوتی ہے۔"
+
+#: templates/disease_detection.html:624
+msgid "Ensure proper drainage and field sanitation."
+msgstr "مناسب نکاسی آب اور فیلڈ صفائی کو یقینی بنائیں۔"
+
+#: templates/disease_detection.html:628
+#, fuzzy
+msgid ""
+"Red rust is a fungal disease affecting sugarcane, leading to\n"
+"            reddish-brown pustules on leaves."
+msgstr ""
+"ریڈ رسٹ ایک فنگل بیماری ہے جو گنے کو متاثر کرتی ہے، جس سے پتوں پر سرخی "
+"مائل بھورے پھوڑے بن جاتے ہیں۔"
+
+#: templates/disease_detection.html:637
+#, fuzzy
+msgid ""
+"Rice blast is a fungal disease causing lesions on leaves,\n"
+"            nodes, and panicles."
+msgstr "رائس بلاسٹ ایک فنگل بیماری ہے جو پتوں، گرہوں، اور پینیکلز پر زخم بناتی ہے۔"
+
+#: templates/disease_detection.html:647
+#, fuzzy
+msgid ""
+"Sicklepod is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"سیکل پوڈ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:657
+#, fuzzy
+msgid ""
+"Spotted spurge is a weed that can compete with crops for\n"
+"            nutrients and space."
+msgstr ""
+"سپوٹڈ اسپرج ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ"
+" کرسکتی ہے۔"
+
+#: templates/disease_detection.html:667
+#, fuzzy
+msgid ""
+"Spurred anoda is a weed that can compete with crops for\n"
+"            nutrients and space."
+msgstr ""
+"سپرد انوڈا ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:676
+#, fuzzy
+msgid "Your sugarcane crop is healthy."
+msgstr "آپ کی مکئی کی فصل صحت مند ہے۔"
+
+#: templates/disease_detection.html:679
+#, fuzzy
+msgid ""
+"Swinecress is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"سوائن کریس ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:689
+#, fuzzy
+msgid ""
+"Target spot is a fungal disease causing dark, necrotic spots\n"
+"            on leaves."
+msgstr "ٹارگٹ سپاٹ ایک فنگل بیماری ہے جو پتوں پر سیاہ، مردہ دھبے بناتی ہے۔"
+
+#: templates/disease_detection.html:694 templates/disease_detection.html:764
+msgid "Ensure good air circulation in the field."
+msgstr ""
+
+#: templates/disease_detection.html:699
+#, fuzzy
+msgid ""
+"Tungro is a viral disease in rice causing stunted growth and\n"
+"            yellowing of leaves."
+msgstr ""
+"ٹن گرو چاول میں ایک وائرل بیماری ہے جو پودوں کی بونا پن اور پتوں کی زردی "
+"کا سبب بنتی ہے۔"
+
+#: templates/disease_detection.html:705
+#, fuzzy
+msgid "Control insect vectors like green leafhoppers."
+msgstr "کیڑوں کے ویکٹرز جیسے سفید مکھیوں کو کنٹرول کریں۔"
+
+#: templates/disease_detection.html:709
+#, fuzzy
+msgid ""
+"Waterhemp is a weed that can compete with crops for nutrients\n"
+"            and space."
+msgstr ""
+"واٹر ہیمپ ایک جڑی بوٹی ہے جو غذائی اجزاء اور جگہ کے لیے فصلوں سے مقابلہ "
+"کرسکتی ہے۔"
+
+#: templates/disease_detection.html:719
+#, fuzzy
+msgid ""
+"Wheat brown leaf rust is a fungal disease causing\n"
+"            reddish-brown pustules on leaves."
+msgstr ""
+"گندم کی بھوری پتیوں کا زنگ ایک فنگل بیماری ہے جو پتوں پر سرخی مائل بھورے "
+"پھوڑے بناتی ہے۔"
+
+#: templates/disease_detection.html:729
+#, fuzzy
+msgid ""
+"Wheat stem fly is a pest that lays eggs on wheat plants,\n"
+"            causing damage to stems."
+msgstr ""
+"گندم کا تنوں کا مکھی ایک کیڑا ہے جو گندم کے پودوں پر انڈے دیتا ہے، جس سے "
+"تنوں کو نقصان ہوتا ہے۔"
+
+#: templates/disease_detection.html:734 templates/disease_detection.html:774
+#: templates/disease_detection.html:853 templates/disease_detection.html:876
+#: templates/disease_detection.html:919 templates/disease_detection.html:932
+#: templates/disease_detection.html:945 templates/disease_detection.html:957
+#: templates/disease_detection.html:970
+#, fuzzy
+msgid "Monitor crops for signs of infestation."
+msgstr "کیڑے کی علامات کے لئے فصلوں کی باقاعدگی سے نگرانی کریں۔"
+
+#: templates/disease_detection.html:735
+#, fuzzy
+msgid "Apply insecticides if necessary."
+msgstr "ضرورت کے مطابق فنگسائڈز کا استعمال کریں۔"
+
+#: templates/disease_detection.html:739
+#, fuzzy
+msgid ""
+"Wheat aphids are sap-sucking insects that can cause yellowing\n"
+"            and curling of leaves."
+msgstr ""
+"گندم کے افڈس رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مڑنے کا سبب بن "
+"سکتے ہیں۔"
+
+#: templates/disease_detection.html:749
+#, fuzzy
+msgid ""
+"Wheat black rust is a fungal disease causing black pustules on\n"
+"            stems and leaves."
+msgstr ""
+"گندم کا کالا زنگ ایک فنگل بیماری ہے جو تنوں اور پتوں پر کالے پھوڑے بناتی "
+"ہے۔"
+
+#: templates/disease_detection.html:755 templates/disease_detection.html:805
+#, fuzzy
+msgid "Apply fungicides when necessary."
+msgstr "ضرورت کے مطابق فنگسائڈز کا استعمال کریں۔"
+
+#: templates/disease_detection.html:759
+#, fuzzy
+msgid ""
+"Wheat leaf blight is a fungal disease causing dark, necrotic\n"
+"            spots on leaves."
+msgstr ""
+"گندم کا پتوں کا بگڑا ہوا پن ایک فنگل بیماری ہے جو پتوں پر سیاہ، مردہ دھبے"
+" بناتی ہے۔"
+
+#: templates/disease_detection.html:769
+#, fuzzy
+msgid ""
+"Wheat mites are tiny pests that can cause yellowing and\n"
+"            bronzing of leaves."
+msgstr "گندم کے مائٹس چھوٹے کیڑے ہیں جو پتوں کو زرد اور کانسی کا سبب بن سکتے ہیں۔"
+
+#: templates/disease_detection.html:775
+#, fuzzy
+msgid "Apply miticides if necessary."
+msgstr "ضرورت کے مطابق فنگسائڈز کا استعمال کریں۔"
+
+#: templates/disease_detection.html:779
+#, fuzzy
+msgid ""
+"Wheat powdery mildew is a fungal disease causing white powdery\n"
+"            spots on leaves and stems."
+msgstr ""
+"گندم کا پاوڈری ملڈیو ایک فنگل بیماری ہے جو پتوں اور تنوں پر سفید پاوڈری "
+"دھبے بناتی ہے۔"
+
+#: templates/disease_detection.html:789
+#, fuzzy
+msgid ""
+"Wheat scab is a fungal disease causing pink or reddish\n"
+"            discoloration of wheat heads."
+msgstr ""
+"گندم کا سکیب ایک فنگل بیماری ہے جو گندم کے سروں کی گلابی یا سرخی مائل بد "
+"رنگی کا سبب بنتی ہے۔"
+
+#: templates/disease_detection.html:795 templates/disease_detection.html:843
+#: templates/disease_detection.html:909
+#, fuzzy
+msgid "Ensure good field sanitation."
+msgstr "مناسب نکاسی آب اور فیلڈ صفائی کو یقینی بنائیں۔"
+
+#: templates/disease_detection.html:799
+#, fuzzy
+msgid ""
+"Wheat yellow rust is a fungal disease causing yellowish\n"
+"            pustules on leaves."
+msgstr "گندم کا زرد زنگ ایک فنگل بیماری ہے جو پتوں پر زردی مائل پھوڑے بناتی ہے۔"
+
+#: templates/disease_detection.html:809
+#, fuzzy
+msgid ""
+"Wilt is a disease causing wilting and yellowing of plants due\n"
+"            to various pathogens."
+msgstr ""
+"ولٹ ایک بیماری ہے جو مختلف پیتھوجنز کی وجہ سے پودوں کے مڑنے اور زرد ہونے "
+"کا سبب بنتی ہے۔"
+
+#: templates/disease_detection.html:815 templates/disease_detection.html:900
+#, fuzzy
+msgid "Ensure proper drainage and avoid overwatering."
+msgstr "مناسب نکاسی آب اور فیلڈ صفائی کو یقینی بنائیں۔"
+
+#: templates/disease_detection.html:819
+#, fuzzy
+msgid ""
+"Yellow rust is a fungal disease affecting sugarcane, causing\n"
+"            yellowish pustules on leaves."
+msgstr ""
+"زرد زنگ ایک فنگل بیماری ہے جو گنے کو متاثر کرتی ہے، جس سے پتوں پر زردی "
+"مائل پھوڑے بن جاتے ہیں۔"
+
+#: templates/disease_detection.html:828
+#, fuzzy
+msgid ""
+"Bacterial blight in cotton causes leaf spots, stem blight, and\n"
+"            boll rot."
+msgstr ""
+"کپاس میں بیکٹیریل بلیٹ پتوں کے دھبے، تنوں کے بگڑا ہوا پن، اور بول کا سڑنا"
+" کا سبب بنتی ہے۔"
+
+#: templates/disease_detection.html:834
+#, fuzzy
+msgid "Apply appropriate bactericides if necessary."
+msgstr "ضرورت کے مطابق مناسب جڑی بوٹی مار ادویات لگائیں۔"
+
+#: templates/disease_detection.html:838
+#, fuzzy
+msgid ""
+"Boll rot is a fungal disease causing rotting of cotton\n"
+"            bolls."
+msgstr "بول روٹ ایک فنگل بیماری ہے جو کپاس کے بولوں کے سڑنے کا سبب بنتی ہے۔"
+
+#: templates/disease_detection.html:848
+#, fuzzy
+msgid ""
+"Bollworms are pests that cause significant damage to cotton\n"
+"            bolls."
+msgstr "بول ورمز کیڑے ہیں جو کپاس کے بولوں کو نمایاں نقصان پہنچاتے ہیں۔"
+
+#: templates/disease_detection.html:861
+#, fuzzy
+msgid ""
+"Cotton mealybugs are sap-sucking insects causing yellowing and\n"
+"            curling of leaves."
+msgstr ""
+"کپاس کے میلی بگ رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مڑنے کا سبب "
+"بنتے ہیں۔"
+
+#: templates/disease_detection.html:871
+#, fuzzy
+msgid ""
+"Cotton whiteflies are sap-sucking insects causing yellowing\n"
+"            and wilting of leaves."
+msgstr ""
+"کپاس کی سفید مکھی رس چوسنے والے کیڑے ہیں جو پتوں کو زرد اور مرجھانے کا "
+"سبب بنتے ہیں۔"
+
+#: templates/disease_detection.html:884
+#, fuzzy
+msgid ""
+"Curl virus is a viral disease causing curling and yellowing of\n"
+"            leaves."
+msgstr "کرل وائرس ایک وائرل بیماری ہے جو پتوں کے مڑنے اور زرد ہونے کا سبب بنتی ہے۔"
+
+#: templates/disease_detection.html:894
+#, fuzzy
+msgid ""
+"Fusarium wilt is a fungal disease causing wilting and\n"
+"            yellowing of plants."
+msgstr ""
+"فوسیریم ولٹ ایک فنگل بیماری ہے جو پودوں کے مڑنے اور زرد ہونے کا سبب بنتی "
+"ہے۔"
+
+#: templates/disease_detection.html:904
+#, fuzzy
+msgid ""
+"Maize ear rot is a fungal disease causing rotting of maize\n"
+"            ears."
+msgstr ""
+"مکئی کے کان کا روٹ ایک فنگل بیماری ہے جو مکئی کے کانوں کے سڑنے کا سبب "
+"بنتی ہے۔"
+
+#: templates/disease_detection.html:914
+#, fuzzy
+msgid ""
+"Maize fall armyworm is a pest causing significant damage to\n"
+"            maize crops."
+msgstr ""
+"مکئی کا فال آرمی ورم ایک کیڑا ہے جو مکئی کی فصلوں کو نمایاں نقصان پہنچاتا"
+" ہے۔"
+
+#: templates/disease_detection.html:927
+#, fuzzy
+msgid ""
+"Maize stem borer is a pest causing damage to maize stems and\n"
+"            reducing yield."
+msgstr ""
+"مکئی کا تنوں کا بورا ایک کیڑا ہے جو مکئی کے تنوں کو نقصان پہنچاتا ہے اور "
+"پیداوار کو کم کرتا ہے۔"
+
+#: templates/disease_detection.html:940
+#, fuzzy
+msgid ""
+"Pink bollworm is a pest causing significant damage to cotton\n"
+"            bolls."
+msgstr "گلابی بول ورم ایک کیڑا ہے جو کپاس کے بولوں کو نمایاں نقصان پہنچاتا ہے۔"
+
+#: templates/disease_detection.html:953
+msgid "Red cotton bug is a pest causing damage to cotton crops."
+msgstr "سرخ کپاس کا بگ ایک کیڑا ہے جو کپاس کی فصلوں کو نقصان پہنچاتا ہے۔"
+
+#: templates/disease_detection.html:965
+#, fuzzy
+msgid ""
+"Thrips are pests causing damage to cotton leaves and reducing\n"
+"            yield."
+msgstr ""
+"تھرپس کیڑے ہیں جو کپاس کے پتوں کو نقصان پہنچاتے ہیں اور پیداوار کو کم "
+"کرتے ہیں۔"
+
+#: templates/fertilizer_calculator_1.html:35
+msgid "Field Area (in hectares):"
+msgstr "کھیت کا رقبہ (ہیکٹر میں):"
+
+#: templates/fertilizer_calculator_1.html:39
+msgid "Soil Type:"
+msgstr "مٹی کی قسم:"
+
+#: templates/fertilizer_calculator_1.html:41
+msgid "Alluvial"
+msgstr "بہل"
+
+#: templates/fertilizer_calculator_1.html:42
+msgid "Sandy"
+msgstr "ریتیلی"
+
+#: templates/fertilizer_calculator_1.html:43
+msgid "Clayey"
+msgstr "چکنی"
+
+#: templates/fertilizer_calculator_1.html:47
+msgid "Soil pH:"
+msgstr "مٹی کا پی ایچ:"
+
+#: templates/fertilizer_calculator_1.html:49
+msgid "Acidic (< 6.5)"
+msgstr "تیزابی (< 6.5)"
+
+#: templates/fertilizer_calculator_1.html:50
+msgid "Neutral (6.5 - 7.5)"
+msgstr "غیر جانبدار (6.5 - 7.5)"
+
+#: templates/fertilizer_calculator_1.html:51
+msgid "Alkaline (> 7.5)"
+msgstr "الکلین (> 7.5)"
+
+#: templates/fertilizer_calculator_1.html:55
+msgid "Organic Matter Content:"
+msgstr "نامیاتی مادے کی مقدار:"
+
+#: templates/fertilizer_calculator_1.html:57
+msgid "Low (< 2%)"
+msgstr "کم (< 2%)"
+
+#: templates/fertilizer_calculator_1.html:58
+msgid "Medium (2% - 4%)"
+msgstr "درمیانہ (2% - 4%)"
+
+#: templates/fertilizer_calculator_1.html:59
+msgid "High (> 4%)"
+msgstr "زیادہ (> 4%)"
+
+#: templates/fertilizer_calculator_1.html:63
+msgid "Previous Crop:"
+msgstr "پچھلی فصل:"
+
+#: templates/fertilizer_calculator_1.html:65
+msgid "Legumes (Nitrogen-fixing)"
+msgstr "پھلی دار (نائٹروجن فکسنگ)"
+
+#: templates/fertilizer_calculator_1.html:66
+msgid "Cereals (e.g., Wheat, Corn)"
+msgstr "اناج (مثلاً گندم، مکئی)"
+
+#: templates/fertilizer_calculator_1.html:67
+msgid "Fallow (No previous crop)"
+msgstr "بنجر (کوئی پچھلی فصل نہیں)"
+
+#: templates/fertilizer_calculator_1.html:71
+msgid "Cotton Growth Stage:"
+msgstr "کپاس کی نشوونما کا مرحلہ:"
+
+#: templates/fertilizer_calculator_1.html:73
+msgid "Early Growth"
+msgstr "ابتدائی نشوونما"
+
+#: templates/fertilizer_calculator_1.html:74
+msgid "Boll Development"
+msgstr "بول کی نشوونما"
+
+#: templates/fertilizer_calculator_1.html:75
+msgid "Pre-Harvest"
+msgstr "پہلے سے کٹائی"
+
+#: templates/fertilizer_calculator_1.html:79
+msgid "Irrigation Level (based on last year's monsoon):"
+msgstr "ایریگیشن لیول (پچھلے سال کے مانسون کی بنیاد پر):"
+
+#: templates/fertilizer_calculator_1.html:81
+msgid "Good Monsoon"
+msgstr "اچھا مانسون"
+
+#: templates/fertilizer_calculator_1.html:82
+msgid "Average Monsoon"
+msgstr "اوسط مانسون"
+
+#: templates/fertilizer_calculator_1.html:83
+msgid "Poor Monsoon"
+msgstr "ناقص مانسون"
+
+#: templates/fertilizer_calculator_1.html:86
+msgid "Calculate Fertilizer Needs"
+msgstr "کھاد کی ضروریات کا حساب لگائیں"
+
+#: templates/weather_forecasting.html:401
+msgid "Enter City:"
+msgstr "شہر داخل کریں:"
+
+#: templates/weather_forecasting.html:403
+msgid "Get Weather"
+msgstr "موسم حاصل کریں"
+
+#: templates/weather_forecasting.html:407
+msgid "Weather in"
+msgstr "موسم"
+
+#: templates/weather_forecasting.html:408
+msgid "Temperature:"
+msgstr "درجہ حرارت:"
+
+#: templates/weather_forecasting.html:409
+msgid "Pressure:"
+msgstr "دباؤ:"
+
+#: templates/weather_forecasting.html:410
+msgid "Humidity:"
+msgstr "نمی:"
+
+#: templates/weather_forecasting.html:411
+msgid "Description:"
+msgstr "تفصیل:"
+
+#: templates/weather_forecasting.html:414
+msgid "Weather icon"
+msgstr "موسم کا آئکن"
+
+#: templates/weather_forecasting.html:418
+msgid "Weather data not available."
+msgstr "موسم کے اعداد و شمار دستیاب نہیں ہیں۔"
+
+#: templates/cotton_seeds.html:313
+msgid "Bt Cotton"
+msgstr "بی ٹی کاٹن"
+
+#: templates/cotton_seeds.html:314
+msgid ""
+"Bt cotton is genetically modified to "
+"produce an insecticide to combat "
+"bollworm."
+msgstr ""
+"بی ٹی کاٹن جینیاتی طور پر ترمیم"
+" شدہ ہے تاکہ بول ورم کے خلاف"
+" انسیکٹی سائیڈ پیدا کر سکے۔"
+
+#: templates/cotton_seeds.html:313
+msgid "IR Cotton"
+msgstr "آئی آر کاٹن"
+
+#: templates/cotton_seeds.html:314
+msgid ""
+"IR cotton varieties are known for "
+"their resistance to certain pests and"
+" diseases."
+msgstr ""
+"آئی آر کاٹن کی اقسام بعض کیڑوں "
+"اور بیماریوں کے خلاف مزاحمت کے لیے"
+" جانی جاتی ہیں۔"
+
+#: templates/cotton_seeds.html:313
+msgid "Desi Cotton"
+msgstr "دیسی کاٹن"
+
+#: templates/cotton_seeds.html:314
+msgid ""
+"Desi cotton varieties are traditional "
+"varieties that are well-suited to "
+"local growing conditions."
+msgstr ""
+"دیسی کاٹن کی اقسام روایتی اقسام "
+"ہیں جو مقامی کاشت کے حالات کے "
+"لئے بہت موزوں ہیں۔"
+
+#: templates/cotton_seeds.html:313
+msgid "Hybrid Cotton"
+msgstr "ہائبرڈ کاٹن"
+
+#: templates/cotton_seeds.html:314
+msgid ""
+"Hybrid cotton varieties are bred to "
+"increase yield and improve fiber "
+"quality."
+msgstr ""
+"ہائبرڈ کاٹن کی اقسام پیداوار بڑھانے "
+"اور فائبر کے معیار کو بہتر بنانے"
+" کے لئے پیدا کی گئی ہیں۔"
+
+#: templates/fertilizer_calculator_1.html:369
+msgid "Based on your inputs, your cotton field in Punjab requires approximately:<br>- Nitrogen: ${nitrogenTotal.toFixed(2)} kg<br>- Phosphorus: ${phosphorusTotal.toFixed(2)} kg<br>- Potassium: ${potassiumTotal.toFixed(2)} kg"
+msgstr "آپ کے ان پٹس کی بنیاد پر، پنجاب میں آپ کے کپاس کے کھیت کو تقریباً درکار ہے:<br>- نائٹروجن: ${nitrogenTotal.toFixed(2)} کلوگرام<br>- فاسفورس: ${phosphorusTotal.toFixed(2)} کلوگرام<br>- پوٹاشیم: ${potassiumTotal.toFixed(2)} کلوگرام"
+
+msgid "Fertilizer Calculator Simple"
+msgstr "سادہ کھاد کیلکولیٹر"
+
+msgid "Area (acres)"
+msgstr "رقبہ (ایکڑ)"
+
+msgid "Enter the area"
+msgstr "رقبہ درج کریں"
+
+msgid "Nitrogen Requirement (kg/acre)"
+msgstr "نائٹروجن کی ضرورت (کلوگرام فی ایکڑ)"
+
+msgid "Enter the nitrogen requirement"
+msgstr "نائٹروجن کی ضرورت درج کریں"
+
+msgid "Phosphorus Requirement (kg/acre)"
+msgstr "فاسفورس کی ضرورت (کلوگرام فی ایکڑ)"
+
+msgid "Enter the phosphorus requirement"
+msgstr "فاسفورس کی ضرورت درج کریں"
+
+msgid "Potassium Requirement (kg/acre)"
+msgstr "پوٹاشیم کی ضرورت (کلوگرام فی ایکڑ)"
+
+msgid "Enter the potassium requirement"
+msgstr "پوٹاشیم کی ضرورت درج کریں"
+
+msgid "Calculate"
+msgstr "حساب کریں"
+
+msgid "Fertilizer Requirements"
+msgstr "کھاد کی ضروریات"
+
+msgid "Total Nitrogen: {0} kg"
+msgstr "کل نائٹروجن: {0} کلوگرام"
+
+msgid "Total Phosphorus: {0} kg"
+msgstr "کل فاسفورس: {0} کلوگرام"
+
+msgid "Total Potassium: {0} kg"
+msgstr "کل پوٹاشیم: {0} کلوگرام"
+
+msgid "Back to Dashboard"
+msgstr "ڈیش بورڈ پر واپس جائیں"
+
+msgid "© 2025 Expert Cotton Prediction. All Rights Reserved."
+msgstr "© 2025 ایکسپرٹ کاٹن پیشن گوئی۔ جملہ حقوق محفوظ ہیں۔"
+
+
+# msgid "No disease alerts at the moment."
+#~ msgstr "اس وقت کوئی بیماری کی الرٹس نہیں ہیں."
+
+#~ msgid ""
+#~ "Fusarium Wilt (caused by the soilborne"
+#~ " fungus Fusarium oxysporum) is a "
+#~ "widespread and economically important disease."
+#~ msgstr ""
+#~ "فوسیریم وِلت (مٹی کے فنگس فوسیریم "
+#~ "آکسیسپورم کی وجہ سے) ایک وسیع "
+#~ "پیمانے پر پھیلنے والی اور اقتصادی "
+#~ "لحاظ سے اہم بیماری ہے۔"
+
+#~ msgid "Once Fusarium Wilt is infected, there is no effective treatment."
+#~ msgstr "ایک بار فوسیریم وِلت متاثر ہو جائے تو اس کا کوئی موثر علاج نہیں ہے۔"
+
+#~ msgid "Remove and dispose of the affected plant immediately."
+#~ msgstr "متاثرہ پودے کو فوری طور پر ہٹا دیں اور ٹھکانے لگا دیں۔"
+
+#~ msgid "Remove and replace fusarium-infected garden soil."
+#~ msgstr "فوسیریم سے متاثرہ باغ کی مٹی کو ہٹا کر تبدیل کریں۔"
+
+#~ msgid "Fungus populations can be reduced by soil solarization and fumigation."
+#~ msgstr "مٹی کی شمسی کاری اور دھوئیں سے فنگس کی آبادی کو کم کیا جا سکتا ہے۔"
+
+#~ msgid ""
+#~ "The use of resistant cultivars and "
+#~ "pathogen-free cotton seed are good "
+#~ "preventions of disease."
+#~ msgstr ""
+#~ "مزاحمتی اقسام اور جراثیم سے پاک "
+#~ "کپاس کے بیج کا استعمال بیماری کی"
+#~ " اچھی روک تھام ہیں۔"
+
+#~ msgid ""
+#~ "Cotton leaf curl disease (CLCuD) is "
+#~ "a viral infection of cotton and "
+#~ "other susceptible host plants that is"
+#~ " transmitted by silverleaf whitefly "
+#~ "(Bemisia tabaci)."
+#~ msgstr ""
+#~ "کپاس کے پتوں کی کرل بیماری (CLCuD)"
+#~ " کپاس اور دیگر حساس پودوں کا "
+#~ "ایک وائرل انفیکشن ہے جو سلورلیف "
+#~ "وائٹ فلائی (بیماسیا تاباکی) کے ذریعے "
+#~ "منتقل ہوتا ہے۔"
+
+#~ msgid "Immediately remove infected-looking plants and bury them."
+#~ msgstr "متاثرہ نظر آنے والے پودوں کو فوری طور پر ہٹا کر دفن کر دیں۔"
+
+#~ msgid "Protect seedlings from whiteflies and control weeds."
+#~ msgstr "پودوں کو سفید مکھیوں سے بچائیں اور جڑی بوٹیوں پر قابو پائیں۔"
+
+#~ msgid "Use resistant or tolerant cultivars."
+#~ msgstr "مزاحمتی یا بردبار اقسام کا استعمال کریں۔"
+
+#~ msgid "Your Cotton Plant is Healthy."
+#~ msgstr "آپ کا کپاس کا پودا صحت مند ہے۔"
+
+#~ msgid "Your Cotton Leaf is Healthy."
+#~ msgstr "آپ کا کپاس کا پتہ صحت مند ہے۔"
+
+#~ msgid "Importance of Crop Rotation"
+#~ msgstr "فصل کی گردش کی اہمیت"
+
+#~ msgid ""
+#~ "Crop rotation helps in maintaining soil"
+#~ " fertility and reducing soil erosion..."
+#~ msgstr ""
+#~ "فصل کی گردش مٹی کی زرخیزی کو "
+#~ "برقرار رکھنے اور مٹی کے کٹاؤ کو"
+#~ " کم کرنے میں مدد دیتی ہے..."
+
+#~ msgid "Pest Management in Cotton Farming"
+#~ msgstr "کپاس کی کاشت میں کیڑوں کا انتظام"
+
+#~ msgid ""
+#~ "Effective pest management practices are "
+#~ "crucial for a healthy cotton crop..."
+#~ msgstr ""
+#~ "موثر کیڑوں کے انتظام کے طریقے صحت"
+#~ " مند کپاس کی فصل کے لئے انتہائی"
+#~ " ضروری ہیں..."
+
+#~ msgid "Organic Cotton Farming"
+#~ msgstr "نامیاتی کپاس کی کاشت"
+
+#~ msgid "Organic cotton farming avoids the use of synthetic chemicals..."
+#~ msgstr "نامیاتی کپاس کی کاشت مصنوعی کیمیکلز کے استعمال سے گریز کرتی ہے..."
+
+#~ msgid "Bt Cotton"
+#~ msgstr "بی ٹی کاٹن"
+
+#~ msgid ""
+#~ "Bt cotton is genetically modified to "
+#~ "produce an insecticide to combat "
+#~ "bollworm."
+#~ msgstr ""
+#~ "بی ٹی کاٹن جینیاتی طور پر ترمیم"
+#~ " شدہ ہے تاکہ بول ورم کے خلاف"
+#~ " انسیکٹی سائیڈ پیدا کر سکے۔"
+
+#~ msgid "IR Cotton"
+#~ msgstr "آئی آر کاٹن"
+
+#~ msgid ""
+#~ "IR cotton varieties are known for "
+#~ "their resistance to certain pests and"
+#~ " diseases."
+#~ msgstr ""
+#~ "آئی آر کاٹن کی اقسام بعض کیڑوں "
+#~ "اور بیماریوں کے خلاف مزاحمت کے لیے"
+#~ " جانی جاتی ہیں۔"
+
+#~ msgid "Desi Cotton"
+#~ msgstr "دیسی کاٹن"
+
+#~ msgid ""
+#~ "Desi cotton varieties are traditional "
+#~ "varieties that are well-suited to "
+#~ "local growing conditions."
+#~ msgstr ""
+#~ "دیسی کاٹن کی اقسام روایتی اقسام "
+#~ "ہیں جو مقامی کاشت کے حالات کے "
+#~ "لئے بہت موزوں ہیں۔"
+
+#~ msgid "Hybrid Cotton"
+#~ msgstr "ہائبرڈ کاٹن"
+
+#~ msgid ""
+#~ "Hybrid cotton varieties are bred to "
+#~ "increase yield and improve fiber "
+#~ "quality."
+#~ msgstr ""
+#~ "ہائبرڈ کاٹن کی اقسام پیداوار بڑھانے "
+#~ "اور فائبر کے معیار کو بہتر بنانے"
+#~ " کے لئے پیدا کی گئی ہیں۔"
+
+#~ msgid "American Bollworm on Cotton"
+#~ msgstr "کپاس پر امریکی بولوورم"
+
+#~ msgid "Anthracnose on Cotton"
+#~ msgstr "کپاس پر انترکنوز"
+
+#~ msgid "Healthy Maize"
+#~ msgstr "صحت مند مکئی"
+
+#~ msgid "Healthy Wheat"
+#~ msgstr "صحت مند گندم"
+
+#~ msgid "Your wheat crop is healthy."
+#~ msgstr "آپ کی گندم کی فصل صحت مند ہے۔"
+
+#~ msgid "Healthy cotton"
+#~ msgstr "صحت مند کپاس"
+
+#~ msgid "Your cotton crop is healthy."
+#~ msgstr "آپ کی کپاس کی فصل صحت مند ہے۔"
+
