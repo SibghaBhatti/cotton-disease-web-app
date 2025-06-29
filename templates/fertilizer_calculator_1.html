@@ -318,54 +318,58 @@
         <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
     </div>
 </nav>
+    <div class="language-selection">
+      <a href="{{ url_for('set_language', language='en') }}">English</a>
+      <a href="{{ url_for('set_language', language='ur') }}">اردو</a>
+    </div>
     <div class="container">
-        <h1>Fertilizer Calculator for Cotton in Punjab</h1>
-        <label for="area">Field Area (in hectares):</label>
+        <h1>{{ _('Fertilizer Calculator') }}</h1>
+        <label for="area">{{ _('Field Area (in hectares):') }}</label>
         <input type="number" id="area" placeholder="Enter the area in hectares" required>
 
-        <label for="soilType">Soil Type:</label>
+        <label for="soilType">{{ _('Soil Type:') }}</label>
         <select id="soilType">
-            <option value="alluvial">Alluvial</option>
-            <option value="sandy">Sandy</option>
-            <option value="clayey">Clayey</option>
+            <option value="alluvial">{{ _('Alluvial') }}</option>
+            <option value="sandy">{{ _('Sandy') }}</option>
+            <option value="clayey">{{ _('Clayey') }}</option>
         </select>
 
-        <label for="soilPH">Soil pH:</label>
+        <label for="soilPH">{{ _('Soil pH:') }}</label>
         <select id="soilPH">
-            <option value="acidic">Acidic (&lt; 6.5)</option>
-            <option value="neutral">Neutral (6.5 - 7.5)</option>
-            <option value="alkaline">Alkaline (&gt; 7.5)</option>
+            <option value="acidic">{{ _('Acidic (< 6.5)') }}</option>
+                    <option value="neutral">{{ _('Neutral (6.5 - 7.5)') }}</option>
+                    <option value="alkaline">{{ _('Alkaline (> 7.5)') }}</option>
         </select>
 
-        <label for="organicMatter">Organic Matter Content:</label>
+        <label for="organicMatter">{{ _('Organic Matter Content:') }}</label>
         <select id="organicMatter">
             <option value="low">Low (&lt; 2%)</option>
             <option value="medium">Medium (2% - 4%)</option>
             <option value="high">High (&gt; 4%)</option>
         </select>
 
-        <label for="previousCrop">Previous Crop:</label>
+        <label for="previousCrop">{{ _('Previous Crop:') }}:</label>
         <select id="previousCrop">
-            <option value="legumes">Legumes (Nitrogen-fixing)</option>
-            <option value="cereals">Cereals (e.g., Wheat, Corn)</option>
-            <option value="none">Fallow (No previous crop)</option>
+            <option value="legumes">{{ _('Legumes (Nitrogen-fixing)') }}</option>
+                    <option value="cereals">{{ _('Cereals (e.g., Wheat, Corn)') }}</option>
+                    <option value="fallow">{{ _('Fallow (No previous crop)') }}</option>
         </select>
 
-        <label for="growthStage">Cotton Growth Stage:</label>
+        <label for="growthStage">{{ _('Cotton Growth Stage:') }}</label>
         <select id="growthStage">
-            <option value="early">Early Growth</option>
-            <option value="bollDevelopment">Boll Development</option>
-            <option value="preHarvest">Pre-Harvest</option>
+           <option value="early">{{ _('Early Growth') }}</option>
+                    <option value="boll">{{ _('Boll Development') }}</option>
+                    <option value="pre_harvest">{{ _('Pre-Harvest') }}</option>
         </select>
 
-        <label for="irrigation">Irrigation Level (based on last year's monsoon):</label>
+        <label for="irrigation">{{ _('Irrigation Level (based on last year\'s monsoon):') }}</label>
         <select id="irrigation">
-            <option value="good">Good Monsoon</option>
-            <option value="average">Average Monsoon</option>
-            <option value="poor">Poor Monsoon</option>
+            <option value="good">{{ _('Good Monsoon') }}</option>
+                    <option value="average">{{ _('Average Monsoon') }}</option>
+                    <option value="poor">{{ _('Poor Monsoon') }}</option>
         </select>
 
-        <button onclick="calculateFertilizer()">Calculate Fertilizer Needs</button>
+        <button onclick="calculateFertilizer()">{{ _('Calculate Fertilizer Needs') }}</button>
         <div id="result" class="result"></div>
     </div>
 
@@ -434,13 +438,17 @@
             const nitrogenTotal = nitrogen * area;
             const phosphorusTotal = phosphorus * area;
             const potassiumTotal = potassium * area;
-
+            
             const resultText = `
-                Based on your inputs, your cotton field in Punjab requires approximately:<br>
-                - Nitrogen: ${nitrogenTotal.toFixed(2)} kg<br>
-                - Phosphorus: ${phosphorusTotal.toFixed(2)} kg<br>
-                - Potassium: ${potassiumTotal.toFixed(2)} kg
+                {{ _('Based on your inputs, your cotton field in Punjab requires approximately:<br>- Nitrogen: ${nitrogenTotal.toFixed(2)} kg<br>- Phosphorus: ${phosphorusTotal.toFixed(2)} kg<br>- Potassium: ${potassiumTotal.toFixed(2)} kg') }}
             `;
+            
+            // const resultText = `
+            //     Based on your inputs, your cotton field in Punjab requires approximately:<br>
+            //     - Nitrogen: ${nitrogenTotal.toFixed(2)} kg<br>
+            //     - Phosphorus: ${phosphorusTotal.toFixed(2)} kg<br>
+            //     - Potassium: ${potassiumTotal.toFixed(2)} kg
+            // `;
 
             document.getElementById('result').innerHTML = resultText;
             document.getElementById('result').style.display = 'block';
