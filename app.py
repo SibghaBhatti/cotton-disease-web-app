@@ -545,7 +545,7 @@ def news():
     api_key = "70181cc2861d4ffbb83a92f38b3f9662"
 
     # Add sorting and date range to fetch recent news
-    url = f"https://newsapi.org/v2/everything?q=cotton-farming&apiKey={api_key}"
+    url = f"https://newsapi.org/v2/everything?q=cotton AND farmers AND agriculture  -coffee -Nagaland -subsidy -Trump -restaurant -brunch -Bayer -fashion -clothes -clothing -textiles&language=en&sortBy=relevancy&apiKey={api_key}"
 
 
     # Add headers to prevent caching
